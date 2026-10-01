@@ -186,11 +186,11 @@ Worked example (the default state): hike, 38°F, steady rain, breezy, M. `feels 
 
 ## 6. Cart
 
-- `src/components/cart/actions.ts` ("use server") exposes `addLine(variantId, qty)`, `addKit(lines, kit)`, `updateLine(lineId, qty)`, `removeLine(lineId)`, `getCart()`.
+- `src/components/cart/actions.ts` ("use server") exposes `addLine(variantId, qty)`, `addKit(variantIds, kit)`, `addPlainLines(variantIds)` (Finish the kit), `updateLine(lineId, qty)`, `removeLine(lineId)`, `getCart()`. Each checks its own input by hand (ids are Shopify gids, quantities whole numbers from 0 or 1 to 10) and returns `{ ok: true, cart } | { ok: false, error, cart }`.
 - The cart id lives in an httpOnly, secure, sameSite=lax cookie `scaur_cart` (30 days). The first add calls `cartCreate`.
 - Every action re-validates on the server before calling Shopify: variant exists, `availableForSale`, quantity at most `quantityAvailable`. The UI caps quantities too, but the server is the guard.
 - `addKit` sends all lines in one `cartLinesAdd`, each with attributes `_kitId` (short random id) and `_kit` (label, for example "Day hike, 38°F, steady rain"). Attributes starting with `_` are hidden from the buyer at checkout. A third attribute, `_kitUrl`, stores the kit builder URL that produced the kit. The drawer groups lines by `_kitId`, and "Edit kit" links to `_kitUrl`.
-- `src/store/cart-store.ts` (Zustand, one selector per value) holds the drawer's open state and the last cart from the server; components apply optimistic updates, and each action's returned cart replaces the stored one. A failed action restores the previous cart and puts the error on that line. The layout reads the cart on the server and seeds the store once.
+- `src/store/cart-store.ts` (Zustand, one selector per value) holds the drawer's open state and the last cart from the server; components apply optimistic updates, and each action's returned cart replaces the stored one. A failed action restores the previous cart and puts the error on that line. The drawer loads the cart once after hydration (`getCart`), because reading the cookie in the root layout would make every page dynamic and lose the static product pages; the header count fills in a moment after first paint.
 - Checkout: the notice (PRD F9), then `window.location.assign(cart.checkoutUrl)`.
 
 ## 7. Thermal images

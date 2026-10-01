@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { FC } from "react";
 
-import Button from "@/components/ui/button";
+import AddAllButton from "@/components/product/add-all-button";
 import { formatMoney } from "@/lib/format";
 import type { KitSlot } from "@/lib/kit";
 import { layers } from "@/lib/layers";
@@ -19,24 +19,19 @@ const FinishTheKit: FC<FinishTheKitProps> = ({ slots, size }) => (
     aria-labelledby="finish-kit-heading"
     className="mt-14 bg-snow px-4 pt-12 pb-14 md:px-8 lg:mt-24 lg:px-12 lg:pt-18 lg:pb-24"
   >
-    <div className="mx-auto flex max-w-page flex-col gap-8">
-      <div className="flex flex-col items-start gap-4 md:flex-row md:items-end md:justify-between md:gap-6">
-        <h2
-          id="finish-kit-heading"
-          className="font-display text-h2-phone leading-none lg:text-collection-phone"
-        >
-          Finish the kit
-        </h2>
-        <Button
-          href="/kit"
-          variant="secondary"
-          size="lg"
-          className="max-md:hidden"
-        >
-          Add all three in {size}
-        </Button>
-      </div>
-      <ul className="grid gap-6 md:grid-cols-3">
+    <div className="mx-auto grid max-w-page gap-8 md:grid-cols-2">
+      <h2
+        id="finish-kit-heading"
+        className="self-end font-display text-h2-phone leading-none lg:text-collection-phone"
+      >
+        Finish the kit
+      </h2>
+      <AddAllButton
+        variantIds={slots.map((slot) => slot.variant.id)}
+        size={size}
+        className="order-last md:order-none md:justify-self-end"
+      />
+      <ul className="grid gap-6 md:col-span-2 md:grid-cols-3">
         {slots.map(({ layer, product, variant }) => {
           const image = product.colours.find(
             (colour) => colour.name === variant.colour,
@@ -76,9 +71,6 @@ const FinishTheKit: FC<FinishTheKitProps> = ({ slots, size }) => (
           );
         })}
       </ul>
-      <Button href="/kit" variant="secondary" size="lg" className="md:hidden">
-        Add all three in {size}
-      </Button>
     </div>
   </section>
 );

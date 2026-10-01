@@ -34,6 +34,8 @@
   --text-lead: 19px;
   --text-wordmark-sm: 20px;
   --text-wordmark: 22px;
+  --text-sheet-title: 28px;
+  --text-sheet-title--line-height: 1;
   --text-h2-phone: 32px;
   --text-h1-phone: 42px;
   --text-h1-phone--line-height: 0.95;
@@ -92,6 +94,10 @@
   object-position: center 28%;
 }
 
+@utility grid-cols-notice {
+  grid-template-columns: 140px minmax(0, 1fr);
+}
+
 @utility border-control {
   border-width: 1.5px;
 }
@@ -131,6 +137,10 @@
   button:not(:disabled),
   summary {
     cursor: pointer;
+  }
+
+  html:has(dialog[open]) {
+    overflow: hidden;
   }
 
   summary::-webkit-details-marker {

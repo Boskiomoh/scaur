@@ -30,3 +30,41 @@ export interface ProductsResponse {
 export interface ProductResponse {
   product: RawProduct | null;
 }
+
+export interface RawCartLine {
+  id: string;
+  quantity: number;
+  attributes: { key: string; value: string | null }[];
+  cost: { totalAmount: Money };
+  merchandise: {
+    id: string;
+    availableForSale: boolean;
+    quantityAvailable: number | null;
+    selectedOptions: { name: string; value: string }[];
+    image: Image | null;
+    price: Money;
+    product: { handle: string; title: string };
+  };
+}
+
+export interface RawCart {
+  id: string;
+  checkoutUrl: string;
+  totalQuantity: number;
+  cost: { subtotalAmount: Money };
+  lines: { nodes: RawCartLine[] };
+}
+
+export interface CartMutationResult {
+  cart: RawCart | null;
+  userErrors: { message: string }[];
+  warnings: { code: string; message: string }[];
+}
+
+export interface VariantStockResponse {
+  nodes: ({
+    id: string;
+    availableForSale: boolean;
+    quantityAvailable: number | null;
+  } | null)[];
+}

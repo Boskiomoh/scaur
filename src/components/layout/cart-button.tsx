@@ -11,12 +11,14 @@ interface CartButtonProps {
 
 const CartButton: FC<CartButtonProps> = ({ variant }) => {
   // Stores
-  const totalQuantity = useCartStore((state) => state.totalQuantity);
+  const totalQuantity = useCartStore((state) => state.cart?.totalQuantity ?? 0);
   const open = useCartStore((state) => state.open);
 
   // Derived
   const label =
-    totalQuantity === 0 ? "Cart, empty" : `Cart, ${totalQuantity} items`;
+    totalQuantity === 0
+      ? "Cart, empty"
+      : `Cart, ${totalQuantity} ${totalQuantity === 1 ? "item" : "items"}`;
 
   if (variant === "pill") {
     return (

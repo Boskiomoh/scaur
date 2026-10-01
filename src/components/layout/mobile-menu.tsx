@@ -17,7 +17,7 @@ const moreLinks = [
 
 const MobileMenu: FC = () => {
   // Stores
-  const totalQuantity = useCartStore((state) => state.totalQuantity);
+  const totalQuantity = useCartStore((state) => state.cart?.totalQuantity ?? 0);
   const openCart = useCartStore((state) => state.open);
 
   // State
