@@ -30,19 +30,26 @@
   --text-2xs: 11px;
   --text-caption: 13px;
   --text-nav: 15px;
+  --text-blurb: 17px;
   --text-lead: 19px;
   --text-wordmark-sm: 20px;
   --text-wordmark: 22px;
   --text-h2-phone: 32px;
   --text-h1-phone: 42px;
   --text-h1-phone--line-height: 0.95;
+  --text-collection-phone: 40px;
+  --text-collection-phone--line-height: 1;
   --text-h2: 48px;
   --text-h2--line-height: 1;
+  --text-collection: 56px;
+  --text-collection--line-height: 1;
   --text-product: 52px;
   --text-product--line-height: 0.98;
   --text-h1: 68px;
   --text-h1--line-height: 0.95;
 
+  --leading-ui: normal;
+  --leading-snug: 1.3;
   --leading-relaxed: 1.6;
 
   --container-page: 1440px;
@@ -73,6 +80,10 @@
 
 @utility tracking-wordmark {
   letter-spacing: 0.04em;
+}
+
+@utility object-tile {
+  object-position: center 25%;
 }
 
 @utility border-control {

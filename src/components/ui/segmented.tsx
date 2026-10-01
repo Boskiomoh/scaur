@@ -19,7 +19,7 @@ const Segmented: FC<SegmentedProps> = ({ label, options, value, onChange }) => (
         type="button"
         aria-pressed={option.value === value}
         onClick={() => onChange(option.value)}
-        className="h-8.5 rounded-full px-4 text-sm font-semibold text-ink aria-pressed:bg-ink aria-pressed:text-snow"
+        className="h-9.5 rounded-full px-3.5 lg:h-8.5 text-sm font-semibold text-ink aria-pressed:bg-ink aria-pressed:text-snow"
       >
         {option.label}
       </button>
