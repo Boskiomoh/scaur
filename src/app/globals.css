@@ -36,6 +36,13 @@
   --text-wordmark: 22px;
   --text-sheet-title: 28px;
   --text-sheet-title--line-height: 1;
+  --text-temp-2: 30px;
+  --text-temp-3: 38px;
+  --text-temp-4: 46px;
+  --text-readout-phone: 44px;
+  --text-readout-phone--line-height: 1;
+  --text-readout: 56px;
+  --text-readout--line-height: 1;
   --text-h2-phone: 32px;
   --text-h1-phone: 42px;
   --text-h1-phone--line-height: 0.95;
@@ -96,6 +103,10 @@
 
 @utility grid-cols-notice {
   grid-template-columns: 140px minmax(0, 1fr);
+}
+
+@utility object-kit-figure {
+  object-position: 75% 50%;
 }
 
 @utility border-control {

@@ -50,7 +50,7 @@ src/
   components/
     ui/                             primitives, no data access: logo, button, chip, segmented,
                                     accordion, skeleton, range-bar, product-tile, price
-    layout/                         site-header, mobile-menu, site-footer, cart-button,
+    layout/                         site-header, main-nav, nav-links, mobile-menu, site-footer, cart-button,
                                     test-checkout-link
     brand/                          index (Brand), brand-controls: the /brand scratch page
     home/                           index (Home), hero, layer-axis, kit-teaser, fabric-band
@@ -59,8 +59,9 @@ src/
                                     gallery, variant-picker, size-pill, size-guide,
                                     add-to-cart, finish-the-kit, featured-product (also
                                     rendered by Home: one product feature, two places)
-    kit/                            index (Kit), kit-form, kit-figure, kit-slot, kit-footer
-    cart/                           index (CartDrawer), cart-line, checkout-notice,
+    kit/                            index (Kit), kit-form, choice-group, kit-figure, kit-readout,
+                                    kit-slot, kit-footer, kit-copy
+    cart/                           index (CartDrawer), cart-line, checkout-notice, with-quantity,
                                     actions.ts ("use server": addLine, addKit, updateLine,
                                     removeLine, getCart; each checks its own input)
     search/                         index (SearchOverlay), search-results

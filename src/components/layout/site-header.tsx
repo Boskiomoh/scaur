@@ -1,11 +1,12 @@
 import { MagnifyingGlassIcon } from "@phosphor-icons/react/ssr";
 import Link from "next/link";
-import type { FC } from "react";
+import { Suspense, type FC } from "react";
 
 import CartButton from "@/components/layout/cart-button";
+import MainNav from "@/components/layout/main-nav";
 import MobileMenu from "@/components/layout/mobile-menu";
+import NavLinks from "@/components/layout/nav-links";
 import Logo from "@/components/ui/logo";
-import { layers } from "@/lib/layers";
 
 const SiteHeader: FC = () => (
   <header className="h-14 border-b border-line md:h-16">
@@ -14,23 +15,9 @@ const SiteHeader: FC = () => (
         <Logo />
       </div>
 
-      <nav aria-label="Main" className="hidden grow gap-7 lg:flex">
-        {layers.map((layer) => (
-          <Link
-            key={layer.id}
-            href={`/shop?layer=${layer.id}`}
-            className="text-nav font-medium no-underline hover:underline"
-          >
-            {layer.label}
-          </Link>
-        ))}
-        <Link
-          href="/kit"
-          className="text-nav font-medium no-underline hover:underline"
-        >
-          Kit builder
-        </Link>
-      </nav>
+      <Suspense fallback={<NavLinks current={null} />}>
+        <MainNav />
+      </Suspense>
 
       <Link
         href="/search"
