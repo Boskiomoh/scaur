@@ -30,3 +30,6 @@ design/canvas-render/
 Thumbs.db
 *.log
 *.pem
+
+# Raw fidelity evidence; the web copy lives in public/fidelity
+/evidence/

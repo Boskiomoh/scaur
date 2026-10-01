@@ -12,6 +12,11 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Generated test and evidence output.
+    "playwright-report/**",
+    "test-results/**",
+    "evidence/**",
+    "public/fidelity/**",
     // Design references and the local canvas renderer are not app code.
     "design/**",
     "docs/**",

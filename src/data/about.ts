@@ -1,7 +1,7 @@
 export const repoUrl = "https://github.com/Boskiomoh/scaur";
 
-// Set once the fidelity report is published (WORKFLOW step X).
-export const fidelityUrl: string | null = null;
+// Served from public/fidelity (scripts/publish-evidence.mjs).
+export const fidelityUrl: string | null = "/fidelity/report.html";
 
 export const works = [
   {
@@ -86,9 +86,9 @@ export const targets: {
   { name: "Best Practices", target: "100", result: null },
   { name: "SEO", target: "100", result: null },
   { name: "Largest paint (LCP)", target: "< 2.0 s", result: null },
-  { name: "Layout shift (CLS)", target: "< 0.02", result: null },
-  { name: "Initial JavaScript", target: "< 120 KB", result: null },
-  { name: "Running cost", target: "$0 / month", result: null },
+  { name: "Layout shift (CLS)", target: "< 0.02", result: "0" },
+  { name: "Initial JavaScript", target: "< 120 KB", result: "141-151 KB" },
+  { name: "Running cost", target: "$0 / month", result: "$0 / month" },
 ];
 
 export const fidelity: {
@@ -97,10 +97,10 @@ export const fidelity: {
   tablet: string | null;
   phone: string | null;
 }[] = [
-  { name: "Home", desktop: null, tablet: null, phone: null },
-  { name: "Shop", desktop: null, tablet: null, phone: null },
-  { name: "Product", desktop: null, tablet: null, phone: null },
-  { name: "Kit builder", desktop: null, tablet: null, phone: null },
+  { name: "Home", desktop: "89.9%", tablet: "88.3%", phone: "79.9%" },
+  { name: "Shop", desktop: "99.4%", tablet: "97.8%", phone: "96.8%" },
+  { name: "Product", desktop: "97.1%", tablet: "94.6%", phone: "95.3%" },
+  { name: "Kit builder", desktop: "96.1%", tablet: "85.4%", phone: "95.9%" },
 ];
 
 export const limits = [

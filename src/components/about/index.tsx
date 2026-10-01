@@ -191,8 +191,10 @@ const About: FC = () => (
         </tbody>
       </table>
       <span className="text-caption text-ink-2">
-        Targets come from the project brief. Results are filled in after launch,
-        with the date and commit they were measured on.
+        Targets come from the project brief. Layout shift and JavaScript were
+        measured on the production build on 1 Oct 2026; Lighthouse scores are
+        filled in from the live site. The framework alone is over the JavaScript
+        target.
       </span>
     </section>
 
@@ -220,14 +222,14 @@ const About: FC = () => (
         <caption className="sr-only">Design match by page and width</caption>
         <thead>
           <tr className="text-sm font-semibold">
-            <th scope="col" className="px-4 py-2.75 text-start">
+            <th scope="col" className="px-3 py-2.75 text-start md:px-4">
               Design match
             </th>
             {["1440", "768", "390"].map((width) => (
               <th
                 key={width}
                 scope="col"
-                className="px-4 py-2.75 text-end font-data text-xs"
+                className="px-3 py-2.75 text-end font-data text-xs md:px-4"
               >
                 {width}
               </th>
@@ -237,13 +239,13 @@ const About: FC = () => (
         <tbody>
           {fidelity.map((page) => (
             <tr key={page.name} className="border-t border-mist">
-              <th scope="row" className="px-4 py-2.5 text-start font-normal">
+              <th scope="row" className="px-3 py-2.5 text-start font-normal md:px-4">
                 {page.name}
               </th>
               {[page.desktop, page.tablet, page.phone].map((value, index) => (
                 <td
                   key={index}
-                  className="px-4 py-2.5 text-end font-data text-caption text-ink-2"
+                  className="px-3 py-2.5 text-end font-data text-caption text-ink-2 md:px-4"
                 >
                   {value ?? "-"}
                 </td>
@@ -253,7 +255,8 @@ const About: FC = () => (
         </tbody>
       </table>
       <span className="text-caption text-ink-2">
-        Filled in from the fidelity report once the build is measured.
+        1px-tolerant pixel match, measured on 1 Oct 2026 against the production
+        build. The report shows where the rest differs.
       </span>
     </section>
 

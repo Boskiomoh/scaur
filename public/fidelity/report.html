@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design fidelity report</title>
+<style>
+:root{--bg:#f7f7f5;--fg:#16181b;--mut:#5b6168;--line:#d9dcdf;--acc:#1f5eff;--bad:#b3261e}
+@media (prefers-color-scheme:dark){:root{--bg:#131416;--fg:#eceef0;--mut:#a0a6ad;--line:#2d3136;--acc:#7aa2ff;--bad:#ff8a80}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,sans-serif}
+main{max-width:1200px;margin:0 auto;padding:32px 16px 80px}h1{margin:0 0 4px;font-size:28px}h2{margin:48px 0 8px;font-size:20px}h2 small{color:var(--mut);font-weight:400;font-size:14px}
+.meta,.stats,.note,.legend{color:var(--mut)}table{border-collapse:collapse;width:100%;margin:16px 0}td,th{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left}.n{text-align:right;font-variant-numeric:tabular-nums}
+.bad{color:var(--bad);font-weight:600}a{color:var(--acc)}.table-wrap{overflow-x:auto}
+.tabs{display:flex;gap:4px;margin:12px 0}.tabs button{font:inherit;padding:6px 14px;border:1px solid var(--line);background:transparent;color:var(--fg);border-radius:999px;cursor:pointer}.tabs button[aria-selected=true]{background:var(--fg);color:var(--bg)}
+.view img{display:block;max-width:100%;height:auto;border:1px solid var(--line)}
+.slider{position:relative;display:inline-block;max-width:100%}.slider img{display:block;max-width:100%;height:auto}.slider .top{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--x)) 0 0)}.slider::after{content:"";position:absolute;top:0;bottom:0;left:var(--x);width:2px;margin-left:-1px;background:var(--acc)}
+.range{display:flex;align-items:center;gap:10px;margin:8px 0;color:var(--mut)}.range input{flex:1;max-width:420px}
+.k{display:inline-block;width:12px;height:12px;margin:0 4px 0 12px;vertical-align:-1px}.red{background:#e61e28}.amber{background:#f5be28}.blue{background:#c8c8ff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}.grid img{width:100%;height:220px;object-fit:cover;object-position:top;border:1px solid var(--line)}figure{margin:0}figcaption{font-size:13px;color:var(--mut)}
+</style></head><body><main>
+<h1>Design fidelity report</h1>
+<p class="meta">Design canvas (HTML artboards, exported to PNG at 1x; frozen at version 19 on 1 Oct 2026) compared with http://localhost:3201 at commit 0fe92a6 · 2026-10-01 · Chromium via Playwright, colour threshold 0.1</p>
+<div class="table-wrap"><table><tr><th>Page</th><th>Route</th><th class="n">Width</th><th class="n">Match (1px)</th><th class="n">Exact</th><th class="n">Height design / build</th><th class="n">Overflow</th><th class="n">axe</th></tr><tr><td><a href="#home-desktop">home-desktop</a></td><td>/</td><td class="n">1440px</td><td class="n"><b>89.85%</b></td><td class="n">85.57%</td><td class="n">4560 / 4596</td><td class="n">none</td><td class="n">0</td></tr><tr><td><a href="#home-tablet">home-tablet</a></td><td>/</td><td class="n">768px</td><td class="n"><b>88.33%</b></td><td class="n">80.44%</td><td class="n">4890 / 4935</td><td class="n">none</td><td class="n">0</td></tr><tr><td><a href="#home-phone">home-phone</a></td><td>/</td><td class="n">390px</td><td class="n"><b>79.86%</b></td><td class="n">70.39%</td><td class="n">3850 / 3776</td><td class="n">none</td><td class="n">0</td></tr><tr><td><a href="#shop-desktop">shop-desktop</a></td><td>/shop</td><td class="n">1440px</td><td class="n"><b>99.35%</b></td><td class="n">96.5%</td><td class="n">2160 / 2147</td><td class="n">none</td><td class="n">0</td></tr><tr><td><a href="#shop-tablet">shop-tablet</a></td><td>/shop</td><td class="n">768px</td><td class="n"><b>97.8%</b></td><td class="n">89.55%</td><td class="n">2260 / 2260</td><td class="n">none</td><td class="n">0</td></tr><tr><td><a href="#shop-phone">shop-phone</a></td><td>/shop</td><td class="n">390px</td><td class="n"><b>96.83%</b></td><td class="n">85.65%</td><td class="n">2630 / 2617</td><td class="n">none</td><td class="n">0</td></tr><tr><td><a href="#product-desktop">product-desktop</a></td><td>/products/scarp-shell?colour=Moss&amp;size=M</td><td class="n">1440px</td><td class="n"><b>97.12%</b></td><td class="n">94.87%</td><td class="n">1720 / 1748</td><td class="n">none</td><td class="n">0</td></tr><tr><td><a href="#product-tablet">product-tablet</a></td><td>/products/scarp-shell?colour=Moss&amp;size=M</td><td class="n">768px</td><td class="n"><b>94.59%</b></td><td class="n">89.04%</td><td class="n">2340 / 2339</td><td class="n">none</td><td class="n">0</td></tr><tr><td><a href="#product-phone">product-phone</a></td><td>/products/scarp-shell?colour=Moss&amp;size=M</td><td class="n">390px</td><td class="n"><b>95.32%</b></td><td class="n">88.57%</td><td class="n">2500 / 2536</td><td class="n">none</td><td class="n">0</td></tr><tr><td><a href="#kit-desktop">kit-desktop</a></td><td>/kit</td><td class="n">1440px</td><td class="n"><b>96.11%</b></td><td class="n">93.49%</td><td class="n">1220 / 1252</td><td class="n">none</td><td class="n">0</td></tr><tr><td><a href="#kit-tablet">kit-tablet</a></td><td>/kit</td><td class="n">768px</td><td class="n"><b>85.41%</b></td><td class="n">77.17%</td><td class="n">1590 / 1562</td><td class="n">none</td><td class="n">0</td></tr><tr><td><a href="#kit-phone">kit-phone</a></td><td>/kit</td><td class="n">390px</td><td class="n"><b>95.89%</b></td><td class="n">86.02%</td><td class="n">2370 / 2354</td><td class="n">none</td><td class="n">0</td></tr><tr><td><a href="#about-desktop">about-desktop</a></td><td>/about</td><td class="n">1440px</td><td class="n"><b>99.23%</b></td><td class="n">94.47%</td><td class="n">2870 / 2881</td><td class="n">none</td><td class="n">0</td></tr><tr><td><a href="#about-phone">about-phone</a></td><td>/about</td><td class="n">390px</td><td class="n"><b>90.73%</b></td><td class="n">78.15%</td><td class="n">4830 / 5103</td><td class="n">none</td><td class="n">0</td></tr><tr><td><a href="#credits-desktop">credits-desktop</a></td><td>/credits</td><td class="n">1440px</td><td class="n"><b>98.06%</b></td><td class="n">92.08%</td><td class="n">2090 / 2117</td><td class="n">none</td><td class="n">0</td></tr><tr><td><a href="#not-found-desktop">not-found-desktop</a></td><td>/not-a-real-trail</td><td class="n">1440px</td><td class="n"><b>98.37%</b></td><td class="n">96.76%</td><td class="n">940 / 955</td><td class="n">none</td><td class="n">0</td></tr></table></div>
+<p class="meta">Match counts pixels whose colour is within the threshold of the design. "1px" also accepts a pixel that matches a neighbour, which absorbs text anti-aliasing (Figma and browsers rasterise text differently) and sub-pixel rounding. Red in the diff view is a real difference.</p>
+
+<section id="home-desktop">
+  <h2>home-desktop <small>/ at 1440px</small></h2>
+  <p class="stats"><b>89.85%</b> of pixels match within 1px · 85.57% match exactly · design 4560px tall, build 4596px</p>
+  
+  <div class="tabs" role="tablist">
+    <button type="button" role="tab" aria-selected="true" data-view="slide">Slider</button>
+    <button type="button" role="tab" aria-selected="false" data-view="diff">Diff</button>
+    <button type="button" role="tab" aria-selected="false" data-view="sbs">Side by side</button>
+  </div>
+  <div class="view" data-view="slide">
+    <label class="range">Design <input type="range" min="0" max="100" value="50" aria-label="Reveal design or build"> Build</label>
+    <div class="slider" style="--x:50%"><img src="home-desktop/build.webp" alt="Build of home-desktop"><img class="top" src="home-desktop/design.webp" alt="Design of home-desktop"></div>
+  </div>
+  <div class="view" data-view="diff" hidden><p class="legend"><span class="k red"></span> differs <span class="k amber"></span> anti-aliasing or 1px shift <span class="k blue"></span> excluded</p><img src="home-desktop/diff.webp" alt="Pixel difference map"></div>
+  <div class="view" data-view="sbs" hidden><img src="home-desktop/side-by-side.webp" alt="Design and build side by side"></div>
+  <details><summary>Match by height band</summary><table><tr><th>From</th><th>To</th><th>Match</th></tr><tr><td class="n">0px</td><td class="n">200px</td><td class="n">99.99%</td></tr><tr><td class="n">200px</td><td class="n">400px</td><td class="n">100%</td></tr><tr><td class="n">400px</td><td class="n">600px</td><td class="n">100%</td></tr><tr><td class="n">600px</td><td class="n">800px</td><td class="n">99.52%</td></tr><tr><td class="n">800px</td><td class="n">1000px</td><td class="n">100%</td></tr><tr><td class="n">1000px</td><td class="n">1200px</td><td class="n">98.8%</td></tr><tr><td class="n">1200px</td><td class="n">1400px</td><td class="n">96.37%</td></tr><tr><td class="n">1400px</td><td class="n">1600px</td><td class="n bad">80.89%</td></tr><tr><td class="n">1600px</td><td class="n">1800px</td><td class="n">96.46%</td></tr><tr><td class="n">1800px</td><td class="n">2000px</td><td class="n bad">83.25%</td></tr><tr><td class="n">2000px</td><td class="n">2200px</td><td class="n bad">89.19%</td></tr><tr><td class="n">2200px</td><td class="n">2400px</td><td class="n bad">76.52%</td></tr><tr><td class="n">2400px</td><td class="n">2600px</td><td class="n bad">84.55%</td></tr><tr><td class="n">2600px</td><td class="n">2800px</td><td class="n">96.6%</td></tr><tr><td class="n">2800px</td><td class="n">3000px</td><td class="n bad">79.89%</td></tr><tr><td class="n">3000px</td><td class="n">3200px</td><td class="n bad">83.04%</td></tr><tr><td class="n">3200px</td><td class="n">3400px</td><td class="n">97.63%</td></tr><tr><td class="n">3400px</td><td class="n">3600px</td><td class="n bad">77.34%</td></tr><tr><td class="n">3600px</td><td class="n">3800px</td><td class="n bad">80.22%</td></tr><tr><td class="n">3800px</td><td class="n">4000px</td><td class="n bad">71.48%</td></tr><tr><td class="n">4000px</td><td class="n">4200px</td><td class="n bad">93.93%</td></tr><tr><td class="n">4200px</td><td class="n">4400px</td><td class="n">99.37%</td></tr><tr><td class="n">4400px</td><td class="n">4596px</td><td class="n bad">81.3%</td></tr></table></details>
+  
+</section>
+<section id="home-tablet">
+  <h2>home-tablet <small>/ at 768px</small></h2>
+  <p class="stats"><b>88.33%</b> of pixels match within 1px · 80.44% match exactly · design 4890px tall, build 4935px</p>
+  
+  <div class="tabs" role="tablist">
+    <button type="button" role="tab" aria-selected="true" data-view="slide">Slider</button>
+    <button type="button" role="tab" aria-selected="false" data-view="diff">Diff</button>
+    <button type="button" role="tab" aria-selected="false" data-view="sbs">Side by side</button>
+  </div>
+  <div class="view" data-view="slide">
+    <label class="range">Design <input type="range" min="0" max="100" value="50" aria-label="Reveal design or build"> Build</label>
+    <div class="slider" style="--x:50%"><img src="home-tablet/build.webp" alt="Build of home-tablet"><img class="top" src="home-tablet/design.webp" alt="Design of home-tablet"></div>
+  </div>
+  <div class="view" data-view="diff" hidden><p class="legend"><span class="k red"></span> differs <span class="k amber"></span> anti-aliasing or 1px shift <span class="k blue"></span> excluded</p><img src="home-tablet/diff.webp" alt="Pixel difference map"></div>
+  <div class="view" data-view="sbs" hidden><img src="home-tablet/side-by-side.webp" alt="Design and build side by side"></div>
+  <details><summary>Match by height band</summary><table><tr><th>From</th><th>To</th><th>Match</th></tr><tr><td class="n">0px</td><td class="n">200px</td><td class="n">99.88%</td></tr><tr><td class="n">200px</td><td class="n">400px</td><td class="n">98.79%</td></tr><tr><td class="n">400px</td><td class="n">600px</td><td class="n">99.38%</td></tr><tr><td class="n">600px</td><td class="n">800px</td><td class="n bad">90%</td></tr><tr><td class="n">800px</td><td class="n">1000px</td><td class="n bad">85.76%</td></tr><tr><td class="n">1000px</td><td class="n">1200px</td><td class="n">95.77%</td></tr><tr><td class="n">1200px</td><td class="n">1400px</td><td class="n bad">94.84%</td></tr><tr><td class="n">1400px</td><td class="n">1600px</td><td class="n bad">91.67%</td></tr><tr><td class="n">1600px</td><td class="n">1800px</td><td class="n bad">88.45%</td></tr><tr><td class="n">1800px</td><td class="n">2000px</td><td class="n bad">90.79%</td></tr><tr><td class="n">2000px</td><td class="n">2200px</td><td class="n bad">88.09%</td></tr><tr><td class="n">2200px</td><td class="n">2400px</td><td class="n bad">80.12%</td></tr><tr><td class="n">2400px</td><td class="n">2600px</td><td class="n bad">82.65%</td></tr><tr><td class="n">2600px</td><td class="n">2800px</td><td class="n bad">85.43%</td></tr><tr><td class="n">2800px</td><td class="n">3000px</td><td class="n bad">94.28%</td></tr><tr><td class="n">3000px</td><td class="n">3200px</td><td class="n bad">92.66%</td></tr><tr><td class="n">3200px</td><td class="n">3400px</td><td class="n bad">90.31%</td></tr><tr><td class="n">3400px</td><td class="n">3600px</td><td class="n bad">75.57%</td></tr><tr><td class="n">3600px</td><td class="n">3800px</td><td class="n bad">88.48%</td></tr><tr><td class="n">3800px</td><td class="n">4000px</td><td class="n bad">68.6%</td></tr><tr><td class="n">4000px</td><td class="n">4200px</td><td class="n bad">84.56%</td></tr><tr><td class="n">4200px</td><td class="n">4400px</td><td class="n bad">70.39%</td></tr><tr><td class="n">4400px</td><td class="n">4600px</td><td class="n">98.9%</td></tr><tr><td class="n">4600px</td><td class="n">4800px</td><td class="n">99.51%</td></tr><tr><td class="n">4800px</td><td class="n">4935px</td><td class="n bad">66.01%</td></tr></table></details>
+  
+</section>
+<section id="home-phone">
+  <h2>home-phone <small>/ at 390px</small></h2>
+  <p class="stats"><b>79.86%</b> of pixels match within 1px · 70.39% match exactly · design 3850px tall, build 3776px</p>
+  
+  <div class="tabs" role="tablist">
+    <button type="button" role="tab" aria-selected="true" data-view="slide">Slider</button>
+    <button type="button" role="tab" aria-selected="false" data-view="diff">Diff</button>
+    <button type="button" role="tab" aria-selected="false" data-view="sbs">Side by side</button>
+  </div>
+  <div class="view" data-view="slide">
+    <label class="range">Design <input type="range" min="0" max="100" value="50" aria-label="Reveal design or build"> Build</label>
+    <div class="slider" style="--x:50%"><img src="home-phone/build.webp" alt="Build of home-phone"><img class="top" src="home-phone/design.webp" alt="Design of home-phone"></div>
+  </div>
+  <div class="view" data-view="diff" hidden><p class="legend"><span class="k red"></span> differs <span class="k amber"></span> anti-aliasing or 1px shift <span class="k blue"></span> excluded</p><img src="home-phone/diff.webp" alt="Pixel difference map"></div>
+  <div class="view" data-view="sbs" hidden><img src="home-phone/side-by-side.webp" alt="Design and build side by side"></div>
+  <details><summary>Match by height band</summary><table><tr><th>From</th><th>To</th><th>Match</th></tr><tr><td class="n">0px</td><td class="n">200px</td><td class="n">99.77%</td></tr><tr><td class="n">200px</td><td class="n">400px</td><td class="n">99.93%</td></tr><tr><td class="n">400px</td><td class="n">600px</td><td class="n">99.77%</td></tr><tr><td class="n">600px</td><td class="n">800px</td><td class="n">97.79%</td></tr><tr><td class="n">800px</td><td class="n">1000px</td><td class="n">98.62%</td></tr><tr><td class="n">1000px</td><td class="n">1200px</td><td class="n">96.75%</td></tr><tr><td class="n">1200px</td><td class="n">1400px</td><td class="n bad">93.39%</td></tr><tr><td class="n">1400px</td><td class="n">1600px</td><td class="n bad">92.33%</td></tr><tr><td class="n">1600px</td><td class="n">1800px</td><td class="n bad">89.26%</td></tr><tr><td class="n">1800px</td><td class="n">2000px</td><td class="n bad">87.63%</td></tr><tr><td class="n">2000px</td><td class="n">2200px</td><td class="n bad">88.06%</td></tr><tr><td class="n">2200px</td><td class="n">2400px</td><td class="n bad">43.73%</td></tr><tr><td class="n">2400px</td><td class="n">2600px</td><td class="n bad">53.66%</td></tr><tr><td class="n">2600px</td><td class="n">2800px</td><td class="n bad">43.94%</td></tr><tr><td class="n">2800px</td><td class="n">3000px</td><td class="n bad">49.82%</td></tr><tr><td class="n">3000px</td><td class="n">3200px</td><td class="n bad">58.93%</td></tr><tr><td class="n">3200px</td><td class="n">3400px</td><td class="n bad">59.03%</td></tr><tr><td class="n">3400px</td><td class="n">3600px</td><td class="n">98.4%</td></tr><tr><td class="n">3600px</td><td class="n">3800px</td><td class="n bad">86.58%</td></tr><tr><td class="n">3800px</td><td class="n">3850px</td><td class="n bad">0%</td></tr></table></details>
+  
+</section>
+<section id="shop-desktop">
+  <h2>shop-desktop <small>/shop at 1440px</small></h2>
+  <p class="stats"><b>99.35%</b> of pixels match within 1px · 96.5% match exactly · design 2160px tall, build 2147px</p>
+  
+  <div class="tabs" role="tablist">
+    <button type="button" role="tab" aria-selected="true" data-view="slide">Slider</button>
+    <button type="button" role="tab" aria-selected="false" data-view="diff">Diff</button>
+    <button type="button" role="tab" aria-selected="false" data-view="sbs">Side by side</button>
+  </div>
+  <div class="view" data-view="slide">
+    <label class="range">Design <input type="range" min="0" max="100" value="50" aria-label="Reveal design or build"> Build</label>
+    <div class="slider" style="--x:50%"><img src="shop-desktop/build.webp" alt="Build of shop-desktop"><img class="top" src="shop-desktop/design.webp" alt="Design of shop-desktop"></div>
+  </div>
+  <div class="view" data-view="diff" hidden><p class="legend"><span class="k red"></span> differs <span class="k amber"></span> anti-aliasing or 1px shift <span class="k blue"></span> excluded</p><img src="shop-desktop/diff.webp" alt="Pixel difference map"></div>
+  <div class="view" data-view="sbs" hidden><img src="shop-desktop/side-by-side.webp" alt="Design and build side by side"></div>
+  <details><summary>Match by height band</summary><table><tr><th>From</th><th>To</th><th>Match</th></tr><tr><td class="n">0px</td><td class="n">200px</td><td class="n">99.97%</td></tr><tr><td class="n">200px</td><td class="n">400px</td><td class="n">99.98%</td></tr><tr><td class="n">400px</td><td class="n">600px</td><td class="n">99.99%</td></tr><tr><td class="n">600px</td><td class="n">800px</td><td class="n">100%</td></tr><tr><td class="n">800px</td><td class="n">1000px</td><td class="n">100%</td></tr><tr><td class="n">1000px</td><td class="n">1200px</td><td class="n">100%</td></tr><tr><td class="n">1200px</td><td class="n">1400px</td><td class="n">100%</td></tr><tr><td class="n">1400px</td><td class="n">1600px</td><td class="n">100%</td></tr><tr><td class="n">1600px</td><td class="n">1800px</td><td class="n">99.9%</td></tr><tr><td class="n">1800px</td><td class="n">2000px</td><td class="n">99.92%</td></tr><tr><td class="n">2000px</td><td class="n">2160px</td><td class="n bad">91.54%</td></tr></table></details>
+  
+</section>
+<section id="shop-tablet">
+  <h2>shop-tablet <small>/shop at 768px</small></h2>
+  <p class="stats"><b>97.8%</b> of pixels match within 1px · 89.55% match exactly · design 2260px tall, build 2260px</p>
+  
+  <div class="tabs" role="tablist">
+    <button type="button" role="tab" aria-selected="true" data-view="slide">Slider</button>
+    <button type="button" role="tab" aria-selected="false" data-view="diff">Diff</button>
+    <button type="button" role="tab" aria-selected="false" data-view="sbs">Side by side</button>
+  </div>
+  <div class="view" data-view="slide">
+    <label class="range">Design <input type="range" min="0" max="100" value="50" aria-label="Reveal design or build"> Build</label>
+    <div class="slider" style="--x:50%"><img src="shop-tablet/build.webp" alt="Build of shop-tablet"><img class="top" src="shop-tablet/design.webp" alt="Design of shop-tablet"></div>
+  </div>
+  <div class="view" data-view="diff" hidden><p class="legend"><span class="k red"></span> differs <span class="k amber"></span> anti-aliasing or 1px shift <span class="k blue"></span> excluded</p><img src="shop-tablet/diff.webp" alt="Pixel difference map"></div>
+  <div class="view" data-view="sbs" hidden><img src="shop-tablet/side-by-side.webp" alt="Design and build side by side"></div>
+  <details><summary>Match by height band</summary><table><tr><th>From</th><th>To</th><th>Match</th></tr><tr><td class="n">0px</td><td class="n">200px</td><td class="n">99.88%</td></tr><tr><td class="n">200px</td><td class="n">400px</td><td class="n">98.97%</td></tr><tr><td class="n">400px</td><td class="n">600px</td><td class="n">97.45%</td></tr><tr><td class="n">600px</td><td class="n">800px</td><td class="n">97.44%</td></tr><tr><td class="n">800px</td><td class="n">1000px</td><td class="n">96.61%</td></tr><tr><td class="n">1000px</td><td class="n">1200px</td><td class="n">97.04%</td></tr><tr><td class="n">1200px</td><td class="n">1400px</td><td class="n">95.16%</td></tr><tr><td class="n">1400px</td><td class="n">1600px</td><td class="n">96.78%</td></tr><tr><td class="n">1600px</td><td class="n">1800px</td><td class="n">97.86%</td></tr><tr><td class="n">1800px</td><td class="n">2000px</td><td class="n">98.42%</td></tr><tr><td class="n">2000px</td><td class="n">2200px</td><td class="n">99.52%</td></tr><tr><td class="n">2200px</td><td class="n">2260px</td><td class="n">99.97%</td></tr></table></details>
+  
+</section>
+<section id="shop-phone">
+  <h2>shop-phone <small>/shop at 390px</small></h2>
+  <p class="stats"><b>96.83%</b> of pixels match within 1px · 85.65% match exactly · design 2630px tall, build 2617px</p>
+  
+  <div class="tabs" role="tablist">
+    <button type="button" role="tab" aria-selected="true" data-view="slide">Slider</button>
+    <button type="button" role="tab" aria-selected="false" data-view="diff">Diff</button>
+    <button type="button" role="tab" aria-selected="false" data-view="sbs">Side by side</button>
+  </div>
+  <div class="view" data-view="slide">
+    <label class="range">Design <input type="range" min="0" max="100" value="50" aria-label="Reveal design or build"> Build</label>
+    <div class="slider" style="--x:50%"><img src="shop-phone/build.webp" alt="Build of shop-phone"><img class="top" src="shop-phone/design.webp" alt="Design of shop-phone"></div>
+  </div>
+  <div class="view" data-view="diff" hidden><p class="legend"><span class="k red"></span> differs <span class="k amber"></span> anti-aliasing or 1px shift <span class="k blue"></span> excluded</p><img src="shop-phone/diff.webp" alt="Pixel difference map"></div>
+  <div class="view" data-view="sbs" hidden><img src="shop-phone/side-by-side.webp" alt="Design and build side by side"></div>
+  <details><summary>Match by height band</summary><table><tr><th>From</th><th>To</th><th>Match</th></tr><tr><td class="n">0px</td><td class="n">200px</td><td class="n">99.77%</td></tr><tr><td class="n">200px</td><td class="n">400px</td><td class="n">98.1%</td></tr><tr><td class="n">400px</td><td class="n">600px</td><td class="n">95.93%</td></tr><tr><td class="n">600px</td><td class="n">800px</td><td class="n">96.64%</td></tr><tr><td class="n">800px</td><td class="n">1000px</td><td class="n">97.21%</td></tr><tr><td class="n">1000px</td><td class="n">1200px</td><td class="n">97.19%</td></tr><tr><td class="n">1200px</td><td class="n">1400px</td><td class="n">96.71%</td></tr><tr><td class="n">1400px</td><td class="n">1600px</td><td class="n">96.55%</td></tr><tr><td class="n">1600px</td><td class="n">1800px</td><td class="n bad">94.18%</td></tr><tr><td class="n">1800px</td><td class="n">2000px</td><td class="n">96.11%</td></tr><tr><td class="n">2000px</td><td class="n">2200px</td><td class="n">98.99%</td></tr><tr><td class="n">2200px</td><td class="n">2400px</td><td class="n">98.8%</td></tr><tr><td class="n">2400px</td><td class="n">2600px</td><td class="n">98.64%</td></tr><tr><td class="n">2600px</td><td class="n">2630px</td><td class="n bad">56.67%</td></tr></table></details>
+  
+</section>
+<section id="product-desktop">
+  <h2>product-desktop <small>/products/scarp-shell?colour=Moss&amp;size=M at 1440px</small></h2>
+  <p class="stats"><b>97.12%</b> of pixels match within 1px · 94.87% match exactly · design 1720px tall, build 1748px</p>
+  <p class="note">Stock line reads live inventory from Shopify.</p>
+  <div class="tabs" role="tablist">
+    <button type="button" role="tab" aria-selected="true" data-view="slide">Slider</button>
+    <button type="button" role="tab" aria-selected="false" data-view="diff">Diff</button>
+    <button type="button" role="tab" aria-selected="false" data-view="sbs">Side by side</button>
+  </div>
+  <div class="view" data-view="slide">
+    <label class="range">Design <input type="range" min="0" max="100" value="50" aria-label="Reveal design or build"> Build</label>
+    <div class="slider" style="--x:50%"><img src="product-desktop/build.webp" alt="Build of product-desktop"><img class="top" src="product-desktop/design.webp" alt="Design of product-desktop"></div>
+  </div>
+  <div class="view" data-view="diff" hidden><p class="legend"><span class="k red"></span> differs <span class="k amber"></span> anti-aliasing or 1px shift <span class="k blue"></span> excluded</p><img src="product-desktop/diff.webp" alt="Pixel difference map"></div>
+  <div class="view" data-view="sbs" hidden><img src="product-desktop/side-by-side.webp" alt="Design and build side by side"></div>
+  <details><summary>Match by height band</summary><table><tr><th>From</th><th>To</th><th>Match</th></tr><tr><td class="n">0px</td><td class="n">200px</td><td class="n">99.99%</td></tr><tr><td class="n">200px</td><td class="n">400px</td><td class="n">100%</td></tr><tr><td class="n">400px</td><td class="n">600px</td><td class="n">99.41%</td></tr><tr><td class="n">600px</td><td class="n">800px</td><td class="n">99.99%</td></tr><tr><td class="n">800px</td><td class="n">1000px</td><td class="n">99.49%</td></tr><tr><td class="n">1000px</td><td class="n">1200px</td><td class="n">99.94%</td></tr><tr><td class="n">1200px</td><td class="n">1400px</td><td class="n">97.72%</td></tr><tr><td class="n">1400px</td><td class="n">1600px</td><td class="n bad">92.52%</td></tr><tr><td class="n">1600px</td><td class="n">1748px</td><td class="n bad">80.72%</td></tr></table></details>
+  
+</section>
+<section id="product-tablet">
+  <h2>product-tablet <small>/products/scarp-shell?colour=Moss&amp;size=M at 768px</small></h2>
+  <p class="stats"><b>94.59%</b> of pixels match within 1px · 89.04% match exactly · design 2340px tall, build 2339px</p>
+  
+  <div class="tabs" role="tablist">
+    <button type="button" role="tab" aria-selected="true" data-view="slide">Slider</button>
+    <button type="button" role="tab" aria-selected="false" data-view="diff">Diff</button>
+    <button type="button" role="tab" aria-selected="false" data-view="sbs">Side by side</button>
+  </div>
+  <div class="view" data-view="slide">
+    <label class="range">Design <input type="range" min="0" max="100" value="50" aria-label="Reveal design or build"> Build</label>
+    <div class="slider" style="--x:50%"><img src="product-tablet/build.webp" alt="Build of product-tablet"><img class="top" src="product-tablet/design.webp" alt="Design of product-tablet"></div>
+  </div>
+  <div class="view" data-view="diff" hidden><p class="legend"><span class="k red"></span> differs <span class="k amber"></span> anti-aliasing or 1px shift <span class="k blue"></span> excluded</p><img src="product-tablet/diff.webp" alt="Pixel difference map"></div>
+  <div class="view" data-view="sbs" hidden><img src="product-tablet/side-by-side.webp" alt="Design and build side by side"></div>
+  <details><summary>Match by height band</summary><table><tr><th>From</th><th>To</th><th>Match</th></tr><tr><td class="n">0px</td><td class="n">200px</td><td class="n">99.88%</td></tr><tr><td class="n">200px</td><td class="n">400px</td><td class="n">100%</td></tr><tr><td class="n">400px</td><td class="n">600px</td><td class="n">100%</td></tr><tr><td class="n">600px</td><td class="n">800px</td><td class="n">99.96%</td></tr><tr><td class="n">800px</td><td class="n">1000px</td><td class="n">95.71%</td></tr><tr><td class="n">1000px</td><td class="n">1200px</td><td class="n bad">82.33%</td></tr><tr><td class="n">1200px</td><td class="n">1400px</td><td class="n">97.7%</td></tr><tr><td class="n">1400px</td><td class="n">1600px</td><td class="n">99.83%</td></tr><tr><td class="n">1600px</td><td class="n">1800px</td><td class="n bad">93.02%</td></tr><tr><td class="n">1800px</td><td class="n">2000px</td><td class="n bad">75.13%</td></tr><tr><td class="n">2000px</td><td class="n">2200px</td><td class="n bad">94.25%</td></tr><tr><td class="n">2200px</td><td class="n">2340px</td><td class="n">98.36%</td></tr></table></details>
+  
+</section>
+<section id="product-phone">
+  <h2>product-phone <small>/products/scarp-shell?colour=Moss&amp;size=M at 390px</small></h2>
+  <p class="stats"><b>95.32%</b> of pixels match within 1px · 88.57% match exactly · design 2500px tall, build 2536px</p>
+  
+  <div class="tabs" role="tablist">
+    <button type="button" role="tab" aria-selected="true" data-view="slide">Slider</button>
+    <button type="button" role="tab" aria-selected="false" data-view="diff">Diff</button>
+    <button type="button" role="tab" aria-selected="false" data-view="sbs">Side by side</button>
+  </div>
+  <div class="view" data-view="slide">
+    <label class="range">Design <input type="range" min="0" max="100" value="50" aria-label="Reveal design or build"> Build</label>
+    <div class="slider" style="--x:50%"><img src="product-phone/build.webp" alt="Build of product-phone"><img class="top" src="product-phone/design.webp" alt="Design of product-phone"></div>
+  </div>
+  <div class="view" data-view="diff" hidden><p class="legend"><span class="k red"></span> differs <span class="k amber"></span> anti-aliasing or 1px shift <span class="k blue"></span> excluded</p><img src="product-phone/diff.webp" alt="Pixel difference map"></div>
+  <div class="view" data-view="sbs" hidden><img src="product-phone/side-by-side.webp" alt="Design and build side by side"></div>
+  <details><summary>Match by height band</summary><table><tr><th>From</th><th>To</th><th>Match</th></tr><tr><td class="n">0px</td><td class="n">200px</td><td class="n">98.54%</td></tr><tr><td class="n">200px</td><td class="n">400px</td><td class="n">98.55%</td></tr><tr><td class="n">400px</td><td class="n">600px</td><td class="n">98.03%</td></tr><tr><td class="n">600px</td><td class="n">800px</td><td class="n">100%</td></tr><tr><td class="n">800px</td><td class="n">1000px</td><td class="n">98.22%</td></tr><tr><td class="n">1000px</td><td class="n">1200px</td><td class="n">100%</td></tr><tr><td class="n">1200px</td><td class="n">1400px</td><td class="n">99.61%</td></tr><tr><td class="n">1400px</td><td class="n">1600px</td><td class="n">99.15%</td></tr><tr><td class="n">1600px</td><td class="n">1800px</td><td class="n">95.39%</td></tr><tr><td class="n">1800px</td><td class="n">2000px</td><td class="n bad">85.15%</td></tr><tr><td class="n">2000px</td><td class="n">2200px</td><td class="n bad">87.88%</td></tr><tr><td class="n">2200px</td><td class="n">2400px</td><td class="n">98.88%</td></tr><tr><td class="n">2400px</td><td class="n">2536px</td><td class="n bad">72.48%</td></tr></table></details>
+  
+</section>
+<section id="kit-desktop">
+  <h2>kit-desktop <small>/kit at 1440px</small></h2>
+  <p class="stats"><b>96.11%</b> of pixels match within 1px · 93.49% match exactly · design 1220px tall, build 1252px</p>
+  
+  <div class="tabs" role="tablist">
+    <button type="button" role="tab" aria-selected="true" data-view="slide">Slider</button>
+    <button type="button" role="tab" aria-selected="false" data-view="diff">Diff</button>
+    <button type="button" role="tab" aria-selected="false" data-view="sbs">Side by side</button>
+  </div>
+  <div class="view" data-view="slide">
+    <label class="range">Design <input type="range" min="0" max="100" value="50" aria-label="Reveal design or build"> Build</label>
+    <div class="slider" style="--x:50%"><img src="kit-desktop/build.webp" alt="Build of kit-desktop"><img class="top" src="kit-desktop/design.webp" alt="Design of kit-desktop"></div>
+  </div>
+  <div class="view" data-view="diff" hidden><p class="legend"><span class="k red"></span> differs <span class="k amber"></span> anti-aliasing or 1px shift <span class="k blue"></span> excluded</p><img src="kit-desktop/diff.webp" alt="Pixel difference map"></div>
+  <div class="view" data-view="sbs" hidden><img src="kit-desktop/side-by-side.webp" alt="Design and build side by side"></div>
+  <details><summary>Match by height band</summary><table><tr><th>From</th><th>To</th><th>Match</th></tr><tr><td class="n">0px</td><td class="n">200px</td><td class="n">99.97%</td></tr><tr><td class="n">200px</td><td class="n">400px</td><td class="n">100%</td></tr><tr><td class="n">400px</td><td class="n">600px</td><td class="n">99.03%</td></tr><tr><td class="n">600px</td><td class="n">800px</td><td class="n bad">93.75%</td></tr><tr><td class="n">800px</td><td class="n">1000px</td><td class="n">99.18%</td></tr><tr><td class="n">1000px</td><td class="n">1200px</td><td class="n">99.77%</td></tr><tr><td class="n">1200px</td><td class="n">1252px</td><td class="n bad">38.27%</td></tr></table></details>
+  
+</section>
+<section id="kit-tablet">
+  <h2>kit-tablet <small>/kit at 768px</small></h2>
+  <p class="stats"><b>85.41%</b> of pixels match within 1px · 77.17% match exactly · design 1590px tall, build 1562px</p>
+  
+  <div class="tabs" role="tablist">
+    <button type="button" role="tab" aria-selected="true" data-view="slide">Slider</button>
+    <button type="button" role="tab" aria-selected="false" data-view="diff">Diff</button>
+    <button type="button" role="tab" aria-selected="false" data-view="sbs">Side by side</button>
+  </div>
+  <div class="view" data-view="slide">
+    <label class="range">Design <input type="range" min="0" max="100" value="50" aria-label="Reveal design or build"> Build</label>
+    <div class="slider" style="--x:50%"><img src="kit-tablet/build.webp" alt="Build of kit-tablet"><img class="top" src="kit-tablet/design.webp" alt="Design of kit-tablet"></div>
+  </div>
+  <div class="view" data-view="diff" hidden><p class="legend"><span class="k red"></span> differs <span class="k amber"></span> anti-aliasing or 1px shift <span class="k blue"></span> excluded</p><img src="kit-tablet/diff.webp" alt="Pixel difference map"></div>
+  <div class="view" data-view="sbs" hidden><img src="kit-tablet/side-by-side.webp" alt="Design and build side by side"></div>
+  <details><summary>Match by height band</summary><table><tr><th>From</th><th>To</th><th>Match</th></tr><tr><td class="n">0px</td><td class="n">200px</td><td class="n">95.35%</td></tr><tr><td class="n">200px</td><td class="n">400px</td><td class="n">97.63%</td></tr><tr><td class="n">400px</td><td class="n">600px</td><td class="n bad">88.69%</td></tr><tr><td class="n">600px</td><td class="n">800px</td><td class="n bad">80.13%</td></tr><tr><td class="n">800px</td><td class="n">1000px</td><td class="n bad">83.73%</td></tr><tr><td class="n">1000px</td><td class="n">1200px</td><td class="n bad">63.81%</td></tr><tr><td class="n">1200px</td><td class="n">1400px</td><td class="n bad">89.85%</td></tr><tr><td class="n">1400px</td><td class="n">1590px</td><td class="n bad">84.05%</td></tr></table></details>
+  
+</section>
+<section id="kit-phone">
+  <h2>kit-phone <small>/kit at 390px</small></h2>
+  <p class="stats"><b>95.89%</b> of pixels match within 1px · 86.02% match exactly · design 2370px tall, build 2354px</p>
+  
+  <div class="tabs" role="tablist">
+    <button type="button" role="tab" aria-selected="true" data-view="slide">Slider</button>
+    <button type="button" role="tab" aria-selected="false" data-view="diff">Diff</button>
+    <button type="button" role="tab" aria-selected="false" data-view="sbs">Side by side</button>
+  </div>
+  <div class="view" data-view="slide">
+    <label class="range">Design <input type="range" min="0" max="100" value="50" aria-label="Reveal design or build"> Build</label>
+    <div class="slider" style="--x:50%"><img src="kit-phone/build.webp" alt="Build of kit-phone"><img class="top" src="kit-phone/design.webp" alt="Design of kit-phone"></div>
+  </div>
+  <div class="view" data-view="diff" hidden><p class="legend"><span class="k red"></span> differs <span class="k amber"></span> anti-aliasing or 1px shift <span class="k blue"></span> excluded</p><img src="kit-phone/diff.webp" alt="Pixel difference map"></div>
+  <div class="view" data-view="sbs" hidden><img src="kit-phone/side-by-side.webp" alt="Design and build side by side"></div>
+  <details><summary>Match by height band</summary><table><tr><th>From</th><th>To</th><th>Match</th></tr><tr><td class="n">0px</td><td class="n">200px</td><td class="n">95.99%</td></tr><tr><td class="n">200px</td><td class="n">400px</td><td class="n">99.61%</td></tr><tr><td class="n">400px</td><td class="n">600px</td><td class="n">96.56%</td></tr><tr><td class="n">600px</td><td class="n">800px</td><td class="n">99.26%</td></tr><tr><td class="n">800px</td><td class="n">1000px</td><td class="n">97.62%</td></tr><tr><td class="n">1000px</td><td class="n">1200px</td><td class="n">98.46%</td></tr><tr><td class="n">1200px</td><td class="n">1400px</td><td class="n">96.79%</td></tr><tr><td class="n">1400px</td><td class="n">1600px</td><td class="n">95.46%</td></tr><tr><td class="n">1600px</td><td class="n">1800px</td><td class="n">95.09%</td></tr><tr><td class="n">1800px</td><td class="n">2000px</td><td class="n bad">90.8%</td></tr><tr><td class="n">2000px</td><td class="n">2200px</td><td class="n bad">94.66%</td></tr><tr><td class="n">2200px</td><td class="n">2370px</td><td class="n bad">89.4%</td></tr></table></details>
+  
+</section>
+<section id="about-desktop">
+  <h2>about-desktop <small>/about at 1440px</small></h2>
+  <p class="stats"><b>99.23%</b> of pixels match within 1px · 94.47% match exactly · design 2870px tall, build 2881px</p>
+  
+  <div class="tabs" role="tablist">
+    <button type="button" role="tab" aria-selected="true" data-view="slide">Slider</button>
+    <button type="button" role="tab" aria-selected="false" data-view="diff">Diff</button>
+    <button type="button" role="tab" aria-selected="false" data-view="sbs">Side by side</button>
+  </div>
+  <div class="view" data-view="slide">
+    <label class="range">Design <input type="range" min="0" max="100" value="50" aria-label="Reveal design or build"> Build</label>
+    <div class="slider" style="--x:50%"><img src="about-desktop/build.webp" alt="Build of about-desktop"><img class="top" src="about-desktop/design.webp" alt="Design of about-desktop"></div>
+  </div>
+  <div class="view" data-view="diff" hidden><p class="legend"><span class="k red"></span> differs <span class="k amber"></span> anti-aliasing or 1px shift <span class="k blue"></span> excluded</p><img src="about-desktop/diff.webp" alt="Pixel difference map"></div>
+  <div class="view" data-view="sbs" hidden><img src="about-desktop/side-by-side.webp" alt="Design and build side by side"></div>
+  <details><summary>Match by height band</summary><table><tr><th>From</th><th>To</th><th>Match</th></tr><tr><td class="n">0px</td><td class="n">200px</td><td class="n">99.99%</td></tr><tr><td class="n">200px</td><td class="n">400px</td><td class="n">99.94%</td></tr><tr><td class="n">400px</td><td class="n">600px</td><td class="n">96.84%</td></tr><tr><td class="n">600px</td><td class="n">800px</td><td class="n">99.74%</td></tr><tr><td class="n">800px</td><td class="n">1000px</td><td class="n">99.7%</td></tr><tr><td class="n">1000px</td><td class="n">1200px</td><td class="n">99.81%</td></tr><tr><td class="n">1200px</td><td class="n">1400px</td><td class="n">99.83%</td></tr><tr><td class="n">1400px</td><td class="n">1600px</td><td class="n">99.72%</td></tr><tr><td class="n">1600px</td><td class="n">1800px</td><td class="n">99.71%</td></tr><tr><td class="n">1800px</td><td class="n">2000px</td><td class="n">99.73%</td></tr><tr><td class="n">2000px</td><td class="n">2200px</td><td class="n">99.8%</td></tr><tr><td class="n">2200px</td><td class="n">2400px</td><td class="n">99.87%</td></tr><tr><td class="n">2400px</td><td class="n">2600px</td><td class="n">99.84%</td></tr><tr><td class="n">2600px</td><td class="n">2800px</td><td class="n">99.95%</td></tr><tr><td class="n">2800px</td><td class="n">2881px</td><td class="n bad">86.2%</td></tr></table></details>
+  
+</section>
+<section id="about-phone">
+  <h2>about-phone <small>/about at 390px</small></h2>
+  <p class="stats"><b>90.73%</b> of pixels match within 1px · 78.15% match exactly · design 4830px tall, build 5103px</p>
+  
+  <div class="tabs" role="tablist">
+    <button type="button" role="tab" aria-selected="true" data-view="slide">Slider</button>
+    <button type="button" role="tab" aria-selected="false" data-view="diff">Diff</button>
+    <button type="button" role="tab" aria-selected="false" data-view="sbs">Side by side</button>
+  </div>
+  <div class="view" data-view="slide">
+    <label class="range">Design <input type="range" min="0" max="100" value="50" aria-label="Reveal design or build"> Build</label>
+    <div class="slider" style="--x:50%"><img src="about-phone/build.webp" alt="Build of about-phone"><img class="top" src="about-phone/design.webp" alt="Design of about-phone"></div>
+  </div>
+  <div class="view" data-view="diff" hidden><p class="legend"><span class="k red"></span> differs <span class="k amber"></span> anti-aliasing or 1px shift <span class="k blue"></span> excluded</p><img src="about-phone/diff.webp" alt="Pixel difference map"></div>
+  <div class="view" data-view="sbs" hidden><img src="about-phone/side-by-side.webp" alt="Design and build side by side"></div>
+  <details><summary>Match by height band</summary><table><tr><th>From</th><th>To</th><th>Match</th></tr><tr><td class="n">0px</td><td class="n">200px</td><td class="n bad">92.89%</td></tr><tr><td class="n">200px</td><td class="n">400px</td><td class="n bad">94.46%</td></tr><tr><td class="n">400px</td><td class="n">600px</td><td class="n bad">83.01%</td></tr><tr><td class="n">600px</td><td class="n">800px</td><td class="n bad">93.87%</td></tr><tr><td class="n">800px</td><td class="n">1000px</td><td class="n">97.77%</td></tr><tr><td class="n">1000px</td><td class="n">1200px</td><td class="n">97.56%</td></tr><tr><td class="n">1200px</td><td class="n">1400px</td><td class="n">98.01%</td></tr><tr><td class="n">1400px</td><td class="n">1600px</td><td class="n">98.44%</td></tr><tr><td class="n">1600px</td><td class="n">1800px</td><td class="n bad">93.82%</td></tr><tr><td class="n">1800px</td><td class="n">2000px</td><td class="n bad">88.75%</td></tr><tr><td class="n">2000px</td><td class="n">2200px</td><td class="n bad">92.49%</td></tr><tr><td class="n">2200px</td><td class="n">2400px</td><td class="n bad">94.46%</td></tr><tr><td class="n">2400px</td><td class="n">2600px</td><td class="n">98.31%</td></tr><tr><td class="n">2600px</td><td class="n">2800px</td><td class="n">99.01%</td></tr><tr><td class="n">2800px</td><td class="n">3000px</td><td class="n">99.35%</td></tr><tr><td class="n">3000px</td><td class="n">3200px</td><td class="n">99.35%</td></tr><tr><td class="n">3200px</td><td class="n">3400px</td><td class="n">96.75%</td></tr><tr><td class="n">3400px</td><td class="n">3600px</td><td class="n">99.29%</td></tr><tr><td class="n">3600px</td><td class="n">3800px</td><td class="n">96.42%</td></tr><tr><td class="n">3800px</td><td class="n">4000px</td><td class="n">95.95%</td></tr><tr><td class="n">4000px</td><td class="n">4200px</td><td class="n">95.91%</td></tr><tr><td class="n">4200px</td><td class="n">4400px</td><td class="n">99.15%</td></tr><tr><td class="n">4400px</td><td class="n">4600px</td><td class="n">96.35%</td></tr><tr><td class="n">4600px</td><td class="n">4800px</td><td class="n">98.7%</td></tr><tr><td class="n">4800px</td><td class="n">5000px</td><td class="n bad">15%</td></tr><tr><td class="n">5000px</td><td class="n">5103px</td><td class="n bad">0%</td></tr></table></details>
+  
+</section>
+<section id="credits-desktop">
+  <h2>credits-desktop <small>/credits at 1440px</small></h2>
+  <p class="stats"><b>98.06%</b> of pixels match within 1px · 92.08% match exactly · design 2090px tall, build 2117px</p>
+  
+  <div class="tabs" role="tablist">
+    <button type="button" role="tab" aria-selected="true" data-view="slide">Slider</button>
+    <button type="button" role="tab" aria-selected="false" data-view="diff">Diff</button>
+    <button type="button" role="tab" aria-selected="false" data-view="sbs">Side by side</button>
+  </div>
+  <div class="view" data-view="slide">
+    <label class="range">Design <input type="range" min="0" max="100" value="50" aria-label="Reveal design or build"> Build</label>
+    <div class="slider" style="--x:50%"><img src="credits-desktop/build.webp" alt="Build of credits-desktop"><img class="top" src="credits-desktop/design.webp" alt="Design of credits-desktop"></div>
+  </div>
+  <div class="view" data-view="diff" hidden><p class="legend"><span class="k red"></span> differs <span class="k amber"></span> anti-aliasing or 1px shift <span class="k blue"></span> excluded</p><img src="credits-desktop/diff.webp" alt="Pixel difference map"></div>
+  <div class="view" data-view="sbs" hidden><img src="credits-desktop/side-by-side.webp" alt="Design and build side by side"></div>
+  <details><summary>Match by height band</summary><table><tr><th>From</th><th>To</th><th>Match</th></tr><tr><td class="n">0px</td><td class="n">200px</td><td class="n">99.97%</td></tr><tr><td class="n">200px</td><td class="n">400px</td><td class="n">99.86%</td></tr><tr><td class="n">400px</td><td class="n">600px</td><td class="n">99%</td></tr><tr><td class="n">600px</td><td class="n">800px</td><td class="n">99.29%</td></tr><tr><td class="n">800px</td><td class="n">1000px</td><td class="n">99.02%</td></tr><tr><td class="n">1000px</td><td class="n">1200px</td><td class="n">98.9%</td></tr><tr><td class="n">1200px</td><td class="n">1400px</td><td class="n">99.25%</td></tr><tr><td class="n">1400px</td><td class="n">1600px</td><td class="n">99.06%</td></tr><tr><td class="n">1600px</td><td class="n">1800px</td><td class="n">99.36%</td></tr><tr><td class="n">1800px</td><td class="n">2000px</td><td class="n">99.54%</td></tr><tr><td class="n">2000px</td><td class="n">2117px</td><td class="n bad">76.46%</td></tr></table></details>
+  
+</section>
+<section id="not-found-desktop">
+  <h2>not-found-desktop <small>/not-a-real-trail at 1440px</small></h2>
+  <p class="stats"><b>98.37%</b> of pixels match within 1px · 96.76% match exactly · design 940px tall, build 955px</p>
+  
+  <div class="tabs" role="tablist">
+    <button type="button" role="tab" aria-selected="true" data-view="slide">Slider</button>
+    <button type="button" role="tab" aria-selected="false" data-view="diff">Diff</button>
+    <button type="button" role="tab" aria-selected="false" data-view="sbs">Side by side</button>
+  </div>
+  <div class="view" data-view="slide">
+    <label class="range">Design <input type="range" min="0" max="100" value="50" aria-label="Reveal design or build"> Build</label>
+    <div class="slider" style="--x:50%"><img src="not-found-desktop/build.webp" alt="Build of not-found-desktop"><img class="top" src="not-found-desktop/design.webp" alt="Design of not-found-desktop"></div>
+  </div>
+  <div class="view" data-view="diff" hidden><p class="legend"><span class="k red"></span> differs <span class="k amber"></span> anti-aliasing or 1px shift <span class="k blue"></span> excluded</p><img src="not-found-desktop/diff.webp" alt="Pixel difference map"></div>
+  <div class="view" data-view="sbs" hidden><img src="not-found-desktop/side-by-side.webp" alt="Design and build side by side"></div>
+  <details><summary>Match by height band</summary><table><tr><th>From</th><th>To</th><th>Match</th></tr><tr><td class="n">0px</td><td class="n">200px</td><td class="n">99.99%</td></tr><tr><td class="n">200px</td><td class="n">400px</td><td class="n">100%</td></tr><tr><td class="n">400px</td><td class="n">600px</td><td class="n">99.99%</td></tr><tr><td class="n">600px</td><td class="n">800px</td><td class="n">100%</td></tr><tr><td class="n">800px</td><td class="n">955px</td><td class="n bad">90%</td></tr></table></details>
+  
+</section><section><h2>Responsive sweep</h2><div class="grid"><figure><a href="sweep/home-320.webp"><img loading="lazy" src="sweep/home-320.webp" alt="/ at 320px"></a><figcaption>/ · 320px</figcaption></figure><figure><a href="sweep/shop-320.webp"><img loading="lazy" src="sweep/shop-320.webp" alt="/shop at 320px"></a><figcaption>/shop · 320px</figcaption></figure><figure><a href="sweep/products-scarp-shell-320.webp"><img loading="lazy" src="sweep/products-scarp-shell-320.webp" alt="/products/scarp-shell at 320px"></a><figcaption>/products/scarp-shell · 320px</figcaption></figure><figure><a href="sweep/kit-320.webp"><img loading="lazy" src="sweep/kit-320.webp" alt="/kit at 320px"></a><figcaption>/kit · 320px</figcaption></figure><figure><a href="sweep/about-320.webp"><img loading="lazy" src="sweep/about-320.webp" alt="/about at 320px"></a><figcaption>/about · 320px</figcaption></figure><figure><a href="sweep/home-375.webp"><img loading="lazy" src="sweep/home-375.webp" alt="/ at 375px"></a><figcaption>/ · 375px</figcaption></figure><figure><a href="sweep/shop-375.webp"><img loading="lazy" src="sweep/shop-375.webp" alt="/shop at 375px"></a><figcaption>/shop · 375px</figcaption></figure><figure><a href="sweep/products-scarp-shell-375.webp"><img loading="lazy" src="sweep/products-scarp-shell-375.webp" alt="/products/scarp-shell at 375px"></a><figcaption>/products/scarp-shell · 375px</figcaption></figure><figure><a href="sweep/kit-375.webp"><img loading="lazy" src="sweep/kit-375.webp" alt="/kit at 375px"></a><figcaption>/kit · 375px</figcaption></figure><figure><a href="sweep/about-375.webp"><img loading="lazy" src="sweep/about-375.webp" alt="/about at 375px"></a><figcaption>/about · 375px</figcaption></figure><figure><a href="sweep/home-390.webp"><img loading="lazy" src="sweep/home-390.webp" alt="/ at 390px"></a><figcaption>/ · 390px</figcaption></figure><figure><a href="sweep/shop-390.webp"><img loading="lazy" src="sweep/shop-390.webp" alt="/shop at 390px"></a><figcaption>/shop · 390px</figcaption></figure><figure><a href="sweep/products-scarp-shell-390.webp"><img loading="lazy" src="sweep/products-scarp-shell-390.webp" alt="/products/scarp-shell at 390px"></a><figcaption>/products/scarp-shell · 390px</figcaption></figure><figure><a href="sweep/kit-390.webp"><img loading="lazy" src="sweep/kit-390.webp" alt="/kit at 390px"></a><figcaption>/kit · 390px</figcaption></figure><figure><a href="sweep/about-390.webp"><img loading="lazy" src="sweep/about-390.webp" alt="/about at 390px"></a><figcaption>/about · 390px</figcaption></figure><figure><a href="sweep/home-768.webp"><img loading="lazy" src="sweep/home-768.webp" alt="/ at 768px"></a><figcaption>/ · 768px</figcaption></figure><figure><a href="sweep/shop-768.webp"><img loading="lazy" src="sweep/shop-768.webp" alt="/shop at 768px"></a><figcaption>/shop · 768px</figcaption></figure><figure><a href="sweep/products-scarp-shell-768.webp"><img loading="lazy" src="sweep/products-scarp-shell-768.webp" alt="/products/scarp-shell at 768px"></a><figcaption>/products/scarp-shell · 768px</figcaption></figure><figure><a href="sweep/kit-768.webp"><img loading="lazy" src="sweep/kit-768.webp" alt="/kit at 768px"></a><figcaption>/kit · 768px</figcaption></figure><figure><a href="sweep/about-768.webp"><img loading="lazy" src="sweep/about-768.webp" alt="/about at 768px"></a><figcaption>/about · 768px</figcaption></figure><figure><a href="sweep/home-1024.webp"><img loading="lazy" src="sweep/home-1024.webp" alt="/ at 1024px"></a><figcaption>/ · 1024px</figcaption></figure><figure><a href="sweep/shop-1024.webp"><img loading="lazy" src="sweep/shop-1024.webp" alt="/shop at 1024px"></a><figcaption>/shop · 1024px</figcaption></figure><figure><a href="sweep/products-scarp-shell-1024.webp"><img loading="lazy" src="sweep/products-scarp-shell-1024.webp" alt="/products/scarp-shell at 1024px"></a><figcaption>/products/scarp-shell · 1024px</figcaption></figure><figure><a href="sweep/kit-1024.webp"><img loading="lazy" src="sweep/kit-1024.webp" alt="/kit at 1024px"></a><figcaption>/kit · 1024px</figcaption></figure><figure><a href="sweep/about-1024.webp"><img loading="lazy" src="sweep/about-1024.webp" alt="/about at 1024px"></a><figcaption>/about · 1024px</figcaption></figure><figure><a href="sweep/home-1280.webp"><img loading="lazy" src="sweep/home-1280.webp" alt="/ at 1280px"></a><figcaption>/ · 1280px</figcaption></figure><figure><a href="sweep/shop-1280.webp"><img loading="lazy" src="sweep/shop-1280.webp" alt="/shop at 1280px"></a><figcaption>/shop · 1280px</figcaption></figure><figure><a href="sweep/products-scarp-shell-1280.webp"><img loading="lazy" src="sweep/products-scarp-shell-1280.webp" alt="/products/scarp-shell at 1280px"></a><figcaption>/products/scarp-shell · 1280px</figcaption></figure><figure><a href="sweep/kit-1280.webp"><img loading="lazy" src="sweep/kit-1280.webp" alt="/kit at 1280px"></a><figcaption>/kit · 1280px</figcaption></figure><figure><a href="sweep/about-1280.webp"><img loading="lazy" src="sweep/about-1280.webp" alt="/about at 1280px"></a><figcaption>/about · 1280px</figcaption></figure><figure><a href="sweep/home-1440.webp"><img loading="lazy" src="sweep/home-1440.webp" alt="/ at 1440px"></a><figcaption>/ · 1440px</figcaption></figure><figure><a href="sweep/shop-1440.webp"><img loading="lazy" src="sweep/shop-1440.webp" alt="/shop at 1440px"></a><figcaption>/shop · 1440px</figcaption></figure><figure><a href="sweep/products-scarp-shell-1440.webp"><img loading="lazy" src="sweep/products-scarp-shell-1440.webp" alt="/products/scarp-shell at 1440px"></a><figcaption>/products/scarp-shell · 1440px</figcaption></figure><figure><a href="sweep/kit-1440.webp"><img loading="lazy" src="sweep/kit-1440.webp" alt="/kit at 1440px"></a><figcaption>/kit · 1440px</figcaption></figure><figure><a href="sweep/about-1440.webp"><img loading="lazy" src="sweep/about-1440.webp" alt="/about at 1440px"></a><figcaption>/about · 1440px</figcaption></figure><figure><a href="sweep/home-1920.webp"><img loading="lazy" src="sweep/home-1920.webp" alt="/ at 1920px"></a><figcaption>/ · 1920px</figcaption></figure><figure><a href="sweep/shop-1920.webp"><img loading="lazy" src="sweep/shop-1920.webp" alt="/shop at 1920px"></a><figcaption>/shop · 1920px</figcaption></figure><figure><a href="sweep/products-scarp-shell-1920.webp"><img loading="lazy" src="sweep/products-scarp-shell-1920.webp" alt="/products/scarp-shell at 1920px"></a><figcaption>/products/scarp-shell · 1920px</figcaption></figure><figure><a href="sweep/kit-1920.webp"><img loading="lazy" src="sweep/kit-1920.webp" alt="/kit at 1920px"></a><figcaption>/kit · 1920px</figcaption></figure><figure><a href="sweep/about-1920.webp"><img loading="lazy" src="sweep/about-1920.webp" alt="/about at 1920px"></a><figcaption>/about · 1920px</figcaption></figure></div></section>
+</main>
+<script>
+for (const sec of document.querySelectorAll('section[id]')) {
+  const tabs = sec.querySelectorAll('[role=tab]'), views = sec.querySelectorAll('.view')
+  tabs.forEach((t) => t.addEventListener('click', () => {
+    tabs.forEach((x) => x.setAttribute('aria-selected', String(x === t)))
+    views.forEach((v) => { v.hidden = v.dataset.view !== t.dataset.view })
+  }))
+  const range = sec.querySelector('input[type=range]'), slider = sec.querySelector('.slider')
+  range?.addEventListener('input', () => slider.style.setProperty('--x', range.value + '%'))
+}
+</script></body></html>
