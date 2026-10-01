@@ -1,0 +1,113 @@
+{
+  "baseUrl": "http://localhost:3201",
+  "source": "Design canvas (HTML artboards, exported to PNG at 1x; frozen at version 19 on 1 Oct 2026)",
+  "out": "evidence",
+  "scale": 1,
+  "threshold": 0.1,
+  "tolerancePx": 1,
+  "bandHeight": 200,
+  "pages": [
+    {
+      "name": "home-desktop",
+      "path": "/",
+      "reference": "design/frames/Main.png"
+    },
+    {
+      "name": "home-tablet",
+      "path": "/",
+      "reference": "design/frames/TabletHome.png"
+    },
+    {
+      "name": "home-phone",
+      "path": "/",
+      "reference": "design/frames/Mobile.png"
+    },
+    {
+      "name": "shop-desktop",
+      "path": "/shop",
+      "reference": "design/frames/Collection.png"
+    },
+    {
+      "name": "shop-tablet",
+      "path": "/shop",
+      "reference": "design/frames/TabletCollection.png"
+    },
+    {
+      "name": "shop-phone",
+      "path": "/shop",
+      "reference": "design/frames/MobileCollection.png"
+    },
+    {
+      "name": "product-desktop",
+      "path": "/products/scarp-shell?colour=Moss&size=M",
+      "reference": "design/frames/Product.png",
+      "note": "Stock line reads live inventory from Shopify."
+    },
+    {
+      "name": "product-tablet",
+      "path": "/products/scarp-shell?colour=Moss&size=M",
+      "reference": "design/frames/TabletProduct.png"
+    },
+    {
+      "name": "product-phone",
+      "path": "/products/scarp-shell?colour=Moss&size=M",
+      "reference": "design/frames/MobileProduct.png"
+    },
+    {
+      "name": "kit-desktop",
+      "path": "/kit",
+      "reference": "design/frames/Kit.png"
+    },
+    {
+      "name": "kit-tablet",
+      "path": "/kit",
+      "reference": "design/frames/TabletKit.png"
+    },
+    {
+      "name": "kit-phone",
+      "path": "/kit",
+      "reference": "design/frames/MobileKit.png"
+    },
+    {
+      "name": "about-desktop",
+      "path": "/about",
+      "reference": "design/frames/Build.png"
+    },
+    {
+      "name": "about-phone",
+      "path": "/about",
+      "reference": "design/frames/MobileBuild.png"
+    },
+    {
+      "name": "credits-desktop",
+      "path": "/credits",
+      "reference": "design/frames/Credits.png"
+    },
+    {
+      "name": "not-found-desktop",
+      "path": "/not-a-real-trail",
+      "reference": "design/frames/NotFound.png"
+    }
+  ],
+  "sweep": {
+    "paths": [
+      "/",
+      "/shop",
+      "/products/scarp-shell",
+      "/kit",
+      "/about"
+    ],
+    "widths": [
+      320,
+      375,
+      390,
+      768,
+      1024,
+      1280,
+      1440,
+      1920
+    ]
+  },
+  "axe": true,
+  "minMatch": null
+}

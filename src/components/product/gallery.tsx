@@ -38,11 +38,11 @@ const Gallery: FC<GalleryProps> = ({ title, colour, details, thermal }) => {
   };
 
   return (
-    <div className="flex flex-col gap-3 lg:gap-4">
+    <div className="flex flex-col gap-3 md:gap-3.5 lg:gap-4">
       <div
         className={cn(
-          "relative h-110 md:h-140 lg:h-190",
-          isLifestyle ? "p-5 md:p-14" : "bg-mist",
+          "relative h-110 md:h-160 lg:h-190",
+          isLifestyle ? "p-5 md:p-10 lg:p-14" : "bg-mist",
         )}
         style={isLifestyle ? { backgroundColor: colour.hex } : undefined}
       >
@@ -70,8 +70,8 @@ const Gallery: FC<GalleryProps> = ({ title, colour, details, thermal }) => {
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center gap-3 lg:gap-4">
-        <div className="flex gap-2 lg:gap-2.5">
+      <div className="flex flex-wrap items-center gap-3 md:gap-4">
+        <div className="flex gap-2 md:gap-2.5">
           {shots.map((item, i) => (
             <button
               key={item.url}
@@ -83,7 +83,7 @@ const Gallery: FC<GalleryProps> = ({ title, colour, details, thermal }) => {
               }
               aria-pressed={i === index}
               onClick={() => setIndex(i)}
-              className="relative h-15 w-12 bg-mist outline-2 md:h-17 md:w-14 outline-offset-2 outline-transparent aria-pressed:outline-ink lg:h-22 lg:w-18"
+              className="relative h-15 w-12 bg-mist outline-2 md:h-20 md:w-16 outline-offset-2 outline-transparent aria-pressed:outline-ink lg:h-22 lg:w-18"
             >
               <Image
                 src={item.url}

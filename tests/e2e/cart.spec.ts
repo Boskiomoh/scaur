@@ -64,7 +64,9 @@ test("the cart survives a reload, and removing the last line shows the empty sta
 });
 
 test("quantity changes update the line and the subtotal", async ({ page }) => {
-  await page.goto("/products/tarn-merino-crew?colour=Slate+Blue&size=M");
+  await page.goto("/products/tarn-merino-crew?colour=Slate+Blue&size=M", {
+    waitUntil: "networkidle",
+  });
   await page.getByRole("button", { name: "Add to cart" }).click();
   const drawer = cart(page);
   await drawer

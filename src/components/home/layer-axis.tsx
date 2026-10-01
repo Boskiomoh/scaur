@@ -118,7 +118,7 @@ const LayerAxis: FC<LayerAxisProps> = ({ products, images }) => (
                 </span>
               </Link>
 
-              <ul className="flex flex-col gap-3 md:py-4.5 lg:relative lg:block lg:min-h-28 lg:pt-6 lg:pb-4">
+              <ul className="flex flex-col gap-2 md:gap-3 md:py-4.5 lg:relative lg:block lg:min-h-28 lg:pt-6 lg:pb-4">
                 {items.map((product) => {
                   const isLate = product.range.hi > 50;
                   return (

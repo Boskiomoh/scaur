@@ -15,11 +15,12 @@ import {
 import { kitThermalSrc } from "@/lib/thermal";
 
 const notYet = "Pending";
-const sectionHeading = "font-display text-h2-phone lg:text-section";
+const sectionHeading =
+  "font-display text-sheet-title md:text-h2-phone lg:text-section";
 
 const About: FC = () => (
-  <div className="mx-auto grid max-w-page gap-y-12 px-4 pt-7 pb-16 md:px-8 lg:grid-cols-12 lg:gap-x-6 lg:gap-y-24 lg:px-12 lg:pt-14 lg:pb-28">
-    <div className="flex flex-col gap-6 lg:col-span-8">
+  <div className="mx-auto grid max-w-page gap-y-14 px-4 pt-7 pb-16 md:gap-y-12 md:px-8 lg:grid-cols-12 lg:gap-x-6 lg:gap-y-24 lg:px-12 lg:pt-14 lg:pb-28">
+    <div className="flex flex-col gap-4.5 md:gap-6 lg:col-span-8">
       <h1 className="font-display text-h1-phone md:text-hero-tablet lg:text-h1">
         How this store was built
       </h1>
@@ -29,7 +30,7 @@ const About: FC = () => (
         checkout come from a real Shopify development store. A portfolio project
         by Daniel Omoyibo.
       </p>
-      <div className="flex flex-col gap-3 md:flex-row">
+      <div className="flex flex-col gap-2.5 md:flex-row md:gap-3">
         {fidelityUrl && (
           <Button href={fidelityUrl} size="lg" className="lg:h-12">
             Read the fidelity report
@@ -46,7 +47,7 @@ const About: FC = () => (
       </div>
     </div>
 
-    <aside className="flex flex-col gap-2.5 self-end bg-snow p-6 lg:col-span-3 lg:col-start-10">
+    <aside className="flex flex-col gap-2 self-end bg-snow p-5 md:gap-2.5 md:p-6 lg:col-span-3 lg:col-start-10">
       <span className="text-sm font-semibold">The one-minute test</span>
       <p className="text-nav leading-lead text-ink-2">
         On a phone: build a kit, add it to the cart in one tap, and reach
@@ -60,12 +61,12 @@ const About: FC = () => (
 
     <section
       aria-labelledby="works-heading"
-      className="flex flex-col gap-4 lg:col-span-7"
+      className="flex flex-col gap-3 md:gap-4 lg:col-span-7"
     >
       <h2 id="works-heading" className={sectionHeading}>
         What actually works
       </h2>
-      <p className="mb-2 max-w-axis text-blurb leading-lead text-ink-2">
+      <p className="mb-1.5 max-w-axis text-base leading-lead text-ink-2 md:mb-2 md:text-blurb">
         The hard parts of a store, done against a real Shopify backend rather
         than mock data.
       </p>
@@ -74,7 +75,7 @@ const About: FC = () => (
           <li key={item.title}>
             <Link
               href={item.href}
-              className="group flex flex-col gap-1 border-t border-line py-4 no-underline md:grid md:grid-cols-works md:items-baseline md:gap-x-6"
+              className="group flex flex-col gap-1 border-t border-line py-3.5 no-underline md:grid md:py-4 md:grid-cols-works md:items-baseline md:gap-x-6"
             >
               <span className="flex flex-col gap-1">
                 <span className="text-blurb font-semibold group-hover:underline">
@@ -95,7 +96,7 @@ const About: FC = () => (
 
     <section
       aria-labelledby="ideas-heading"
-      className="flex flex-col gap-7 lg:col-span-4 lg:col-start-9"
+      className="flex flex-col gap-6 md:gap-7 lg:col-span-4 lg:col-start-9"
     >
       <h2 id="ideas-heading" className={sectionHeading}>
         Two ideas of its own
@@ -116,8 +117,8 @@ const About: FC = () => (
           position: "object-kit-figure",
         },
       ].map((idea) => (
-        <div key={idea.title} className="flex flex-col gap-3">
-          <div className="relative h-60 bg-heat-0">
+        <div key={idea.title} className="flex flex-col gap-2.5 md:gap-3">
+          <div className="relative h-55 bg-heat-0 md:h-60">
             <Image
               src={idea.src}
               alt={idea.alt}
@@ -134,7 +135,7 @@ const About: FC = () => (
 
     <section
       aria-labelledby="stack-heading"
-      className="flex flex-col gap-4 lg:col-span-6"
+      className="flex flex-col gap-3 md:gap-4 lg:col-span-6"
     >
       <h2 id="stack-heading" className={sectionHeading}>
         The stack
@@ -143,7 +144,7 @@ const About: FC = () => (
         {stack.map((item) => (
           <div
             key={item.name}
-            className="flex flex-col gap-1 border-t border-line py-3.5 text-base leading-lead md:grid md:grid-cols-stack md:gap-x-6"
+            className="flex flex-col gap-1 border-t border-line py-3 text-nav leading-normal md:grid md:grid-cols-stack md:gap-x-6 md:py-3.5 md:text-base md:leading-lead"
           >
             <dt className="font-semibold">{item.name}</dt>
             <dd className="text-ink-2">{item.body}</dd>
@@ -258,12 +259,12 @@ const About: FC = () => (
 
     <section
       aria-labelledby="limits-heading"
-      className="flex flex-col gap-5 border-t border-line pt-12 lg:col-span-12 lg:grid lg:grid-cols-12 lg:gap-x-6"
+      className="flex flex-col gap-3.5 border-t border-line pt-12 md:gap-5 lg:col-span-12 lg:grid lg:grid-cols-12 lg:gap-x-6"
     >
       <h2 id="limits-heading" className={`${sectionHeading} lg:col-span-4`}>
         What it doesn&apos;t do
       </h2>
-      <ul className="grid gap-3.5 text-base leading-lead text-ink-2 md:grid-cols-2 md:gap-x-6 lg:col-span-7 lg:col-start-6">
+      <ul className="grid gap-3 text-nav leading-lead text-ink-2 md:grid-cols-2 md:gap-3.5 md:text-base md:gap-x-6 lg:col-span-7 lg:col-start-6">
         {limits.map((item) => (
           <li key={item}>{item}</li>
         ))}

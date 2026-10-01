@@ -49,11 +49,11 @@ const KitTeaser: FC<KitTeaserProps> = ({ products }) => {
 
   return (
     <section aria-labelledby="teaser-heading" className="bg-snow">
-      <div className="mx-auto flex max-w-page flex-col gap-5 px-4 py-14 md:px-8 lg:grid lg:grid-cols-12 lg:gap-x-6 lg:px-12 lg:py-24">
-        <div className="flex flex-col gap-5 md:grid md:grid-cols-2 md:gap-x-6 lg:col-span-4 lg:flex lg:gap-7">
+      <div className="mx-auto flex max-w-page flex-col gap-5 px-4 py-14 md:gap-8 md:px-8 md:py-18 lg:grid lg:grid-cols-12 lg:gap-x-6 lg:px-12 lg:py-24">
+        <div className="flex flex-col gap-5 md:grid md:grid-cols-2 md:gap-x-8 lg:col-span-4 lg:gap-x-6 lg:flex lg:gap-7">
           <h2
             id="teaser-heading"
-            className="font-display text-h2-phone md:col-span-2 lg:text-teaser"
+            className="font-display text-h2-phone md:col-span-2 md:text-section lg:text-teaser"
           >
             Tell us the day. We&apos;ll layer it.
           </h2>
@@ -137,7 +137,7 @@ const KitTeaser: FC<KitTeaserProps> = ({ products }) => {
           </Button>
         </div>
 
-        <ul className="grid grid-cols-2 gap-x-3 gap-y-5 self-center md:grid-cols-4 md:gap-4 lg:col-span-7 lg:col-start-6">
+        <ul className="grid grid-cols-2 gap-x-3 gap-y-5 md:grid-cols-4 md:gap-4 lg:col-span-7 lg:col-start-6 lg:self-center">
           {kit.slots.map((slot) => {
             const label = layers.find(
               (layer) => layer.id === slot.layer,

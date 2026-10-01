@@ -28,16 +28,16 @@ const facts = [
 const FabricBand: FC<FabricBandProps> = ({ image }) => (
   <section
     aria-labelledby="fabric-heading"
-    className="mx-auto flex max-w-page flex-col gap-5 py-14 lg:gap-10 lg:pt-28 lg:pb-24"
+    className="mx-auto flex max-w-page flex-col gap-5 py-14 md:gap-8 md:pt-18 md:pb-16 lg:gap-10 lg:pt-28 lg:pb-24"
   >
     <h2
       id="fabric-heading"
-      className="px-4 font-display text-h2-phone md:px-8 lg:px-12 lg:text-h2"
+      className="px-4 font-display text-h2-phone md:px-8 md:text-collection-phone lg:px-12 lg:text-h2"
     >
       Rain stays on the outside.
     </h2>
     {image && (
-      <div className="relative h-65 bg-mist lg:h-105">
+      <div className="relative h-65 bg-mist md:h-85 lg:h-105">
         <Image
           src={image.url}
           alt="Water beading on the outer fabric of a shell jacket"

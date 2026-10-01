@@ -47,7 +47,7 @@ const ProductView: FC<ProductViewProps> = ({
     );
 
   return (
-    <div className="grid gap-7 lg:grid-cols-12 lg:gap-x-6">
+    <div className="grid gap-7 md:gap-9 lg:grid-cols-12 lg:gap-x-6">
       <div className="px-4 md:px-8 lg:col-span-7 lg:px-0">
         <Gallery
           title={product.title}
@@ -57,7 +57,7 @@ const ProductView: FC<ProductViewProps> = ({
         />
       </div>
 
-      <div className="flex flex-col gap-6 px-4 md:grid md:grid-cols-2 md:gap-x-6 md:px-8 lg:col-span-4 lg:col-start-9 lg:flex lg:gap-7 lg:px-0 lg:pt-2">
+      <div className="flex flex-col gap-6 px-4 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-8 md:px-8 lg:col-span-4 lg:col-start-9 lg:flex lg:gap-7 lg:px-0 lg:pt-2">
         <div className="flex flex-col gap-6 lg:contents">
           <div className="flex flex-col gap-2.5 lg:gap-3">
             <Link

@@ -55,7 +55,7 @@ const Product: FC<ProductProps> = ({ product, catalog }) => {
     <>
       <nav
         aria-label="Breadcrumb"
-        className="mx-auto flex max-w-page gap-1.5 px-4 pt-3.5 text-caption text-ink-2 md:px-8 lg:gap-2 lg:px-12 lg:pt-5 lg:text-sm"
+        className="mx-auto flex max-w-page gap-1.5 px-4 pt-3.5 text-caption text-ink-2 md:gap-2 md:px-8 md:pt-4.5 md:text-sm lg:px-12 lg:pt-5"
       >
         <Link href="/shop" className="text-ink-2">
           Shop
@@ -70,7 +70,7 @@ const Product: FC<ProductProps> = ({ product, catalog }) => {
         </span>
       </nav>
 
-      <div className="mx-auto max-w-page pt-3 lg:px-12 lg:pt-5">
+      <div className="mx-auto max-w-page pt-3 md:pt-4 lg:px-12 lg:pt-5">
         {defaults.colour && (
           <Suspense
             fallback={
