@@ -2,11 +2,32 @@ import { fileURLToPath } from "node:url";
 
 import { defineConfig } from "vitest/config";
 
+const path = (relative: string) =>
+  fileURLToPath(new URL(relative, import.meta.url));
+
 export default defineConfig({
   resolve: {
-    alias: { "@": fileURLToPath(new URL("./src", import.meta.url)) },
+    alias: {
+      "@": path("./src"),
+      // The marker package throws outside React Server Components; tests run in Node.
+      "server-only": path(
+        "./node_modules/next/dist/compiled/server-only/empty.js",
+      ),
+    },
   },
   test: {
-    include: ["tests/unit/**/*.test.ts"],
+    projects: [
+      {
+        extends: true,
+        test: { name: "unit", include: ["tests/unit/**/*.test.ts"] },
+      },
+      {
+        extends: true,
+        test: {
+          name: "shopify",
+          include: ["scripts/shopify-check.test.ts"],
+        },
+      },
+    ],
   },
 });

@@ -71,6 +71,7 @@ src/
     shopify/client.ts               storefrontFetch<T>(query, variables, { tags, revalidate })
     shopify/queries.ts              fragments and queries (products, product, cart, predictiveSearch)
     shopify/types.ts                interfaces for the raw query responses
+    shopify/products.ts             getProducts, getProduct (cached, tagged; section 9)
     catalog.ts                      raw product -> Product (layer, range, warmth from tags)
     kit.ts                          the kit rules (section 5), pure
     thermal.ts                      thermal image lookup (section 7)
@@ -79,14 +80,15 @@ src/
     heat.ts                         temperature -> thermal colour (the ironbow stops)
     cn.ts                           three-line class join
     layers.ts                       the four layers (id, label) and the Layer type
-  types/product.ts                  Product, Variant, Colour (used by every feature)
+  types/product.ts                  Product, Variant, Colour, sizes, shell roles (used by every feature)
 content/
   catalog.json                      seed data (also drives the thermal map)
   shopify-products.csv              import file for the development store
 scripts/
   thermal.mjs                       builds public/thermal/*.webp (section 7)
   brand.mjs                         favicons and manifest from brand/favicon.svg
-  shopify-check.ts                  npm run shopify:check (WORKFLOW step F)
+  shopify-check.test.ts             npm run shopify:check (WORKFLOW step F), run by Vitest so it
+                                    uses the app's own parser
 public/thermal/                     generated, committed
 tests/
   unit/*.test.ts                    vitest

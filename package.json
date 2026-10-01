@@ -11,8 +11,9 @@
     "lint": "eslint",
     "typecheck": "next typegen && tsc --noEmit",
     "format": "prettier --write .",
-    "test": "vitest run",
-    "test:e2e": "playwright test"
+    "test": "vitest run --project unit",
+    "test:e2e": "playwright test",
+    "shopify:check": "vitest run --project shopify"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
