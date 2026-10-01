@@ -125,7 +125,7 @@ const KitForm: FC<KitFormProps> = ({ input, onChange }) => (
         name="s"
         value={input.size}
         onChange={(event) => onChange({ size: event.target.value as Size })}
-        className="h-11 min-w-30 self-start rounded-full lg:h-10 border-control border-field bg-snow px-3 text-sm"
+        className="h-11 min-w-30 self-start rounded-full border-control border-field bg-snow px-3 text-base lg:h-10 lg:text-sm"
       >
         {sizes.map((size) => (
           <option key={size} value={size}>

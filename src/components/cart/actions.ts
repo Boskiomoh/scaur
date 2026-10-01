@@ -22,7 +22,8 @@ import type { Cart, CartResult } from "@/types/cart";
 const cookieName = "scaur_cart";
 const maxQuantity = 10;
 const addFailed = "Couldn't add that. Try again.";
-const updateFailed = "Couldn't update your cart. Try again.";
+const updateFailed =
+  "Couldn't change the quantity. Your cart is unchanged; try again.";
 
 interface LineInput {
   variantId: string;

@@ -42,3 +42,36 @@ test("the menu sheet traps focus and returns it on Esc", async ({
   await expect(sheet).toBeHidden();
   await expect(menuButton).toBeFocused();
 });
+
+// A real phone widens its layout viewport around anything too wide, so this
+// uses mobile emulation rather than only a narrow window.
+test("no page scrolls sideways on a phone", async ({ browser }, testInfo) => {
+  test.skip(testInfo.project.name !== "phone", "Phone widths only");
+  test.setTimeout(120_000);
+  for (const width of [320, 390]) {
+    const context = await browser.newContext({
+      viewport: { width, height: 800 },
+      isMobile: true,
+      hasTouch: true,
+      baseURL: testInfo.project.use.baseURL,
+    });
+    const page = await context.newPage();
+    for (const url of [
+      "/",
+      "/shop",
+      "/products/scarp-shell",
+      "/kit",
+      "/search?q=shell",
+      "/about",
+      "/credits",
+      "/not-a-real-trail",
+    ]) {
+      await page.goto(url);
+      const overflow = await page.evaluate(
+        () => window.innerWidth - document.documentElement.clientWidth,
+      );
+      expect(overflow, `${url} at ${width}px`).toBe(0);
+    }
+    await context.close();
+  }
+});

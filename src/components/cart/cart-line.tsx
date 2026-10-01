@@ -104,7 +104,11 @@ const CartLine: FC<CartLineProps> = ({
           </button>
         </div>
         <span role="status" className="min-h-4 font-data text-xs">
-          {error ? <span className="text-error">{error}</span> : note}
+          {error ? (
+            <span className="font-sans text-sm text-error">{error}</span>
+          ) : (
+            note
+          )}
         </span>
       </div>
     </li>

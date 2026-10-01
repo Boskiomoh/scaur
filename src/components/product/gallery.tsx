@@ -70,7 +70,7 @@ const Gallery: FC<GalleryProps> = ({ title, colour, details, thermal }) => {
         </div>
       </div>
 
-      <div className="flex items-center gap-3 lg:gap-4">
+      <div className="flex flex-wrap items-center gap-3 lg:gap-4">
         <div className="flex gap-2 lg:gap-2.5">
           {shots.map((item, i) => (
             <button

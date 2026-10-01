@@ -1,5 +1,6 @@
 "use client";
 
+import { WarningCircleIcon } from "@phosphor-icons/react";
 import { useState, useTransition, type FC } from "react";
 
 import { addLine } from "@/components/cart/actions";
@@ -19,6 +20,7 @@ const AddToCart: FC<AddToCartProps> = ({ variant }) => {
   // State
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string>();
+  const [isAdded, setIsAdded] = useState(false);
 
   // Derived
   const canAdd = !!variant?.availableForSale;
@@ -26,7 +28,9 @@ const AddToCart: FC<AddToCartProps> = ({ variant }) => {
     ? "Choose a size"
     : isPending
       ? "Adding"
-      : "Add to cart";
+      : isAdded
+        ? "Added to cart"
+        : "Add to cart";
 
   // Handlers
   const handleAdd = () => {
@@ -37,6 +41,8 @@ const AddToCart: FC<AddToCartProps> = ({ variant }) => {
       if (result.ok) {
         setCart(result.cart);
         openCart();
+        setIsAdded(true);
+        setTimeout(() => setIsAdded(false), 2000);
       } else {
         setError(result.error);
       }
@@ -51,12 +57,17 @@ const AddToCart: FC<AddToCartProps> = ({ variant }) => {
         aria-disabled={!canAdd}
         aria-busy={isPending}
         onClick={handleAdd}
-        className="aria-disabled:cursor-not-allowed"
+        className="aria-busy:bg-ember-hover aria-disabled:cursor-not-allowed"
       >
         {label}
       </Button>
       <span role="status" className="text-sm text-error empty:hidden">
-        {error}
+        {error && (
+          <span className="flex items-center gap-1.5">
+            <WarningCircleIcon aria-hidden="true" className="size-4 shrink-0" />
+            {error}
+          </span>
+        )}
       </span>
     </>
   );

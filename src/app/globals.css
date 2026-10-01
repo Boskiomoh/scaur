@@ -167,8 +167,10 @@
     scrollbar-color: var(--color-field) var(--color-frost);
   }
 
+  /* A phone must never pan sideways; clip (unlike hidden) keeps the sticky header working. */
   body {
     font-family: var(--font-sans);
+    overflow-x: clip;
   }
 
   ::selection {

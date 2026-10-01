@@ -4,11 +4,13 @@ import type { FC } from "react";
 
 import SearchOption from "@/components/search/search-option";
 import Chip from "@/components/ui/chip";
+import StoreDown from "@/components/ui/store-down";
 import type { Product } from "@/types/product";
 
 interface SearchPanelProps {
   term: string;
   results: Product[];
+  hasFailed: boolean;
   active: number;
   onSearch: (query: string) => void;
   onClose: () => void;
@@ -19,6 +21,7 @@ const popular = ["shell", "merino", "down", "fleece", "20°F"];
 const SearchPanel: FC<SearchPanelProps> = ({
   term,
   results,
+  hasFailed,
   active,
   onSearch,
   onClose,
@@ -70,7 +73,13 @@ const SearchPanel: FC<SearchPanelProps> = ({
       </>
     )}
 
-    {term && results.length === 0 && (
+    {term && hasFailed && (
+      <div className="mx-4 lg:mx-0">
+        <StoreDown onRetry={() => onSearch(term)} className="bg-frost" />
+      </div>
+    )}
+
+    {term && !hasFailed && results.length === 0 && (
       <div className="mx-4 flex flex-col items-start gap-3 bg-frost p-6 lg:mx-0 lg:gap-4 lg:p-10">
         <h2 className="font-display text-2xl leading-tight lg:text-sheet-title">
           No layers match &ldquo;{term}&rdquo;

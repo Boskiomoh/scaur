@@ -83,7 +83,7 @@ const Credits: FC<CreditsProps> = ({ images }) => (
                 <td className="md:py-3 md:ps-6">
                   <a
                     href={`https://unsplash.com/photos/${credit.slug}`}
-                    className="text-sm md:text-nav"
+                    className="text-sm wrap-anywhere md:text-nav"
                   >
                     unsplash.com/photos/{credit.slug}
                   </a>

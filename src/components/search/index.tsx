@@ -41,6 +41,7 @@ const SearchOverlay: FC<SearchOverlayProps> = ({ summaries }) => {
   const latest = useRef("");
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Product[]>([]);
+  const [hasFailed, setHasFailed] = useState(false);
   const [active, setActive] = useState(-1);
 
   // Derived
@@ -64,10 +65,13 @@ const SearchOverlay: FC<SearchOverlayProps> = ({ summaries }) => {
     setActive(-1);
     latest.current = next;
     clearTimeout(timer.current);
+    setHasFailed(false);
     if (!next.trim()) return setResults([]);
     timer.current = setTimeout(async () => {
       const result = await search(next);
-      if (latest.current === next) setResults(result.ok ? result.products : []);
+      if (latest.current !== next) return;
+      setResults(result.ok ? result.products : []);
+      setHasFailed(!result.ok);
     }, debounce);
   };
 
@@ -160,6 +164,7 @@ const SearchOverlay: FC<SearchOverlayProps> = ({ summaries }) => {
         <SearchPanel
           term={term}
           results={results}
+          hasFailed={hasFailed}
           active={active}
           onSearch={runSearch}
           onClose={close}

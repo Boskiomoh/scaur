@@ -9,6 +9,7 @@ import CartLine from "@/components/cart/cart-line";
 import CheckoutNotice from "@/components/cart/checkout-notice";
 import { withQuantity } from "@/components/cart/with-quantity";
 import Button from "@/components/ui/button";
+import StoreDown from "@/components/ui/store-down";
 import { formatMoney } from "@/lib/format";
 import { useCartStore } from "@/store/cart-store";
 import type { CartLine as CartLineData } from "@/types/cart";
@@ -26,6 +27,7 @@ const CartDrawer: FC = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [step, setStep] = useState<"review" | "confirm">("review");
   const [pendingIds, setPendingIds] = useState<string[]>([]);
+  const [hasLoadFailed, setHasLoadFailed] = useState(false);
 
   // Derived
   const lines = cart?.lines ?? [];
@@ -42,8 +44,18 @@ const CartDrawer: FC = () => {
   // Effects
   // Pages stay static, so the cart (kept on Shopify, keyed by a cookie) loads after hydration.
   useEffect(() => {
-    getCart().then((result) => setCart(result.cart));
+    getCart().then((result) => {
+      setCart(result.cart);
+      setHasLoadFailed(!result.ok);
+    });
   }, [setCart]);
+
+  // Handlers
+  const handleRetry = async () => {
+    const result = await getCart();
+    setCart(result.cart);
+    setHasLoadFailed(!result.ok);
+  };
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -51,7 +63,6 @@ const CartDrawer: FC = () => {
     if (!isOpen && dialog?.open) dialog.close();
   }, [isOpen]);
 
-  // Handlers
   const handleClose = () => {
     close();
     setStep("review");
@@ -105,7 +116,13 @@ const CartDrawer: FC = () => {
         </button>
       </div>
 
-      {isEmpty && (
+      {hasLoadFailed && !cart && (
+        <div className="px-4 py-8 md:px-6">
+          <StoreDown onRetry={handleRetry} />
+        </div>
+      )}
+
+      {isEmpty && !hasLoadFailed && (
         <div className="flex grow flex-col gap-4 px-4 py-12 md:px-6">
           <h3 className="font-display text-sheet-title">Your cart is empty</h3>
           <p className="text-base text-ink-2">
