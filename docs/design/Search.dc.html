@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Scaur search overlay</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=Martian+Mono:wdth,wght@75..112.5,100..800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#eef1f3;color:#111418;font-family:'Archivo',system-ui,sans-serif}
+.disp{font-family:'Archivo',sans-serif;font-stretch:112.5%;font-weight:800;text-transform:uppercase;letter-spacing:-0.01em}
+.mono{font-family:'Martian Mono',ui-monospace,monospace;font-stretch:87.5%;font-variant-numeric:tabular-nums}
+a{color:#111418;text-underline-offset:3px}a:hover{text-decoration-thickness:2px}
+button,input{font-family:inherit}
+button{cursor:pointer}
+::selection{background:#f79a2e;color:#111418}
+a:focus-visible,button:focus-visible{outline:2px solid #cf3a1c;outline-offset:2px}
+input:focus-visible{outline:none}
+.chip{height:40px;padding:0 16px;border-radius:999px;border:1.5px solid #cfd5da;background:#f8f9fa;color:#111418;font-size:14px;font-weight:500;white-space:nowrap}
+.chip:hover{border-color:#111418}
+.opt{display:grid;grid-template-columns:64px minmax(0,1fr) 200px 72px;column-gap:20px;align-items:center;padding:12px 16px;text-decoration:none;border-top:1px solid #cfd5da}
+.opt:hover{background:#eef1f3}
+</style>
+</helmet>
+<div style="width: 1440px; height: 960px; position: relative; overflow: hidden; background: #eef1f3;">
+  <div aria-hidden="true" style="position: absolute; inset: 0; overflow: hidden;">
+    <dc-import name="Main" hint-size="1440px,3620px"></dc-import>
+  </div>
+  <div aria-hidden="true" style="position: absolute; inset: 0; background: rgba(17, 20, 24, 0.5);"></div>
+
+  <div role="dialog" aria-modal="true" aria-label="Search the store" style="position: absolute; top: 0; left: 0; right: 0; box-sizing: border-box; background: #f8f9fa; display: flex; flex-direction: column;">
+    <div style="height: 88px; box-sizing: border-box; padding: 0 48px; display: flex; align-items: center; gap: 40px; border-bottom: 1px solid #cfd5da;">
+      <a href="Main.dc.html" aria-label="Scaur home" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+        <img src="/_blob/bec27a5512453902854ee74f8b5d138a" alt="" style="width: 28px; height: 28px;">
+        <span class="disp" style="font-size: 22px; letter-spacing: 0.04em;">Scaur</span>
+      </a>
+      <div style="flex-grow: 1; height: 56px; box-sizing: border-box; padding: 0 20px; border: 1.5px solid #111418; border-radius: 999px; background: #ffffff; display: flex; align-items: center; gap: 14px;">
+        <svg width="22" height="22" viewBox="0 0 256 256" fill="none" stroke="#111418" stroke-width="16" stroke-linecap="round" aria-hidden="true"><circle cx="112" cy="112" r="80"></circle><line x1="168.6" y1="168.6" x2="224" y2="224"></line></svg>
+        <label for="q" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Search</label>
+        <input id="q" type="search" role="combobox" aria-expanded="{{expandedStr}}" aria-controls="results" aria-autocomplete="list" aria-activedescendant="{{activeId}}" placeholder="Search layers, fabrics or a temperature" value="{{q}}" onChange="{{onQuery}}" style="flex-grow: 1; height: 100%; border: 0; background: transparent; font-size: 20px; color: #111418;">
+        <sc-if value="{{hasQuery}}" hint-placeholder-val="{{ true }}">
+          <button type="button" onClick="{{clearQuery}}" style="border: 0; background: transparent; padding: 0; font-size: 14px; color: #4a525b; text-decoration: underline; text-underline-offset: 3px;">Clear</button>
+        </sc-if>
+      </div>
+      <a href="Main.dc.html" aria-label="Close search" style="width: 44px; height: 44px; border-radius: 999px; display: flex; align-items: center; justify-content: center;">
+        <svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="#111418" stroke-width="18" stroke-linecap="round"><line x1="200" y1="56" x2="56" y2="200"></line><line x1="200" y1="200" x2="56" y2="56"></line></svg>
+      </a>
+    </div>
+
+    <div style="box-sizing: border-box; padding: 32px 48px 40px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px;">
+      <div style="grid-column: 1 / span 8; display: flex; flex-direction: column; gap: 16px;">
+        <sc-if value="{{showResults}}" hint-placeholder-val="{{ true }}">
+          <div style="display: flex; justify-content: space-between; align-items: baseline;">
+            <span style="font-size: 14px; font-weight: 600;">Products</span>
+            <span role="status" class="mono" style="font-size: 13px; color: #4a525b;">{{countLabel}}</span>
+          </div>
+          <div id="results" role="listbox" aria-label="Products" style="display: flex; flex-direction: column; border-bottom: 1px solid #cfd5da;">
+            <sc-for list="{{results}}" as="r" hint-placeholder-count="4">
+              <a id="{{r.id}}" role="option" aria-selected="{{r.selected}}" href="Product.dc.html" class="opt" style="background: {{r.bg}};">
+                <img src="{{r.img}}" alt="" style="width: 64px; height: 80px; object-fit: cover; object-position: center 25%; display: block; background: #dde2e6;">
+                <span style="display: flex; flex-direction: column; gap: 4px; min-width: 0;">
+                  <span style="font-size: 17px; font-weight: 600;">{{r.name}}</span>
+                  <span style="font-size: 14px; color: #4a525b;">{{r.layer}}</span>
+                </span>
+                <span style="display: flex; flex-direction: column; gap: 6px;">
+                  <span aria-hidden="true" style="position: relative; display: block; height: 6px; background: #dde2e6;"><span style="position: absolute; top: 0; bottom: 0; left: {{r.left}}%; width: {{r.width}}%; background: {{r.grad}};"></span></span>
+                  <span class="mono" style="font-size: 12px; color: #4a525b;">{{r.range}}</span>
+                </span>
+                <span class="mono" style="font-size: 15px; text-align: right;">{{r.price}}</span>
+              </a>
+            </sc-for>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+            <a href="SearchResults.dc.html" style="font-size: 16px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px;">{{allLabel}}
+              <svg width="16" height="16" viewBox="0 0 256 256" fill="none" stroke="#111418" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="40" y1="128" x2="216" y2="128"></line><polyline points="144 56 216 128 144 200"></polyline></svg>
+            </a>
+            <span style="font-size: 13px; color: #4a525b;">Arrow keys to move, Enter to open, Esc to close</span>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{showNone}}" hint-placeholder-val="{{ false }}">
+          <div style="box-sizing: border-box; padding: 40px; background: #eef1f3; display: flex; flex-direction: column; align-items: flex-start; gap: 16px;">
+            <h2 class="disp" style="margin: 0; font-size: 28px; line-height: 1;">No layers match "{{q}}"</h2>
+            <p role="status" style="margin: 0; font-size: 17px; color: #4a525b;">Try "down" or "insulation", or search for a temperature like "20°F".</p>
+            <div style="display: flex; gap: 8px;">
+              <button type="button" class="chip" onClick="{{tryDown}}">down</button>
+              <button type="button" class="chip" onClick="{{tryIns}}">insulation</button>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{showStart}}" hint-placeholder-val="{{ false }}">
+          <span style="font-size: 14px; font-weight: 600;">Popular searches</span>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <sc-for list="{{popular}}" as="p" hint-placeholder-count="5">
+              <button type="button" class="chip" onClick="{{p.pick}}">{{p.label}}</button>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+
+      <nav aria-label="Shop by layer" style="grid-column: 10 / span 3; display: flex; flex-direction: column; gap: 14px;">
+        <span style="font-size: 14px; font-weight: 600;">Shop by layer</span>
+        <sc-for list="{{layerLinks}}" as="l" hint-placeholder-count="4">
+          <a href="Collection.dc.html" style="display: flex; align-items: center; gap: 14px; text-decoration: none;">
+            <img src="{{l.img}}" alt="" style="width: 48px; height: 48px; object-fit: cover; display: block;">
+            <span class="disp" style="font-size: 17px;">{{l.name}}</span>
+          </a>
+        </sc-for>
+        <a href="Kit.dc.html" style="margin-top: 6px; font-size: 15px; font-weight: 600;">Or let the kit builder choose</a>
+      </nav>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"query":{"editor":"enum","options":["shell","","parka"],"default":"shell"},"$preview":{"width":1440,"height":960}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { q: props.query ?? 'shell' }; }
+  heat(t) {
+    const stops = [[0, [20, 12, 46]], [0.22, [74, 26, 120]], [0.45, [163, 32, 111]], [0.66, [224, 69, 43]], [0.84, [247, 154, 46]], [1, [255, 224, 138]]];
+    const x = Math.max(0, Math.min(1, (t + 10) / 90));
+    for (let i = 0; i < stops.length - 1; i++) { const [a, ca] = stops[i]; const [b, cb] = stops[i + 1]; if (x >= a && x <= b) { const f = (x - a) / (b - a); return 'rgb(' + ca.map((v, k) => Math.round(v + (cb[k] - v) * f)).join(',') + ')'; } }
+    return 'rgb(255,224,138)';
+  }
+  renderVals() {
+    const q = this.state.q;
+    const all = [
+      ['Scarp Shell', 'Shell', 348, -10, 60, '/_blob/84932b7070b6f9bba86b98c3b35d7617', 'waterproof rain'],
+      ['Downpour Jacket', 'Shell', 198, 35, 70, '/_blob/4ce58b28d8f003534f47cce552c6a420', 'waterproof rain'],
+      ['Squall Jacket', 'Shell', 168, 40, 75, '/_blob/4315f5dfbd8b88c2f4414cc70dddabb0', 'wind rain'],
+      ['Ridgeback Softshell', 'Shell', 188, 20, 55, '/_blob/5ab2f0494db496eccc9cb2e54991d538', 'wind stretch'],
+      ['Cornice Down Jacket', 'Insulation', 268, -10, 35, '/_blob/36c24bbec39a211f8d6a9ceed5dc81f0', 'down puffy'],
+      ['Belay Hoody', 'Insulation', 224, 0, 40, '/_blob/206fc8c6cfcd6929904e21fe97bf84e6', 'synthetic puffy climbing'],
+      ['Bothy Pile Jacket', 'Mid', 148, 15, 45, '/_blob/4b0d5d6ec0647d5724b203b294d7b9b0', 'fleece pile'],
+      ['Knoll Grid Fleece', 'Mid', 118, 25, 55, '/_blob/dfe7806815453634e614d4ab33a9397d', 'fleece grid'],
+      ['Knoll Quarter-Zip', 'Mid', 104, 30, 60, '/_blob/820d381aa536a8b27492db23cb297d3f', 'fleece'],
+      ['Tarn Merino Quarter-Zip', 'Base', 92, 25, 60, '/_blob/1e73beefe0ff39801913f01c0693fd53', 'merino wool'],
+      ['Tarn Merino Crew', 'Base', 78, 40, 75, '/_blob/2a84d495087e6817caeb32eb1d7ee1bc', 'merino wool']
+    ];
+    const n = q.trim().toLowerCase();
+    const deg = parseInt(n, 10);
+    const hits = n === '' ? [] : all.filter(([name, layer, , lo, hi, , words]) => (!isNaN(deg) && /°|f$|^-?\d+$/.test(n) ? deg >= lo && deg <= hi : (name + ' ' + layer + ' ' + words).toLowerCase().includes(n)));
+    const shown = hits.slice(0, 5);
+    const results = shown.map(([name, layer, price, lo, hi, img], i) => ({
+      id: 'opt-' + i, selected: i === 0 ? 'true' : 'false', bg: i === 0 ? '#eef1f3' : 'transparent',
+      name, layer: layer === 'Insulation' ? 'Insulation' : layer + ' layer', price: '$' + price, img,
+      range: 'Made for ' + lo + ' to ' + hi + '°F', left: ((lo + 10) / 90) * 100, width: ((hi - lo) / 90) * 100,
+      grad: 'linear-gradient(90deg, ' + this.heat(lo) + ', ' + this.heat(hi) + ')'
+    }));
+    const set = (v) => () => this.setState({ q: v });
+    return {
+      q, hasQuery: n !== '', expandedStr: hits.length ? 'true' : 'false', activeId: hits.length ? 'opt-0' : '',
+      onQuery: (e) => this.setState({ q: e.target.value }), clearQuery: set(''),
+      showResults: hits.length > 0, showNone: n !== '' && hits.length === 0, showStart: n === '',
+      results, countLabel: hits.length + (hits.length === 1 ? ' product' : ' products'),
+      allLabel: 'See all ' + hits.length + ' results for "' + q.trim() + '"',
+      tryDown: set('down'), tryIns: set('insulation'),
+      popular: ['shell', 'merino', 'down', 'fleece', '20°F'].map((label) => ({ label, pick: set(label) })),
+      layerLinks: [
+        { name: 'Base', img: '/_blob/2a84d495087e6817caeb32eb1d7ee1bc' },
+        { name: 'Mid', img: '/_blob/dfe7806815453634e614d4ab33a9397d' },
+        { name: 'Insulation', img: '/_blob/36c24bbec39a211f8d6a9ceed5dc81f0' },
+        { name: 'Shell', img: '/_blob/84932b7070b6f9bba86b98c3b35d7617' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

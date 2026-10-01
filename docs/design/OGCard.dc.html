@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Scaur social card</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=Martian+Mono:wdth,wght@75..112.5,100..800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#eef1f3;color:#111418;font-family:'Archivo',system-ui,sans-serif}
+.disp{font-family:'Archivo',sans-serif;font-stretch:112.5%;font-weight:800;text-transform:uppercase;letter-spacing:-0.01em}
+.mono{font-family:'Martian Mono',ui-monospace,monospace;font-stretch:87.5%;font-variant-numeric:tabular-nums}
+</style>
+</helmet>
+<div style="width: 1200px; height: 630px; box-sizing: border-box; background: #eef1f3; display: grid; grid-template-columns: 620px 580px;">
+  <div style="box-sizing: border-box; padding: 56px; display: flex; flex-direction: column; justify-content: space-between;">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <img src="/_blob/bec27a5512453902854ee74f8b5d138a" alt="" style="width: 48px; height: 48px;">
+      <span class="disp" style="font-size: 36px; letter-spacing: 0.04em;">Scaur</span>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      <span class="disp" style="font-size: 76px; line-height: 0.94;">Four layers.<br>One system.</span>
+      <span style="font-size: 22px; line-height: 1.4; color: #4a525b;">A headless Shopify store with a kit builder and thermal views.</span>
+    </div>
+    <div aria-hidden="true" style="height: 8px; background: linear-gradient(90deg, #140c2e, #4a1a78, #a3206f, #e0452b, #f79a2e, #ffe08a);"></div>
+  </div>
+  <div style="display: grid; grid-template-rows: 1fr 1fr;">
+    <img src="/_blob/84932b7070b6f9bba86b98c3b35d7617" alt="" style="width: 580px; height: 315px; object-fit: cover; object-position: center 22%; display: block;">
+    <img src="/_blob/41e8267e57a8306d39cc74e385dc1623" alt="" style="width: 580px; height: 315px; object-fit: cover; object-position: center 22%; display: block;">
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1200,"height":630}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

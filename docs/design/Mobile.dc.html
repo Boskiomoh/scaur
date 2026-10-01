@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Scaur home on a phone</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=Martian+Mono:wdth,wght@75..112.5,100..800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#eef1f3;color:#111418;font-family:'Archivo',system-ui,sans-serif}
+.disp{font-family:'Archivo',sans-serif;font-stretch:112.5%;font-weight:800;text-transform:uppercase;letter-spacing:-0.01em}
+.mono{font-family:'Martian Mono',ui-monospace,monospace;font-stretch:87.5%;font-variant-numeric:tabular-nums}
+a{color:#111418;text-underline-offset:3px}
+button{font-family:inherit;cursor:pointer}
+a:focus-visible,button:focus-visible{outline:2px solid #cf3a1c;outline-offset:2px}
+.btn{height:52px;padding:0 24px;border-radius:999px;border:0;background:#cf3a1c;color:#ffffff;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;white-space:nowrap}
+.btn-2{height:52px;padding:0 24px;border-radius:999px;border:1.5px solid #111418;background:transparent;color:#111418;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;text-decoration:none;white-space:nowrap}
+.icon{width:44px;height:44px;border-radius:999px;border:0;background:transparent;display:flex;align-items:center;justify-content:center}
+</style>
+</helmet>
+<div style="width: 390px; height: 3850px; box-sizing: border-box; background: #eef1f3; display: flex; flex-direction: column;">
+
+  <header style="height: 56px; flex-shrink: 0; box-sizing: border-box; padding: 0 8px 0 16px; display: flex; align-items: center; gap: 4px; border-bottom: 1px solid #cfd5da;">
+    <a href="Mobile.dc.html" aria-label="Scaur home" style="display: flex; align-items: center; gap: 8px; text-decoration: none; margin-right: auto;">
+      <img src="/_blob/bec27a5512453902854ee74f8b5d138a" alt="" style="width: 26px; height: 26px;">
+      <span class="disp" style="font-size: 20px; letter-spacing: 0.04em;">Scaur</span>
+    </a>
+    <a href="MobileSearch.dc.html" class="icon" aria-label="Search"><svg width="22" height="22" viewBox="0 0 256 256" fill="none" stroke="#111418" stroke-width="16" stroke-linecap="round"><circle cx="112" cy="112" r="80"></circle><line x1="168.6" y1="168.6" x2="224" y2="224"></line></svg></a>
+    <a href="MobileCart.dc.html" class="icon" aria-label="Cart, 2 items" style="position: relative;">
+      <svg width="22" height="22" viewBox="0 0 256 256" fill="none" stroke="#111418" stroke-width="16" stroke-linejoin="round"><path d="M40 72h176l-16 136H56z"></path><path d="M88 96V64a40 40 0 0 1 80 0v32" stroke-linecap="round"></path></svg>
+      <span class="mono" style="position: absolute; top: 6px; right: 4px; min-width: 16px; height: 16px; border-radius: 999px; background: #cf3a1c; color: #ffffff; font-size: 10px; display: flex; align-items: center; justify-content: center;">2</span>
+    </a>
+    <a href="MobileMenu.dc.html" class="icon" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 256 256" fill="none" stroke="#111418" stroke-width="16" stroke-linecap="round"><line x1="40" y1="80" x2="216" y2="80"></line><line x1="40" y1="128" x2="216" y2="128"></line><line x1="40" y1="176" x2="216" y2="176"></line></svg></a>
+  </header>
+
+  <section aria-labelledby="m-hero" style="box-sizing: border-box; padding: 28px 16px 40px; display: flex; flex-direction: column; gap: 20px;">
+    <h1 id="m-hero" class="disp" style="margin: 0; font-size: 42px; line-height: 0.96;">Four layers.<br>One system.</h1>
+    <p style="margin: 0; font-size: 17px; line-height: 1.5; color: #4a525b;">Every piece is a base, mid, insulation or shell layer, rated on one temperature scale so kits add up.</p>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <a class="btn" href="MobileKit.dc.html">Build your kit</a>
+      <a class="btn-2" href="MobileCollection.dc.html">Shop layers</a>
+    </div>
+    <figure style="margin: 8px 0 0; display: flex; flex-direction: column; gap: 12px;">
+      <img src="{{heroSrc}}" alt="{{heroAlt}}" style="width: 100%; height: 440px; object-fit: cover; object-position: center 22%; display: block; background: #140c2e;">
+      <figcaption style="display: flex; align-items: center; gap: 12px;">
+        <div role="group" aria-label="Image view" style="display: flex; padding: 3px; border-radius: 999px; background: #dde2e6;">
+          <button type="button" aria-pressed="{{photoPressed}}" onClick="{{showPhoto}}" style="height: 38px; padding: 0 16px; border-radius: 999px; border: 0; font-size: 14px; font-weight: 600; background: {{photoBg}}; color: {{photoFg}};">Photo</button>
+          <button type="button" aria-pressed="{{thermalPressed}}" onClick="{{showThermal}}" style="height: 38px; padding: 0 16px; border-radius: 999px; border: 0; font-size: 14px; font-weight: 600; background: {{thermalBg}}; color: {{thermalFg}};">Thermal</button>
+        </div>
+        <span style="font-size: 13px; color: #4a525b;">{{caption}}</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section aria-labelledby="m-axis" style="box-sizing: border-box; padding: 56px 16px; display: flex; flex-direction: column; gap: 24px;">
+    <h2 id="m-axis" class="disp" style="margin: 0; font-size: 32px; line-height: 1;">One scale for every layer.</h2>
+    <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #4a525b;">Each piece shows the temperatures it is made for. Ratings assume you are moving.</p>
+    <div style="display: flex; flex-direction: column; gap: 6px;">
+      <div aria-hidden="true" style="height: 6px; background: linear-gradient(90deg, #140c2e, #4a1a78, #a3206f, #e0452b, #f79a2e, #ffe08a);"></div>
+      <div class="mono" style="display: flex; justify-content: space-between; font-size: 11px; color: #4a525b;"><span>-10°F</span><span>35°F</span><span>80°F</span></div>
+    </div>
+    <sc-for list="{{rows}}" as="r" hint-placeholder-count="4">
+      <a href="MobileCollection.dc.html" style="display: flex; flex-direction: column; gap: 12px; padding: 16px 0; border-top: 1px solid #cfd5da; text-decoration: none;">
+        <span style="display: flex; align-items: center; gap: 12px;">
+          <img src="{{r.img}}" alt="" style="width: 48px; height: 48px; object-fit: cover; display: block;">
+          <span class="disp" style="font-size: 18px;">{{r.name}}</span>
+          <span style="margin-left: auto; font-size: 14px; color: #4a525b;">{{r.count}} pieces</span>
+        </span>
+        <span style="display: flex; flex-direction: column; gap: 8px;">
+          <sc-for list="{{r.items}}" as="b" hint-placeholder-count="3">
+            <span style="display: flex; flex-direction: column; gap: 4px;">
+              <span style="display: flex; justify-content: space-between; font-size: 13px;"><span>{{b.name}}</span><span class="mono" style="font-size: 11px; color: #4a525b;">{{b.range}}</span></span>
+              <span style="position: relative; display: block; height: 8px; background: #dde2e6;"><span style="position: absolute; top: 0; bottom: 0; left: {{b.left}}%; width: {{b.width}}%; background: {{b.grad}};"></span></span>
+            </span>
+          </sc-for>
+        </span>
+      </a>
+    </sc-for>
+  </section>
+
+  <section aria-labelledby="m-kit" style="box-sizing: border-box; padding: 56px 16px; background: #f8f9fa; display: flex; flex-direction: column; gap: 20px;">
+    <h2 id="m-kit" class="disp" style="margin: 0; font-size: 32px; line-height: 1;">Tell us the day. We'll layer it.</h2>
+    <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #4a525b;">A day hike at 38°F in steady rain gets this kit. Change the day in the kit builder.</p>
+    <div style="display: flex; flex-wrap: wrap; column-gap: 12px; row-gap: 20px;">
+      <sc-for list="{{slots}}" as="k" hint-placeholder-count="4">
+        <div style="width: 173px; display: flex; flex-direction: column; gap: 8px;">
+          <span class="mono" style="font-size: 11px; color: #4a525b;">{{k.layer}}</span>
+          <img src="{{k.img}}" alt="{{k.name}}" style="width: 173px; height: 216px; object-fit: cover; display: block;">
+          <span style="font-size: 14px; font-weight: 600; line-height: 1.3;">{{k.name}}</span>
+          <span class="mono" style="font-size: 12px;">{{k.price}}</span>
+        </div>
+      </sc-for>
+    </div>
+    <a class="btn" href="MobileKit.dc.html">Open the kit builder</a>
+  </section>
+
+  <section aria-labelledby="m-fabric" style="box-sizing: border-box; padding: 56px 0; display: flex; flex-direction: column; gap: 20px;">
+    <h2 id="m-fabric" class="disp" style="margin: 0; padding: 0 16px; font-size: 32px; line-height: 1;">Rain stays on the outside.</h2>
+    <img src="/_blob/da3e743737b8b57a6ca7ffcff7b56458" alt="Water beading on the outer fabric of a shell jacket" style="width: 100%; height: 260px; object-fit: cover; display: block;">
+    <div style="padding: 0 16px; display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; flex-direction: column; gap: 4px;"><span class="mono" style="font-size: 22px;">20,000 mm</span><span style="font-size: 15px; color: #4a525b;">Waterproof rating on Scarp and Downpour fabric.</span></div>
+      <div style="display: flex; flex-direction: column; gap: 4px;"><span class="mono" style="font-size: 22px;">Every seam</span><span style="font-size: 15px; color: #4a525b;">Taped from the inside, hood to hem.</span></div>
+      <p style="margin: 0; font-size: 13px; color: #4a525b;">Figures are illustrative for this demo store.</p>
+    </div>
+  </section>
+
+  <footer style="margin-top: auto; box-sizing: border-box; padding: 32px 16px; border-top: 1px solid #cfd5da; display: flex; flex-direction: column; gap: 20px;">
+    <div style="display: flex; flex-wrap: wrap; column-gap: 20px; row-gap: 12px; font-size: 15px;">
+      <a href="MobileCollection.dc.html">Shop</a><a href="MobileKit.dc.html">Kit builder</a><a href="MobileProduct.dc.html">Size guide</a><a href="Credits.dc.html">Photo credits</a><a href="MobileBuild.dc.html">How this store was built</a>
+    </div>
+    <p style="margin: 0; font-size: 13px; line-height: 1.6; color: #4a525b;">Scaur is a fictional brand made for a portfolio. Products are listed on a Shopify development store; checkout runs in test mode and nothing ships. Specs and thermal views are illustrative. Photography from Unsplash, credited on the <a href="Credits.dc.html" style="color: #4a525b;">credits page</a>.</p>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":3850}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { thermal: false }; }
+  heat(t) {
+    const stops = [[0, [20, 12, 46]], [0.22, [74, 26, 120]], [0.45, [163, 32, 111]], [0.66, [224, 69, 43]], [0.84, [247, 154, 46]], [1, [255, 224, 138]]];
+    const x = Math.max(0, Math.min(1, (t + 10) / 90));
+    for (let i = 0; i < stops.length - 1; i++) { const [a, ca] = stops[i]; const [b, cb] = stops[i + 1]; if (x >= a && x <= b) { const f = (x - a) / (b - a); return 'rgb(' + ca.map((v, k) => Math.round(v + (cb[k] - v) * f)).join(',') + ')'; } }
+    return 'rgb(255,224,138)';
+  }
+  renderVals() {
+    const th = this.state.thermal;
+    const layers = [
+      { name: 'Base', img: '/_blob/2a84d495087e6817caeb32eb1d7ee1bc', items: [['Tarn Merino Crew', 40, 75], ['Tarn Merino Quarter-Zip', 25, 60]] },
+      { name: 'Mid', img: '/_blob/dfe7806815453634e614d4ab33a9397d', items: [['Knoll Grid Fleece', 25, 55], ['Knoll Quarter-Zip', 30, 60], ['Bothy Pile Jacket', 15, 45]] },
+      { name: 'Insulation', img: '/_blob/36c24bbec39a211f8d6a9ceed5dc81f0', items: [['Cornice Down Jacket', -10, 35], ['Belay Hoody', 0, 40]] },
+      { name: 'Shell', img: '/_blob/84932b7070b6f9bba86b98c3b35d7617', items: [['Scarp Shell', -10, 60], ['Ridgeback Softshell', 20, 55], ['Downpour Jacket', 35, 70], ['Squall Jacket', 40, 75]] }
+    ];
+    return {
+      heroSrc: th ? '/_blob/41e8267e57a8306d39cc74e385dc1623' : '/_blob/84932b7070b6f9bba86b98c3b35d7617',
+      heroAlt: th ? 'Illustrative thermal view of a hiker in the Scarp Shell' : 'Hiker in the Scarp Shell in Moss, hood up, water splashing past',
+      caption: th ? 'Illustrative, not a measurement.' : 'Scarp Shell in Moss, $348',
+      photoPressed: th ? 'false' : 'true', thermalPressed: th ? 'true' : 'false',
+      photoBg: th ? 'transparent' : '#111418', photoFg: th ? '#111418' : '#f8f9fa',
+      thermalBg: th ? '#111418' : 'transparent', thermalFg: th ? '#f8f9fa' : '#111418',
+      showPhoto: () => this.setState({ thermal: false }), showThermal: () => this.setState({ thermal: true }),
+      rows: layers.map((l) => ({ name: l.name, img: l.img, count: l.items.length, items: l.items.map(([name, lo, hi]) => ({ name, range: lo + ' to ' + hi + '°F', left: ((lo + 10) / 90) * 100, width: ((hi - lo) / 90) * 100, grad: 'linear-gradient(90deg, ' + this.heat(lo) + ', ' + this.heat(hi) + ')' })) })),
+      slots: [
+        { layer: 'Base', name: 'Tarn Merino Quarter-Zip', price: '$92', img: '/_blob/1e73beefe0ff39801913f01c0693fd53' },
+        { layer: 'Mid', name: 'Knoll Grid Fleece', price: '$118', img: '/_blob/dfe7806815453634e614d4ab33a9397d' },
+        { layer: 'Insulation', name: 'Belay Hoody', price: '$224', img: '/_blob/206fc8c6cfcd6929904e21fe97bf84e6' },
+        { layer: 'Shell', name: 'Scarp Shell', price: '$348', img: '/_blob/84932b7070b6f9bba86b98c3b35d7617' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

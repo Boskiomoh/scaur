@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Scaur search results</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=Martian+Mono:wdth,wght@75..112.5,100..800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#eef1f3;color:#111418;font-family:'Archivo',system-ui,sans-serif}
+.disp{font-family:'Archivo',sans-serif;font-stretch:112.5%;font-weight:800;text-transform:uppercase;letter-spacing:-0.01em}
+.mono{font-family:'Martian Mono',ui-monospace,monospace;font-stretch:87.5%;font-variant-numeric:tabular-nums}
+a{color:#111418;text-underline-offset:3px}a:hover{text-decoration-thickness:2px}
+button,input{font-family:inherit}
+button{cursor:pointer}
+::selection{background:#f79a2e;color:#111418}
+a:focus-visible,button:focus-visible{outline:2px solid #cf3a1c;outline-offset:2px}
+input:focus-visible{outline:none}
+.btn-2{height:40px;padding:0 16px;border-radius:999px;border:1.5px solid #111418;background:transparent;color:#111418;font-size:15px;font-weight:600;display:inline-flex;align-items:center;gap:8px;text-decoration:none;white-space:nowrap}
+.btn-2:hover{background:#111418;color:#f8f9fa}
+.chip{height:40px;padding:0 16px;border-radius:999px;border:1.5px solid #cfd5da;background:#f8f9fa;color:#111418;font-size:14px;font-weight:500;white-space:nowrap}
+.navlink{font-size:15px;font-weight:500;text-decoration:none}
+.navlink:hover{text-decoration:underline}
+.tile{text-decoration:none}
+.tile:hover .tname{text-decoration:underline}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1080px; box-sizing: border-box; background: #eef1f3; display: flex; flex-direction: column;">
+
+  <header style="height: 64px; flex-shrink: 0; box-sizing: border-box; padding: 0 48px; display: flex; align-items: center; gap: 40px; border-bottom: 1px solid #cfd5da;">
+    <a href="Main.dc.html" aria-label="Scaur home" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+      <img src="/_blob/bec27a5512453902854ee74f8b5d138a" alt="" style="width: 28px; height: 28px;">
+      <span class="disp" style="font-size: 22px; letter-spacing: 0.04em;">Scaur</span>
+    </a>
+    <nav aria-label="Main" style="display: flex; gap: 28px; flex-grow: 1;">
+      <a class="navlink" href="Collection.dc.html">Base</a>
+      <a class="navlink" href="Collection.dc.html">Mid</a>
+      <a class="navlink" href="Collection.dc.html">Insulation</a>
+      <a class="navlink" href="Collection.dc.html">Shell</a>
+      <a class="navlink" href="Kit.dc.html">Kit builder</a>
+    </nav>
+    <a href="Search.dc.html" aria-label="Search" style="width: 44px; height: 44px; border-radius: 999px; display: flex; align-items: center; justify-content: center;">
+      <svg width="22" height="22" viewBox="0 0 256 256" fill="none" stroke="#111418" stroke-width="16" stroke-linecap="round"><circle cx="112" cy="112" r="80"></circle><line x1="168.6" y1="168.6" x2="224" y2="224"></line></svg>
+    </a>
+    <a href="Cart.dc.html" class="btn-2">Cart <span class="mono" style="font-size: 13px;">2</span></a>
+  </header>
+
+  <div style="box-sizing: border-box; padding: 48px 48px 24px; display: flex; flex-direction: column; gap: 20px;">
+    <h1 class="disp" style="margin: 0; font-size: 56px; line-height: 1;">Search</h1>
+    <form role="search" aria-label="Search the store" style="display: flex; gap: 12px; align-items: center;">
+      <label for="sq" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Search</label>
+      <div style="width: 560px; height: 52px; box-sizing: border-box; padding: 0 20px; border: 1.5px solid #5f6870; border-radius: 999px; background: #ffffff; display: flex; align-items: center; gap: 12px;">
+        <svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="#111418" stroke-width="16" stroke-linecap="round" aria-hidden="true"><circle cx="112" cy="112" r="80"></circle><line x1="168.6" y1="168.6" x2="224" y2="224"></line></svg>
+        <input id="sq" type="search" value="{{q}}" onChange="{{onQuery}}" style="flex-grow: 1; height: 100%; border: 0; background: transparent; font-size: 17px; color: #111418;">
+      </div>
+      <button type="submit" class="btn-2" style="height: 52px; padding: 0 24px; font-size: 16px;">Search</button>
+    </form>
+  </div>
+
+  <div style="box-sizing: border-box; margin: 0 48px; padding: 16px 0; border-top: 1px solid #cfd5da; border-bottom: 1px solid #cfd5da; display: flex; align-items: center; gap: 16px;">
+    <span role="status" style="font-size: 16px;">{{countLine}}</span>
+    <sc-if value="{{hasItems}}" hint-placeholder-val="{{ true }}">
+      <div role="group" aria-label="Image view" style="margin-left: auto; display: flex; padding: 3px; border-radius: 999px; background: #dde2e6;">
+        <button type="button" aria-pressed="{{photoPressed}}" onClick="{{showPhoto}}" style="height: 34px; padding: 0 14px; border-radius: 999px; border: 0; font-size: 14px; font-weight: 600; background: {{photoBg}}; color: {{photoFg}};">Photo</button>
+        <button type="button" aria-pressed="{{thermalPressed}}" onClick="{{showThermal}}" style="height: 34px; padding: 0 14px; border-radius: 999px; border: 0; font-size: 14px; font-weight: 600; background: {{thermalBg}}; color: {{thermalFg}};">Thermal</button>
+      </div>
+    </sc-if>
+  </div>
+
+  <sc-if value="{{hasItems}}" hint-placeholder-val="{{ true }}">
+    <div style="box-sizing: border-box; padding: 32px 48px 96px; display: flex; flex-wrap: wrap; column-gap: 24px; row-gap: 48px;">
+      <sc-for list="{{items}}" as="p" hint-placeholder-count="4">
+        <a class="tile" href="Product.dc.html" style="width: 318px; display: flex; flex-direction: column; gap: 12px;">
+          <img src="{{p.src}}" alt="{{p.alt}}" style="width: 318px; height: 398px; object-fit: cover; object-position: center 25%; display: block; background: #dde2e6;">
+          <div style="display: flex; justify-content: space-between; gap: 12px;">
+            <span class="tname" style="font-size: 16px; font-weight: 600; line-height: 1.3;">{{p.name}}</span>
+            <span class="mono" style="font-size: 14px;">{{p.price}}</span>
+          </div>
+          <span style="font-size: 14px; color: #4a525b;">{{p.meta}}</span>
+          <div aria-hidden="true" style="position: relative; height: 6px; background: #dde2e6;">
+            <div style="position: absolute; top: 0; bottom: 0; left: {{p.left}}%; width: {{p.width}}%; background: {{p.grad}};"></div>
+          </div>
+          <span class="mono" style="font-size: 12px; color: #4a525b;">{{p.range}}</span>
+        </a>
+      </sc-for>
+    </div>
+  </sc-if>
+  <sc-if value="{{empty}}" hint-placeholder-val="{{ false }}">
+    <div style="box-sizing: border-box; margin: 48px; padding: 64px; background: #f8f9fa; display: flex; flex-direction: column; align-items: flex-start; gap: 16px;">
+      <h2 class="disp" style="margin: 0; font-size: 32px;">No layers match "{{q}}"</h2>
+      <p style="margin: 0; font-size: 17px; color: #4a525b; max-width: 56ch;">Try "down" or "insulation", or search for a temperature like "20°F". You can also browse every layer.</p>
+      <div style="display: flex; gap: 8px;">
+        <button type="button" class="chip" onClick="{{tryDown}}">down</button>
+        <button type="button" class="chip" onClick="{{tryIns}}">insulation</button>
+        <a class="btn-2" href="Collection.dc.html" style="margin-left: 8px;">Shop all layers</a>
+      </div>
+    </div>
+  </sc-if>
+
+  <footer style="margin-top: auto; box-sizing: border-box; padding: 32px 48px; border-top: 1px solid #cfd5da;">
+    <p style="margin: 0; font-size: 13px; line-height: 1.6; color: #4a525b; max-width: 110ch;">Scaur is a fictional brand made for a portfolio. Products are listed on a Shopify development store; checkout runs in test mode and nothing ships. Specs and thermal views are illustrative. Photography from Unsplash, credited on the <a href="Credits.dc.html" style="color: #4a525b;">credits page</a>.</p>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"query":{"editor":"enum","options":["shell","parka"],"default":"shell"},"$preview":{"width":1440,"height":1080}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { q: props.query ?? 'shell', thermal: false }; }
+  heat(t) {
+    const stops = [[0, [20, 12, 46]], [0.22, [74, 26, 120]], [0.45, [163, 32, 111]], [0.66, [224, 69, 43]], [0.84, [247, 154, 46]], [1, [255, 224, 138]]];
+    const x = Math.max(0, Math.min(1, (t + 10) / 90));
+    for (let i = 0; i < stops.length - 1; i++) { const [a, ca] = stops[i]; const [b, cb] = stops[i + 1]; if (x >= a && x <= b) { const f = (x - a) / (b - a); return 'rgb(' + ca.map((v, k) => Math.round(v + (cb[k] - v) * f)).join(',') + ')'; } }
+    return 'rgb(255,224,138)';
+  }
+  renderVals() {
+    const st = this.state;
+    const all = [
+      ['Scarp Shell', 'Shell', 348, -10, 60, 2, '/_blob/84932b7070b6f9bba86b98c3b35d7617', '/_blob/41e8267e57a8306d39cc74e385dc1623', 'Hiker in the Scarp Shell, hood up', 'waterproof rain'],
+      ['Downpour Jacket', 'Shell', 198, 35, 70, 1, '/_blob/4ce58b28d8f003534f47cce552c6a420', '/_blob/d190a2845717e80ff98a6485720495d8', 'The Downpour Jacket in Olive, worn zipped', 'waterproof rain'],
+      ['Squall Jacket', 'Shell', 168, 40, 75, 1, '/_blob/4315f5dfbd8b88c2f4414cc70dddabb0', '/_blob/c8e5ea746d82af0882c71cc6f7126412', 'The Squall Jacket in Ember on a hanger', 'wind rain'],
+      ['Ridgeback Softshell', 'Shell', 188, 20, 55, 1, '/_blob/5ab2f0494db496eccc9cb2e54991d538', '/_blob/1563e66c027aae77820a2d1966658114', 'Walker in the Ridgeback Softshell in Stone', 'wind stretch'],
+      ['Cornice Down Jacket', 'Insulation', 268, -10, 35, 1, '/_blob/36c24bbec39a211f8d6a9ceed5dc81f0', '/_blob/7246359a4a86b1dbdf468e3ea536cf41', 'The Cornice Down Jacket in Signal Red, mountains behind', 'down puffy'],
+      ['Belay Hoody', 'Insulation', 224, 0, 40, 1, '/_blob/206fc8c6cfcd6929904e21fe97bf84e6', '/_blob/78c2e26c5b7c504dec4a643ca0b5a1cb', 'Climber on a boulder in the Belay Hoody in Graphite', 'synthetic puffy climbing'],
+      ['Bothy Pile Jacket', 'Mid', 148, 15, 45, 2, '/_blob/4b0d5d6ec0647d5724b203b294d7b9b0', '/_blob/d70494b834e9343d83b47574b9f55bca', 'The Bothy Pile Jacket in Bark hanging on a wall', 'fleece pile'],
+      ['Knoll Grid Fleece', 'Mid', 118, 25, 55, 1, '/_blob/dfe7806815453634e614d4ab33a9397d', '/_blob/860f9b6f3415a3e8a9868da802c211a2', 'Hiker in the Knoll Grid Fleece in Cobalt', 'fleece grid'],
+      ['Knoll Quarter-Zip', 'Mid', 104, 30, 60, 1, '/_blob/820d381aa536a8b27492db23cb297d3f', '/_blob/b12d1f7b4e22706e4de1369652517b33', 'The Knoll Quarter-Zip in Midnight', 'fleece'],
+      ['Tarn Merino Quarter-Zip', 'Base', 92, 25, 60, 1, '/_blob/1e73beefe0ff39801913f01c0693fd53', '/_blob/98f860ae40833fd55ce9e026a909059b', 'The Tarn Merino Quarter-Zip in Ember, snowy hills behind', 'merino wool'],
+      ['Tarn Merino Crew', 'Base', 78, 40, 75, 1, '/_blob/2a84d495087e6817caeb32eb1d7ee1bc', '/_blob/3341fcfd6ce9a2b6ed902c6fbe3d83e0', 'The Tarn Merino Crew in Slate Blue', 'merino wool']
+    ];
+    const n = st.q.trim().toLowerCase();
+    const items = all.filter((p) => (p[0] + ' ' + p[1] + ' ' + p[9]).toLowerCase().includes(n))
+      .map(([name, layer, price, lo, hi, cols, photo, heat, alt]) => ({
+        name, price: '$' + price, meta: layer + (cols > 1 ? ', ' + cols + ' colours' : ''), range: 'Made for ' + lo + ' to ' + hi + '°F',
+        src: st.thermal ? heat : photo, alt: st.thermal ? 'Illustrative thermal view: ' + alt : alt,
+        left: ((lo + 10) / 90) * 100, width: ((hi - lo) / 90) * 100, grad: 'linear-gradient(90deg, ' + this.heat(lo) + ', ' + this.heat(hi) + ')'
+      }));
+    const set = (v) => () => this.setState({ q: v });
+    return {
+      q: st.q, onQuery: (e) => this.setState({ q: e.target.value }),
+      countLine: items.length + (items.length === 1 ? ' product' : ' products') + ' for "' + st.q.trim() + '"',
+      items, hasItems: items.length > 0, empty: items.length === 0,
+      tryDown: set('down'), tryIns: set('insulation'),
+      photoPressed: st.thermal ? 'false' : 'true', thermalPressed: st.thermal ? 'true' : 'false',
+      photoBg: st.thermal ? 'transparent' : '#111418', photoFg: st.thermal ? '#111418' : '#f8f9fa',
+      thermalBg: st.thermal ? '#111418' : 'transparent', thermalFg: st.thermal ? '#f8f9fa' : '#111418',
+      showPhoto: () => this.setState({ thermal: false }), showThermal: () => this.setState({ thermal: true })
+    };
+  }
+}
+</script>
+</body>
+</html>

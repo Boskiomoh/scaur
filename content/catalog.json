@@ -1,0 +1,342 @@
+{
+  "note": "Seed data for the Shopify development store and the thermal-image map. At runtime Shopify is the source of truth. Specs and ratings are illustrative.",
+  "sizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "XXL"
+  ],
+  "products": [
+    {
+      "handle": "tarn-merino-crew",
+      "title": "Tarn Merino Crew",
+      "layer": "Base",
+      "price": 78,
+      "lo": 40,
+      "hi": 75,
+      "warmth": 1,
+      "grams": 170,
+      "desc": "A lightweight merino crew for moving fast in mild weather. Moves sweat, dries quickly and stays fresh for days.",
+      "colours": [
+        {
+          "name": "Slate Blue",
+          "hex": "#4d6f9a",
+          "photo": "base-blue",
+          "alt": "The Tarn Merino Crew in Slate Blue",
+          "stock": {
+            "XS": 3,
+            "S": 8,
+            "M": 12,
+            "L": 10,
+            "XL": 6,
+            "XXL": 2
+          }
+        }
+      ]
+    },
+    {
+      "handle": "tarn-merino-quarter-zip",
+      "title": "Tarn Merino Quarter-Zip",
+      "layer": "Base",
+      "price": 92,
+      "lo": 25,
+      "hi": 60,
+      "warmth": 2,
+      "grams": 240,
+      "desc": "Midweight merino with a quarter zip to dump heat on the climb. The base layer for cold starts.",
+      "colours": [
+        {
+          "name": "Ember",
+          "hex": "#d8401f",
+          "photo": "base-orange",
+          "alt": "The Tarn Merino Quarter-Zip in Ember, snowy hills behind",
+          "stock": {
+            "XS": 2,
+            "S": 6,
+            "M": 8,
+            "L": 7,
+            "XL": 4,
+            "XXL": 0
+          }
+        }
+      ]
+    },
+    {
+      "handle": "knoll-quarter-zip",
+      "title": "Knoll Quarter-Zip",
+      "layer": "Mid",
+      "price": 104,
+      "lo": 30,
+      "hi": 60,
+      "warmth": 2,
+      "grams": 280,
+      "desc": "A smooth-faced fleece pullover for cool mornings. Layers cleanly under any shell.",
+      "colours": [
+        {
+          "name": "Midnight",
+          "hex": "#1d2533",
+          "photo": "mid-navy-quarterzip",
+          "alt": "The Knoll Quarter-Zip in Midnight",
+          "stock": {
+            "XS": 4,
+            "S": 7,
+            "M": 9,
+            "L": 9,
+            "XL": 5,
+            "XXL": 3
+          }
+        }
+      ]
+    },
+    {
+      "handle": "knoll-grid-fleece",
+      "title": "Knoll Grid Fleece",
+      "layer": "Mid",
+      "price": 118,
+      "lo": 25,
+      "hi": 55,
+      "warmth": 2,
+      "grams": 310,
+      "desc": "Grid-back fleece that traps warmth in the squares and breathes through the channels. The mid layer for working hard.",
+      "colours": [
+        {
+          "name": "Cobalt",
+          "hex": "#2c4bb0",
+          "photo": "mid-blue-fleece",
+          "alt": "Hiker in the Knoll Grid Fleece in Cobalt",
+          "stock": {
+            "XS": 0,
+            "S": 4,
+            "M": 3,
+            "L": 6,
+            "XL": 5,
+            "XXL": 2
+          }
+        }
+      ]
+    },
+    {
+      "handle": "bothy-pile-jacket",
+      "title": "Bothy Pile Jacket",
+      "layer": "Mid",
+      "price": 148,
+      "lo": 15,
+      "hi": 45,
+      "warmth": 3,
+      "grams": 420,
+      "desc": "High-loft pile that stays warm when damp. The mid layer for cold, still days and long stops.",
+      "colours": [
+        {
+          "name": "Bark",
+          "hex": "#6b4a32",
+          "photo": "mid-brown-fleece",
+          "alt": "The Bothy Pile Jacket in Bark hanging on a wooden wall",
+          "stock": {
+            "XS": 2,
+            "S": 5,
+            "M": 6,
+            "L": 4,
+            "XL": 2,
+            "XXL": 1
+          }
+        },
+        {
+          "name": "Oat",
+          "hex": "#e4ddd0",
+          "photo": "mid-cream-pile",
+          "alt": "Walker in the Bothy Pile Jacket in Oat, seen from behind",
+          "stock": {
+            "XS": 1,
+            "S": 3,
+            "M": 0,
+            "L": 5,
+            "XL": 3,
+            "XXL": 2
+          }
+        }
+      ]
+    },
+    {
+      "handle": "belay-hoody",
+      "title": "Belay Hoody",
+      "layer": "Insulation",
+      "price": 224,
+      "lo": 0,
+      "hi": 40,
+      "warmth": 4,
+      "grams": 460,
+      "desc": "Synthetic fill that keeps its warmth in wet snow and drizzle. Cut long, with a hood that fits over a helmet.",
+      "colours": [
+        {
+          "name": "Graphite",
+          "hex": "#23272d",
+          "photo": "insulation-black-climb",
+          "alt": "Climber on a boulder in the Belay Hoody in Graphite",
+          "stock": {
+            "XS": 1,
+            "S": 3,
+            "M": 5,
+            "L": 6,
+            "XL": 4,
+            "XXL": 2
+          }
+        }
+      ]
+    },
+    {
+      "handle": "cornice-down-jacket",
+      "title": "Cornice Down Jacket",
+      "layer": "Insulation",
+      "price": 268,
+      "lo": -10,
+      "hi": 35,
+      "warmth": 5,
+      "grams": 390,
+      "desc": "Down fill in a wind-resistant shell. Pull it on at the top, at camp, or anywhere you stop moving in the cold.",
+      "colours": [
+        {
+          "name": "Signal Red",
+          "hex": "#c8231f",
+          "photo": "insulation-red",
+          "alt": "The Cornice Down Jacket in Signal Red, mountains behind",
+          "stock": {
+            "XS": 2,
+            "S": 4,
+            "M": 5,
+            "L": 5,
+            "XL": 3,
+            "XXL": 1
+          }
+        }
+      ]
+    },
+    {
+      "handle": "squall-jacket",
+      "title": "Squall Jacket",
+      "layer": "Shell",
+      "role": "showers",
+      "price": 168,
+      "lo": 40,
+      "hi": 75,
+      "warmth": 1,
+      "grams": 260,
+      "desc": "Light enough to forget in your pack until the shower comes through. Packs into its own pocket.",
+      "colours": [
+        {
+          "name": "Ember",
+          "hex": "#e0741f",
+          "photo": "shell-orange",
+          "alt": "The Squall Jacket in Ember on a hanger",
+          "stock": {
+            "XS": 2,
+            "S": 5,
+            "M": 6,
+            "L": 6,
+            "XL": 4,
+            "XXL": 2
+          }
+        }
+      ]
+    },
+    {
+      "handle": "ridgeback-softshell",
+      "title": "Ridgeback Softshell",
+      "layer": "Shell",
+      "role": "wind",
+      "price": 188,
+      "lo": 20,
+      "hi": 55,
+      "warmth": 1,
+      "grams": 520,
+      "desc": "Stretch softshell that blocks wind and sheds light rain while it breathes. For dry, gusty days on the ridge.",
+      "colours": [
+        {
+          "name": "Stone",
+          "hex": "#b9b6ad",
+          "photo": "softshell-grey",
+          "alt": "Walker in the Ridgeback Softshell in Stone",
+          "stock": {
+            "XS": 2,
+            "S": 4,
+            "M": 5,
+            "L": 7,
+            "XL": 3,
+            "XXL": 1
+          }
+        }
+      ]
+    },
+    {
+      "handle": "downpour-jacket",
+      "title": "Downpour Jacket",
+      "layer": "Shell",
+      "role": "rain",
+      "price": 198,
+      "lo": 35,
+      "hi": 70,
+      "warmth": 1,
+      "grams": 380,
+      "desc": "A 2.5-layer rain jacket for wet valley walks. Taped seams, a stowable hood and two hand pockets.",
+      "colours": [
+        {
+          "name": "Olive",
+          "hex": "#5b5a3c",
+          "photo": "shell-olive",
+          "alt": "The Downpour Jacket in Olive, worn zipped",
+          "stock": {
+            "XS": 3,
+            "S": 6,
+            "M": 7,
+            "L": 8,
+            "XL": 5,
+            "XXL": 3
+          }
+        }
+      ]
+    },
+    {
+      "handle": "scarp-shell",
+      "title": "Scarp Shell",
+      "layer": "Shell",
+      "role": "storm",
+      "price": 348,
+      "lo": -10,
+      "hi": 60,
+      "warmth": 1,
+      "grams": 450,
+      "desc": "The stormproof one. Three-layer waterproof fabric, taped seams, a hood that fits over a helmet and pit zips for when the climb heats up.",
+      "colours": [
+        {
+          "name": "Moss",
+          "hex": "#3f5a45",
+          "photo": "shell-green-splash",
+          "alt": "Hiker in the Scarp Shell in Moss, hood up, water splashing past",
+          "stock": {
+            "XS": 0,
+            "S": 4,
+            "M": 3,
+            "L": 9,
+            "XL": 2,
+            "XXL": 6
+          }
+        },
+        {
+          "name": "Tide",
+          "hex": "#2d5d8f",
+          "photo": "shell-hood-rain",
+          "alt": "The hood of the Scarp Shell in Tide, seen from behind in light rain",
+          "stock": {
+            "XS": 0,
+            "S": 5,
+            "M": 6,
+            "L": 8,
+            "XL": 1,
+            "XXL": 0
+          }
+        }
+      ]
+    }
+  ]
+}

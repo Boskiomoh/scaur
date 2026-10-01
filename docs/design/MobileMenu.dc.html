@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Scaur menu on a phone</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=Martian+Mono:wdth,wght@75..112.5,100..800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#eef1f3;color:#111418;font-family:'Archivo',system-ui,sans-serif}
+.disp{font-family:'Archivo',sans-serif;font-stretch:112.5%;font-weight:800;text-transform:uppercase;letter-spacing:-0.01em}
+.mono{font-family:'Martian Mono',ui-monospace,monospace;font-stretch:87.5%;font-variant-numeric:tabular-nums}
+a{color:#111418;text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid #cf3a1c;outline-offset:2px}
+.icon{width:44px;height:44px;border-radius:999px;border:0;background:transparent;display:flex;align-items:center;justify-content:center}
+.btn{height:52px;padding:0 24px;border-radius:999px;border:0;background:#cf3a1c;color:#ffffff;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;white-space:nowrap}
+.btn-2{height:52px;padding:0 24px;border-radius:999px;border:1.5px solid #111418;background:transparent;color:#111418;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;white-space:nowrap}
+.layer{display:flex;align-items:center;gap:14px;padding:12px 0;border-top:1px solid #cfd5da;text-decoration:none}
+.small{font-size:16px;padding:10px 0;text-decoration:none}
+</style>
+</helmet>
+<div role="dialog" aria-modal="true" aria-label="Menu" style="width: 390px; height: 844px; box-sizing: border-box; background: #f8f9fa; display: flex; flex-direction: column;">
+  <div style="height: 56px; flex-shrink: 0; box-sizing: border-box; padding: 0 8px 0 16px; display: flex; align-items: center; gap: 4px; border-bottom: 1px solid #cfd5da;">
+    <a href="Mobile.dc.html" aria-label="Scaur home" style="display: flex; align-items: center; gap: 8px; text-decoration: none; margin-right: auto;">
+      <img src="/_blob/bec27a5512453902854ee74f8b5d138a" alt="" style="width: 26px; height: 26px;">
+      <span class="disp" style="font-size: 20px; letter-spacing: 0.04em;">Scaur</span>
+    </a>
+    <a href="Mobile.dc.html" class="icon" aria-label="Close menu">
+      <svg width="22" height="22" viewBox="0 0 256 256" fill="none" stroke="#111418" stroke-width="16" stroke-linecap="round"><line x1="200" y1="56" x2="56" y2="200"></line><line x1="200" y1="200" x2="56" y2="56"></line></svg>
+    </a>
+  </div>
+
+  <nav aria-label="Main" style="flex-grow: 1; box-sizing: border-box; padding: 16px 16px 0; display: flex; flex-direction: column;">
+    <span style="font-size: 14px; font-weight: 600; padding-bottom: 8px;">Shop by layer</span>
+    <sc-for list="{{layers}}" as="l" hint-placeholder-count="4">
+      <a class="layer" href="MobileCollection.dc.html">
+        <img src="{{l.img}}" alt="" style="width: 48px; height: 48px; object-fit: cover; display: block;">
+        <span style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1;">
+          <span class="disp" style="font-size: 22px;">{{l.name}}</span>
+          <span class="mono" style="font-size: 11px; color: #4a525b;">{{l.range}}</span>
+        </span>
+        <svg width="18" height="18" viewBox="0 0 256 256" fill="none" stroke="#111418" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="96 48 176 128 96 208"></polyline></svg>
+      </a>
+    </sc-for>
+    <a class="layer" href="MobileKit.dc.html" style="border-bottom: 1px solid #cfd5da;">
+      <img src="/_blob/fcae06a51e55f833fed9de8bd706edf9" alt="" style="width: 48px; height: 48px; object-fit: cover; object-position: 80% 70%; display: block;">
+      <span style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1;">
+        <span class="disp" style="font-size: 22px;">Kit builder</span>
+        <span style="font-size: 13px; color: #4a525b;">One piece per layer, picked for the day</span>
+      </span>
+      <svg width="18" height="18" viewBox="0 0 256 256" fill="none" stroke="#111418" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="96 48 176 128 96 208"></polyline></svg>
+    </a>
+    <div style="display: flex; flex-direction: column; padding-top: 16px;">
+      <a class="small" href="MobileSearch.dc.html">Search</a>
+      <a class="small" href="MobileProduct.dc.html">Size guide</a>
+      <a class="small" href="Credits.dc.html">Photo credits</a>
+      <a class="small" href="MobileBuild.dc.html">How this store was built</a>
+    </div>
+  </nav>
+
+  <div style="flex-shrink: 0; box-sizing: border-box; padding: 16px; border-top: 1px solid #cfd5da;">
+    <a class="btn-2" href="MobileCart.dc.html">Cart <span class="mono" style="font-size: 14px;">2</span></a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      layers: [
+        { name: 'Base', range: '25 to 75°F', img: '/_blob/2a84d495087e6817caeb32eb1d7ee1bc' },
+        { name: 'Mid', range: '15 to 60°F', img: '/_blob/dfe7806815453634e614d4ab33a9397d' },
+        { name: 'Insulation', range: '-10 to 40°F', img: '/_blob/36c24bbec39a211f8d6a9ceed5dc81f0' },
+        { name: 'Shell', range: '-10 to 75°F', img: '/_blob/84932b7070b6f9bba86b98c3b35d7617' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

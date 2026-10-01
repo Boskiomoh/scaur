@@ -1,0 +1,31 @@
+# dependencies
+node_modules/
+
+# next.js
+.next/
+out/
+
+# build and test output
+build/
+coverage/
+test-results/
+playwright-report/
+blob-report/
+*.tsbuildinfo
+next-env.d.ts
+
+# env files (the Storefront token lives only here and in Vercel)
+.env*.local
+.env
+
+# vercel
+.vercel/
+
+# local tools
+.impeccable/review/
+design/canvas-render/
+
+# os and editor
+.DS_Store
+Thumbs.db
+*.log

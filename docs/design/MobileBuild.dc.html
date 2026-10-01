@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>How the Scaur store was built, on a phone</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=Martian+Mono:wdth,wght@75..112.5,100..800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#eef1f3;color:#111418;font-family:'Archivo',system-ui,sans-serif}
+.disp{font-family:'Archivo',sans-serif;font-stretch:112.5%;font-weight:800;text-transform:uppercase;letter-spacing:-0.01em}
+.mono{font-family:'Martian Mono',ui-monospace,monospace;font-stretch:87.5%;font-variant-numeric:tabular-nums}
+a{color:#111418;text-underline-offset:3px}
+::selection{background:#f79a2e;color:#111418}
+a:focus-visible{outline:2px solid #cf3a1c;outline-offset:2px}
+.icon{width:44px;height:44px;border-radius:999px;border:0;background:transparent;display:flex;align-items:center;justify-content:center}
+.btn{height:52px;padding:0 24px;border-radius:999px;border:0;background:#cf3a1c;color:#ffffff;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;text-decoration:none;white-space:nowrap}
+.btn-2{height:52px;padding:0 24px;border-radius:999px;border:1.5px solid #111418;background:transparent;color:#111418;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;text-decoration:none;white-space:nowrap}
+.h2{margin:0;font-size:28px;line-height:1}
+.works{display:flex;flex-direction:column;gap:4px;padding:14px 0;border-top:1px solid #cfd5da;text-decoration:none}
+.item{display:flex;flex-direction:column;gap:4px;padding:12px 0;border-top:1px solid #cfd5da;font-size:15px;line-height:1.5}
+.trow{display:grid;grid-template-columns:minmax(0,1fr) 92px 72px;padding:10px 14px;font-size:14px;border-top:1px solid #dde2e6}
+</style>
+</helmet>
+<div style="width: 390px; height: 4830px; box-sizing: border-box; background: #eef1f3; display: flex; flex-direction: column;">
+
+  <header style="height: 56px; flex-shrink: 0; box-sizing: border-box; padding: 0 8px 0 16px; display: flex; align-items: center; gap: 4px; border-bottom: 1px solid #cfd5da;">
+    <a href="Mobile.dc.html" aria-label="Scaur home" style="display: flex; align-items: center; gap: 8px; text-decoration: none; margin-right: auto;">
+      <img src="/_blob/bec27a5512453902854ee74f8b5d138a" alt="" style="width: 26px; height: 26px;">
+      <span class="disp" style="font-size: 20px; letter-spacing: 0.04em;">Scaur</span>
+    </a>
+    <a href="MobileSearch.dc.html" class="icon" aria-label="Search"><svg width="22" height="22" viewBox="0 0 256 256" fill="none" stroke="#111418" stroke-width="16" stroke-linecap="round"><circle cx="112" cy="112" r="80"></circle><line x1="168.6" y1="168.6" x2="224" y2="224"></line></svg></a>
+    <a href="MobileCart.dc.html" class="icon" aria-label="Cart, 2 items" style="position: relative;">
+      <svg width="22" height="22" viewBox="0 0 256 256" fill="none" stroke="#111418" stroke-width="16" stroke-linejoin="round"><path d="M40 72h176l-16 136H56z"></path><path d="M88 96V64a40 40 0 0 1 80 0v32" stroke-linecap="round"></path></svg>
+      <span class="mono" style="position: absolute; top: 6px; right: 4px; min-width: 16px; height: 16px; border-radius: 999px; background: #cf3a1c; color: #ffffff; font-size: 10px; display: flex; align-items: center; justify-content: center;">2</span>
+    </a>
+    <a href="MobileMenu.dc.html" class="icon" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 256 256" fill="none" stroke="#111418" stroke-width="16" stroke-linecap="round"><line x1="40" y1="80" x2="216" y2="80"></line><line x1="40" y1="128" x2="216" y2="128"></line><line x1="40" y1="176" x2="216" y2="176"></line></svg></a>
+  </header>
+
+  <main style="box-sizing: border-box; padding: 28px 16px 64px; display: flex; flex-direction: column; gap: 56px;">
+    <div style="display: flex; flex-direction: column; gap: 18px;">
+      <h1 class="disp" style="margin: 0; font-size: 40px; line-height: 0.96;">How this store was built</h1>
+      <p style="margin: 0; font-size: 17px; line-height: 1.5; color: #4a525b;">Scaur is a headless Shopify storefront for a fictional brand of mountain clothing, sold as a layering system. Products, prices, stock and the checkout come from a real Shopify development store. A portfolio project by Daniel Omoyibo.</p>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <a class="btn" href="#">Read the fidelity report</a>
+        <a class="btn-2" href="#">Source code on GitHub</a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px; padding: 20px; background: #f8f9fa;">
+        <span style="font-size: 14px; font-weight: 600;">The one-minute test</span>
+        <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4a525b;">Build a kit, add it to the cart in one tap, and reach Shopify's checkout in under a minute, on this phone. That is the bar this store was built to.</p>
+        <a href="MobileKit.dc.html" style="font-size: 15px; font-weight: 600;">Start with the kit builder</a>
+      </div>
+    </div>
+
+    <section aria-labelledby="mw-h" style="display: flex; flex-direction: column; gap: 12px;">
+      <h2 id="mw-h" class="disp h2">What actually works</h2>
+      <p style="margin: 0 0 6px; font-size: 16px; line-height: 1.55; color: #4a525b;">The hard parts of a store, done against a real Shopify backend rather than mock data.</p>
+      <div style="display: flex; flex-direction: column; border-bottom: 1px solid #cfd5da;">
+        <sc-for list="{{works}}" as="w" hint-placeholder-count="7">
+          <a class="works" href="{{w.href}}">
+            <span style="font-size: 13px; color: #4a525b;">{{w.where}}</span>
+            <span style="font-size: 16px; font-weight: 600;">{{w.title}}</span>
+            <span style="font-size: 15px; line-height: 1.5; color: #4a525b;">{{w.body}}</span>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <section aria-labelledby="ms-h" style="display: flex; flex-direction: column; gap: 24px;">
+      <h2 id="ms-h" class="disp h2">Two ideas of its own</h2>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <img src="/_blob/41e8267e57a8306d39cc74e385dc1623" alt="Illustrative thermal view of a hiker in the Scarp Shell" style="width: 100%; height: 220px; object-fit: cover; object-position: center 30%; display: block;">
+        <span style="font-size: 17px; font-weight: 600;">Thermal view</span>
+        <span style="font-size: 15px; line-height: 1.55; color: #4a525b;">Any product photo flips into an illustrative thermal image, and every piece is rated on one temperature scale from -10 to 80°F, so you see what a layer is for.</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <img src="/_blob/fcae06a51e55f833fed9de8bd706edf9" alt="Illustrative thermal view of a hiker wearing a full kit" style="width: 100%; height: 220px; object-fit: cover; object-position: 75% 50%; display: block;">
+        <span style="font-size: 17px; font-weight: 600;">Kit builder</span>
+        <span style="font-size: 15px; line-height: 1.55; color: #4a525b;">Pick the activity, temperature, rain and wind. The rules choose one piece per layer, skip what isn't needed, and the whole kit goes into the cart in one action.</span>
+      </div>
+    </section>
+
+    <section aria-labelledby="mstack-h" style="display: flex; flex-direction: column; gap: 12px;">
+      <h2 id="mstack-h" class="disp h2">The stack</h2>
+      <div style="display: flex; flex-direction: column; border-bottom: 1px solid #cfd5da;">
+        <div class="item"><span style="font-weight: 600;">Framework</span><span style="color: #4a525b;">Next.js 16 with the App Router, Server Components and Server Actions; React 19; TypeScript in strict mode.</span></div>
+        <div class="item"><span style="font-weight: 600;">Commerce</span><span style="color: #4a525b;">Shopify Storefront API on a development store, called from the server with a private token. No Shopify SDK: one typed fetch wrapper.</span></div>
+        <div class="item"><span style="font-weight: 600;">Data checks</span><span style="color: #4a525b;">Zod parses every Storefront response and URL parameter.</span></div>
+        <div class="item"><span style="font-weight: 600;">Styling</span><span style="color: #4a525b;">Tailwind CSS v4, with the design's colours, type and spacing as tokens.</span></div>
+        <div class="item"><span style="font-weight: 600;">Tests</span><span style="color: #4a525b;">Vitest for the kit rules and the catalogue parser; Playwright end-to-end tests with an axe accessibility check on every page.</span></div>
+        <div class="item"><span style="font-weight: 600;">Hosting</span><span style="color: #4a525b;">Vercel Hobby. No paid apps or services: it costs $0 a month to run.</span></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="mt-h" style="display: flex; flex-direction: column; gap: 12px;">
+      <h2 id="mt-h" class="disp h2">Targets and results</h2>
+      <div role="table" aria-labelledby="mt-h" style="display: flex; flex-direction: column; background: #f8f9fa;">
+        <div role="row" class="trow" style="border-top: 0; font-size: 13px; font-weight: 600;">
+          <span role="columnheader">Lighthouse, mobile</span><span role="columnheader" style="text-align: right;">Target</span><span role="columnheader" style="text-align: right;">Measured</span>
+        </div>
+        <sc-for list="{{targets}}" as="t" hint-placeholder-count="8">
+          <div role="row" class="trow">
+            <span role="rowheader">{{t.name}}</span><span role="cell" class="mono" style="text-align: right; font-size: 12px;">{{t.target}}</span><span role="cell" class="mono" style="text-align: right; font-size: 12px; color: #4a525b;">{{t.result}}</span>
+          </div>
+        </sc-for>
+      </div>
+      <span style="font-size: 13px; color: #4a525b;">Targets come from the project brief. Results are filled in after launch, with the date and commit they were measured on.</span>
+    </section>
+
+    <section aria-labelledby="md-h" style="display: flex; flex-direction: column; gap: 12px;">
+      <h2 id="md-h" class="disp h2">Design to code</h2>
+      <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4a525b;">Every page was designed first, at 1440, 768 and 390 pixels wide, along with search, the cart, the menu and every empty, loading and error state. The build is screenshotted at the same widths and compared with the design pixel by pixel.</p>
+      <div role="table" aria-label="Design match by page and width" style="display: flex; flex-direction: column; background: #f8f9fa;">
+        <div role="row" style="display: grid; grid-template-columns: minmax(0, 1fr) repeat(3, 56px); padding: 10px 14px; font-size: 13px; font-weight: 600;">
+          <span role="columnheader">Design match</span><span role="columnheader" class="mono" style="text-align: right; font-size: 11px;">1440</span><span role="columnheader" class="mono" style="text-align: right; font-size: 11px;">768</span><span role="columnheader" class="mono" style="text-align: right; font-size: 11px;">390</span>
+        </div>
+        <sc-for list="{{pages}}" as="p" hint-placeholder-count="4">
+          <div role="row" style="display: grid; grid-template-columns: minmax(0, 1fr) repeat(3, 56px); padding: 9px 14px; font-size: 14px; border-top: 1px solid #dde2e6;">
+            <span role="rowheader">{{p}}</span><span role="cell" class="mono" style="text-align: right; font-size: 12px; color: #4a525b;">[%]</span><span role="cell" class="mono" style="text-align: right; font-size: 12px; color: #4a525b;">[%]</span><span role="cell" class="mono" style="text-align: right; font-size: 12px; color: #4a525b;">[%]</span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section aria-labelledby="mn-h" style="display: flex; flex-direction: column; gap: 14px;">
+      <h2 id="mn-h" class="disp h2">What it doesn't do</h2>
+      <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 15px; line-height: 1.55; color: #4a525b;">
+        <li>No real payments or shipping. Checkout runs in Shopify's test mode.</li>
+        <li>No customer accounts, wishlists or subscriptions.</li>
+        <li>No reviews, ratings or customer counts: nothing here pretends to be real.</li>
+        <li>Thermal views and temperature ratings are illustrative, not lab results.</li>
+        <li>Not indexed by search engines, because Scaur isn't a real shop.</li>
+        <li>No custom checkout: Shopify's hosted checkout is used, as it should be.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer style="margin-top: auto; box-sizing: border-box; padding: 32px 16px; border-top: 1px solid #cfd5da; display: flex; flex-direction: column; gap: 20px;">
+    <div style="display: flex; flex-wrap: wrap; column-gap: 20px; row-gap: 12px; font-size: 15px;">
+      <a href="MobileCollection.dc.html">Shop</a><a href="MobileKit.dc.html">Kit builder</a><a href="MobileProduct.dc.html">Size guide</a><a href="Credits.dc.html">Photo credits</a><a href="MobileBuild.dc.html">How this store was built</a>
+    </div>
+    <p style="margin: 0; font-size: 13px; line-height: 1.6; color: #4a525b;">Scaur is a fictional brand made for a portfolio. Products are listed on a Shopify development store; checkout runs in test mode and nothing ships. Specs and thermal views are illustrative. Photography from Unsplash, credited on the <a href="Credits.dc.html" style="color: #4a525b;">credits page</a>.</p>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":4830}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      works: [
+        { title: 'Colour and size variants with live stock', body: 'Sold-out sizes stay visible but can\'t be chosen; "Only 3 left in M" comes from real inventory.', where: 'Product page', href: 'MobileProduct.dc.html' },
+        { title: 'A whole kit added in one action', body: 'Four lines go into the cart together and stay grouped as a kit you can edit.', where: 'Kit builder', href: 'MobileKit.dc.html' },
+        { title: 'Filters that live in the URL', body: 'Layer, temperature and Photo or Thermal are in the address, so a shared link opens the same view.', where: 'Shop', href: 'MobileCollection.dc.html' },
+        { title: 'Quantity limits from real inventory', body: 'The plus button stops at the stock Shopify reports; failed updates roll back with a clear message.', where: 'Cart', href: 'MobileCart.dc.html' },
+        { title: 'A cart that survives a reload', body: 'The cart lives on Shopify and is found again from a secure cookie.', where: 'Cart', href: 'MobileCart.dc.html' },
+        { title: 'Predictive search', body: 'Results as you type, by name, layer, fabric or temperature, all by keyboard.', where: 'Search', href: 'MobileSearch.dc.html' },
+        { title: "Shopify's real checkout, in test mode", body: 'The cart hands over to Shopify. No card is charged and nothing ships.', where: 'Checkout', href: 'MobileCart.dc.html' }
+      ],
+      targets: [
+        { name: 'Performance', target: '90+', result: '[ ]' },
+        { name: 'Accessibility', target: '100', result: '[ ]' },
+        { name: 'Best Practices', target: '100', result: '[ ]' },
+        { name: 'SEO', target: '100', result: '[ ]' },
+        { name: 'Largest paint (LCP)', target: '< 2.0 s', result: '[ ]' },
+        { name: 'Layout shift (CLS)', target: '< 0.02', result: '[ ]' },
+        { name: 'Initial JavaScript', target: '< 120 KB', result: '[ ]' },
+        { name: 'Running cost', target: '$0 / month', result: '[ ]' }
+      ],
+      pages: ['Home', 'Shop', 'Product', 'Kit builder']
+    };
+  }
+}
+</script>
+</body>
+</html>

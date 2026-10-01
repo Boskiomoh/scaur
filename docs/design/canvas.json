@@ -1,0 +1,286 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "Main.dc.html": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 4560,
+      "title": "Home, desktop",
+      "is_interactive": true
+    },
+    "Product.dc.html": {
+      "x": 1520,
+      "y": 0,
+      "w": 1440,
+      "h": 1720,
+      "title": "Product page",
+      "is_interactive": true
+    },
+    "Collection.dc.html": {
+      "x": 3040,
+      "y": 0,
+      "w": 1440,
+      "h": 2160,
+      "title": "Collection with filters",
+      "is_interactive": true
+    },
+    "Kit.dc.html": {
+      "x": 4560,
+      "y": 0,
+      "w": 1440,
+      "h": 1220,
+      "title": "Kit builder",
+      "is_interactive": true
+    },
+    "Cart.dc.html": {
+      "x": 6080,
+      "y": 0,
+      "w": 1440,
+      "h": 960,
+      "title": "Cart drawer and test-checkout notice",
+      "is_interactive": true
+    },
+    "Search.dc.html": {
+      "x": 7600,
+      "y": 0,
+      "w": 1440,
+      "h": 960,
+      "title": "Search overlay",
+      "is_interactive": true
+    },
+    "SearchResults.dc.html": {
+      "x": 9120,
+      "y": 0,
+      "w": 1440,
+      "h": 1080,
+      "title": "Search results",
+      "is_interactive": true
+    },
+    "NotFound.dc.html": {
+      "x": 10640,
+      "y": 0,
+      "w": 1440,
+      "h": 940,
+      "title": "404",
+      "is_interactive": true
+    },
+    "Credits.dc.html": {
+      "x": 12160,
+      "y": 0,
+      "w": 1440,
+      "h": 2090,
+      "title": "Credits",
+      "is_interactive": true
+    },
+    "Build.dc.html": {
+      "x": 13680,
+      "y": 0,
+      "w": 1440,
+      "h": 2870,
+      "title": "How this store was built",
+      "is_interactive": true
+    },
+    "TabletHome.dc.html": {
+      "x": 0,
+      "y": 4980,
+      "w": 768,
+      "h": 4890,
+      "title": "Home, tablet",
+      "is_interactive": true
+    },
+    "TabletProduct.dc.html": {
+      "x": 848,
+      "y": 4980,
+      "w": 768,
+      "h": 2340,
+      "title": "Product page, tablet",
+      "is_interactive": true
+    },
+    "TabletCollection.dc.html": {
+      "x": 1696,
+      "y": 4980,
+      "w": 768,
+      "h": 2260,
+      "title": "Collection, tablet",
+      "is_interactive": true
+    },
+    "Mobile.dc.html": {
+      "x": 0,
+      "y": 10290,
+      "w": 390,
+      "h": 3850,
+      "title": "Home, phone",
+      "is_interactive": true
+    },
+    "MobileMenu.dc.html": {
+      "x": 470,
+      "y": 10290,
+      "w": 390,
+      "h": 844,
+      "title": "Menu, phone",
+      "is_interactive": true
+    },
+    "MobileSearch.dc.html": {
+      "x": 940,
+      "y": 10290,
+      "w": 390,
+      "h": 844,
+      "title": "Search, phone",
+      "is_interactive": true
+    },
+    "MobileProduct.dc.html": {
+      "x": 1410,
+      "y": 10290,
+      "w": 390,
+      "h": 2500,
+      "title": "Product page, phone",
+      "is_interactive": true
+    },
+    "MobileCollection.dc.html": {
+      "x": 1880,
+      "y": 10290,
+      "w": 390,
+      "h": 2630,
+      "title": "Collection, phone",
+      "is_interactive": true
+    },
+    "MobileKit.dc.html": {
+      "x": 2350,
+      "y": 10290,
+      "w": 390,
+      "h": 2370,
+      "title": "Kit builder, phone",
+      "is_interactive": true
+    },
+    "MobileCart.dc.html": {
+      "x": 2820,
+      "y": 10290,
+      "w": 390,
+      "h": 844,
+      "title": "Cart, phone",
+      "is_interactive": true
+    },
+    "Brand.dc.html": {
+      "x": 0,
+      "y": 15540,
+      "w": 1440,
+      "h": 1180,
+      "title": "Brand"
+    },
+    "States.dc.html": {
+      "x": 1520,
+      "y": 15540,
+      "w": 1440,
+      "h": 2226,
+      "title": "Loading and error states"
+    },
+    "OGCard.dc.html": {
+      "x": 3040,
+      "y": 15540,
+      "w": 1200,
+      "h": 630,
+      "title": "Social card 1200x630"
+    },
+    "TabletKit.dc.html": {
+      "x": 2544,
+      "y": 4980,
+      "w": 768,
+      "h": 1590,
+      "title": "Kit builder, tablet",
+      "is_interactive": true
+    },
+    "TabletCart.dc.html": {
+      "x": 3392,
+      "y": 4980,
+      "w": 768,
+      "h": 1024,
+      "title": "Cart, tablet",
+      "is_interactive": true
+    },
+    "MobileBuild.dc.html": {
+      "x": 3290,
+      "y": 10290,
+      "w": 390,
+      "h": 4830,
+      "title": "How this store was built, phone",
+      "is_interactive": true
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-09-23T20:50:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "canvas"
+  },
+  "notes": {
+    "shape-8az5mh": {
+      "kind": "line",
+      "x": 1643,
+      "x2": 1803,
+      "y": -401,
+      "y2": -401
+    },
+    "row-desktop": {
+      "x": 0,
+      "y": -300,
+      "text": "Desktop, 1440",
+      "kind": "title1",
+      "maxW": 15120
+    },
+    "row-tablet": {
+      "x": 0,
+      "y": 4680,
+      "text": "Tablet, 768",
+      "kind": "title1",
+      "maxW": 4160
+    },
+    "row-phone": {
+      "x": 0,
+      "y": 9990,
+      "text": "Phone, 390",
+      "kind": "title1",
+      "maxW": 3680
+    },
+    "row-system": {
+      "x": 0,
+      "y": 15240,
+      "text": "System and states",
+      "kind": "title1",
+      "maxW": 4240
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Product.dc.html",
+    "Collection.dc.html",
+    "Kit.dc.html",
+    "Cart.dc.html",
+    "Search.dc.html",
+    "SearchResults.dc.html",
+    "NotFound.dc.html",
+    "Credits.dc.html",
+    "Build.dc.html",
+    "TabletHome.dc.html",
+    "TabletProduct.dc.html",
+    "TabletCollection.dc.html",
+    "TabletKit.dc.html",
+    "TabletCart.dc.html",
+    "Mobile.dc.html",
+    "MobileMenu.dc.html",
+    "MobileSearch.dc.html",
+    "MobileProduct.dc.html",
+    "MobileCollection.dc.html",
+    "MobileKit.dc.html",
+    "MobileCart.dc.html",
+    "MobileBuild.dc.html",
+    "Brand.dc.html",
+    "States.dc.html",
+    "OGCard.dc.html"
+  ],
+  "pages": [],
+  "title": "Scaur Storefront"
+}

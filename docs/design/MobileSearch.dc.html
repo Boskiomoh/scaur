@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Scaur search on a phone</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=Martian+Mono:wdth,wght@75..112.5,100..800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#eef1f3;color:#111418;font-family:'Archivo',system-ui,sans-serif}
+.disp{font-family:'Archivo',sans-serif;font-stretch:112.5%;font-weight:800;text-transform:uppercase;letter-spacing:-0.01em}
+.mono{font-family:'Martian Mono',ui-monospace,monospace;font-stretch:87.5%;font-variant-numeric:tabular-nums}
+a{color:#111418;text-underline-offset:3px}
+button,input{font-family:inherit}
+button{cursor:pointer}
+a:focus-visible,button:focus-visible{outline:2px solid #cf3a1c;outline-offset:2px}
+input:focus-visible{outline:none}
+.chip{height:40px;padding:0 16px;border-radius:999px;border:1.5px solid #cfd5da;background:#f8f9fa;color:#111418;font-size:14px;font-weight:500;white-space:nowrap}
+.opt{display:grid;grid-template-columns:56px minmax(0,1fr) auto;column-gap:14px;align-items:center;padding:10px 16px;text-decoration:none;border-top:1px solid #cfd5da}
+</style>
+</helmet>
+<div role="dialog" aria-modal="true" aria-label="Search the store" style="width: 390px; height: 844px; box-sizing: border-box; background: #f8f9fa; display: flex; flex-direction: column;">
+  <div style="height: 72px; flex-shrink: 0; box-sizing: border-box; padding: 0 8px 0 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #cfd5da;">
+    <div style="flex-grow: 1; height: 48px; box-sizing: border-box; padding: 0 16px; border: 1.5px solid #111418; border-radius: 999px; background: #ffffff; display: flex; align-items: center; gap: 10px;">
+      <svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="#111418" stroke-width="16" stroke-linecap="round" aria-hidden="true"><circle cx="112" cy="112" r="80"></circle><line x1="168.6" y1="168.6" x2="224" y2="224"></line></svg>
+      <label for="mq" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Search</label>
+      <input id="mq" type="search" role="combobox" aria-expanded="{{expandedStr}}" aria-controls="mresults" aria-autocomplete="list" placeholder="Search layers" value="{{q}}" onChange="{{onQuery}}" style="flex-grow: 1; min-width: 0; height: 100%; border: 0; background: transparent; font-size: 17px; color: #111418;">
+    </div>
+    <a href="Mobile.dc.html" style="height: 44px; padding: 0 8px; display: flex; align-items: center; font-size: 15px; font-weight: 600;">Cancel</a>
+  </div>
+
+  <div style="flex-grow: 1; box-sizing: border-box; padding: 20px 0; display: flex; flex-direction: column; gap: 14px;">
+    <sc-if value="{{showResults}}" hint-placeholder-val="{{ true }}">
+      <div style="padding: 0 16px; display: flex; justify-content: space-between; align-items: baseline;">
+        <span style="font-size: 14px; font-weight: 600;">Products</span>
+        <span role="status" class="mono" style="font-size: 12px; color: #4a525b;">{{countLabel}}</span>
+      </div>
+      <div id="mresults" role="listbox" aria-label="Products" style="display: flex; flex-direction: column; border-bottom: 1px solid #cfd5da;">
+        <sc-for list="{{results}}" as="r" hint-placeholder-count="4">
+          <a role="option" aria-selected="false" href="MobileProduct.dc.html" class="opt">
+            <img src="{{r.img}}" alt="" style="width: 56px; height: 70px; object-fit: cover; object-position: center 25%; display: block; background: #dde2e6;">
+            <span style="display: flex; flex-direction: column; gap: 4px; min-width: 0;">
+              <span style="font-size: 16px; font-weight: 600;">{{r.name}}</span>
+              <span style="font-size: 13px; color: #4a525b;">{{r.layer}} <span class="mono" style="font-size: 11px;">{{r.range}}</span></span>
+            </span>
+            <span class="mono" style="font-size: 14px;">{{r.price}}</span>
+          </a>
+        </sc-for>
+      </div>
+      <a href="SearchResults.dc.html" style="margin: 4px 16px 0; font-size: 16px; font-weight: 600;">{{allLabel}}</a>
+    </sc-if>
+
+    <sc-if value="{{showNone}}" hint-placeholder-val="{{ false }}">
+      <div style="margin: 0 16px; box-sizing: border-box; padding: 24px; background: #eef1f3; display: flex; flex-direction: column; align-items: flex-start; gap: 12px;">
+        <h2 class="disp" style="margin: 0; font-size: 24px; line-height: 1.05;">No layers match "{{q}}"</h2>
+        <p role="status" style="margin: 0; font-size: 16px; line-height: 1.5; color: #4a525b;">Try "down" or "insulation", or a temperature like "20°F".</p>
+        <div style="display: flex; gap: 8px;">
+          <button type="button" class="chip" onClick="{{tryDown}}">down</button>
+          <button type="button" class="chip" onClick="{{tryIns}}">insulation</button>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{showStart}}" hint-placeholder-val="{{ false }}">
+      <div style="padding: 0 16px; display: flex; flex-direction: column; gap: 12px;">
+        <span style="font-size: 14px; font-weight: 600;">Popular searches</span>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <sc-for list="{{popular}}" as="p" hint-placeholder-count="5">
+            <button type="button" class="chip" onClick="{{p.pick}}">{{p.label}}</button>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"query":{"editor":"enum","options":["shell","","parka"],"default":"shell"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { q: props.query ?? 'shell' }; }
+  renderVals() {
+    const q = this.state.q;
+    const all = [
+      ['Scarp Shell', 'Shell', 348, -10, 60, '/_blob/84932b7070b6f9bba86b98c3b35d7617', 'waterproof rain'],
+      ['Downpour Jacket', 'Shell', 198, 35, 70, '/_blob/4ce58b28d8f003534f47cce552c6a420', 'waterproof rain'],
+      ['Squall Jacket', 'Shell', 168, 40, 75, '/_blob/4315f5dfbd8b88c2f4414cc70dddabb0', 'wind rain'],
+      ['Ridgeback Softshell', 'Shell', 188, 20, 55, '/_blob/5ab2f0494db496eccc9cb2e54991d538', 'wind stretch'],
+      ['Cornice Down Jacket', 'Insulation', 268, -10, 35, '/_blob/36c24bbec39a211f8d6a9ceed5dc81f0', 'down puffy'],
+      ['Belay Hoody', 'Insulation', 224, 0, 40, '/_blob/206fc8c6cfcd6929904e21fe97bf84e6', 'synthetic puffy climbing'],
+      ['Bothy Pile Jacket', 'Mid', 148, 15, 45, '/_blob/4b0d5d6ec0647d5724b203b294d7b9b0', 'fleece pile'],
+      ['Knoll Grid Fleece', 'Mid', 118, 25, 55, '/_blob/dfe7806815453634e614d4ab33a9397d', 'fleece grid'],
+      ['Knoll Quarter-Zip', 'Mid', 104, 30, 60, '/_blob/820d381aa536a8b27492db23cb297d3f', 'fleece'],
+      ['Tarn Merino Quarter-Zip', 'Base', 92, 25, 60, '/_blob/1e73beefe0ff39801913f01c0693fd53', 'merino wool'],
+      ['Tarn Merino Crew', 'Base', 78, 40, 75, '/_blob/2a84d495087e6817caeb32eb1d7ee1bc', 'merino wool']
+    ];
+    const n = q.trim().toLowerCase();
+    const deg = parseInt(n, 10);
+    const hits = n === '' ? [] : all.filter(([name, layer, , lo, hi, , words]) => (!isNaN(deg) && /°|f$|^-?\d+$/.test(n) ? deg >= lo && deg <= hi : (name + ' ' + layer + ' ' + words).toLowerCase().includes(n)));
+    const set = (v) => () => this.setState({ q: v });
+    return {
+      q, expandedStr: hits.length ? 'true' : 'false', onQuery: (e) => this.setState({ q: e.target.value }),
+      showResults: hits.length > 0, showNone: n !== '' && hits.length === 0, showStart: n === '',
+      results: hits.slice(0, 5).map(([name, layer, price, lo, hi, img]) => ({ name, price: '$' + price, img, layer, range: lo + ' to ' + hi + '°F' })),
+      countLabel: hits.length + (hits.length === 1 ? ' product' : ' products'),
+      allLabel: 'See all ' + hits.length + ' results',
+      tryDown: set('down'), tryIns: set('insulation'),
+      popular: ['shell', 'merino', 'down', 'fleece', '20°F'].map((label) => ({ label, pick: set(label) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

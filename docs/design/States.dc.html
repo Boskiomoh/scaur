@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Scaur loading and error states</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=Martian+Mono:wdth,wght@75..112.5,100..800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#eef1f3;color:#111418;font-family:'Archivo',system-ui,sans-serif}
+.disp{font-family:'Archivo',sans-serif;font-stretch:112.5%;font-weight:800;text-transform:uppercase;letter-spacing:-0.01em}
+.mono{font-family:'Martian Mono',ui-monospace,monospace;font-stretch:87.5%;font-variant-numeric:tabular-nums}
+a{color:#111418;text-underline-offset:3px}
+button{font-family:inherit;cursor:pointer}
+a:focus-visible,button:focus-visible{outline:2px solid #cf3a1c;outline-offset:2px}
+.btn{height:52px;padding:0 24px;border-radius:999px;border:0;background:#cf3a1c;color:#ffffff;font-size:16px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;white-space:nowrap}
+.btn-2{height:44px;padding:0 20px;border-radius:999px;border:1.5px solid #111418;background:transparent;color:#111418;font-size:15px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;white-space:nowrap}
+.sk{background:#dde2e6}
+.lbl{font-size:13px;color:#4a525b}
+.h{font-size:15px;font-weight:600}
+.step{width:36px;height:36px;border:0;background:transparent;display:inline-flex;align-items:center;justify-content:center;border-radius:999px}
+</style>
+</helmet>
+<div style="width: 1440px; height: 2226px; box-sizing: border-box; padding: 64px 48px; background: #eef1f3; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 64px; align-content: start;">
+
+  <div style="grid-column: 1 / -1; display: flex; flex-direction: column; gap: 12px;">
+    <h1 class="disp" style="margin: 0; font-size: 48px; line-height: 1;">States</h1>
+    <p style="margin: 0; font-size: 17px; color: #4a525b; max-width: 70ch;">Loading, failure and edge cases that the page artboards don't show. Skeletons keep the real layout's shape; no spinners. Every error says what happened and what to do next.</p>
+  </div>
+
+  <section aria-labelledby="s1" style="grid-column: 1 / -1; display: flex; flex-direction: column; gap: 16px;">
+    <span id="s1" class="h">Loading: shop grid</span>
+    <div aria-busy="true" aria-label="Loading products" style="display: flex; gap: 24px;">
+      <sc-for list="{{tiles}}" as="t" hint-placeholder-count="4">
+        <div style="width: 318px; display: flex; flex-direction: column; gap: 12px;">
+          <div class="sk" style="width: 318px; height: 398px;"></div>
+          <div style="display: flex; justify-content: space-between;"><div class="sk" style="width: {{t.w}}px; height: 16px;"></div><div class="sk" style="width: 44px; height: 16px;"></div></div>
+          <div class="sk" style="width: 96px; height: 12px;"></div>
+          <div class="sk" style="height: 6px;"></div>
+          <div class="sk" style="width: 150px; height: 10px;"></div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section aria-labelledby="s2" style="grid-column: 1 / span 5; display: flex; flex-direction: column; gap: 16px;">
+    <span id="s2" class="h">Loading: product details</span>
+    <div aria-busy="true" aria-label="Loading product" style="display: flex; flex-direction: column; gap: 22px; padding: 32px; background: #f8f9fa;">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div class="sk" style="width: 88px; height: 14px;"></div>
+        <div class="sk" style="width: 78%; height: 48px;"></div>
+        <div class="sk" style="width: 72px; height: 22px;"></div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;"><div class="sk" style="height: 14px;"></div><div class="sk" style="height: 14px;"></div><div class="sk" style="width: 60%; height: 14px;"></div></div>
+      <div class="sk" style="height: 10px;"></div>
+      <div style="display: flex; gap: 10px;"><div class="sk" style="width: 40px; height: 40px; border-radius: 999px;"></div><div class="sk" style="width: 40px; height: 40px; border-radius: 999px;"></div></div>
+      <div style="display: flex; gap: 8px;">
+        <sc-for list="{{pills}}" as="p" hint-placeholder-count="6"><div class="sk" style="width: 54px; height: 44px; border-radius: 999px;"></div></sc-for>
+      </div>
+      <div class="sk" style="height: 52px; border-radius: 999px;"></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="s3" style="grid-column: 7 / span 6; display: flex; flex-direction: column; gap: 16px;">
+    <span id="s3" class="h">Add to cart</span>
+    <div style="display: grid; grid-template-columns: 120px 360px; row-gap: 20px; column-gap: 24px; align-items: start;">
+      <span class="lbl" style="padding-top: 16px;">Ready</span>
+      <button type="button" class="btn">Add to cart</button>
+      <span class="lbl" style="padding-top: 16px;">Adding</span>
+      <button type="button" class="btn" aria-busy="true" aria-disabled="true" style="cursor: default; background: #b0301a;">Adding</button>
+      <span class="lbl" style="padding-top: 16px;">Failed</span>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <button type="button" class="btn">Add to cart</button>
+        <span role="alert" style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #b3261e;">
+          <svg width="16" height="16" viewBox="0 0 256 256" fill="none" stroke="#b3261e" stroke-width="20" stroke-linecap="round" aria-hidden="true"><circle cx="128" cy="128" r="96"></circle><line x1="128" y1="80" x2="128" y2="136"></line><line x1="128" y1="172" x2="128" y2="174"></line></svg>
+          Couldn't add that. Try again.
+        </span>
+      </div>
+      <span class="lbl" style="padding-top: 16px;">Added</span>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <button type="button" class="btn">Added to cart</button>
+        <span class="lbl">The cart drawer opens with the new line.</span>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="s4" style="grid-column: 1 / span 5; display: flex; flex-direction: column; gap: 16px;">
+    <span id="s4" class="h">Store not responding</span>
+    <div role="alert" style="padding: 32px; background: #f8f9fa; display: flex; flex-direction: column; align-items: flex-start; gap: 14px;">
+      <h2 class="disp" style="margin: 0; font-size: 24px; line-height: 1.05;">The store isn't responding right now.</h2>
+      <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #4a525b;">Try again in a minute. Pages you have already opened keep working.</p>
+      <button type="button" class="btn-2">Retry</button>
+    </div>
+  </section>
+
+  <section aria-labelledby="s5" style="grid-column: 7 / span 6; display: flex; flex-direction: column; gap: 16px;">
+    <span id="s5" class="h">Cart update failed</span>
+    <div style="padding: 16px 24px; background: #f8f9fa; display: flex; gap: 16px;">
+      <img src="/_blob/dfe7806815453634e614d4ab33a9397d" alt="" style="width: 76px; height: 96px; object-fit: cover; display: block; flex-shrink: 0;">
+      <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 4px;">
+        <div style="display: flex; justify-content: space-between;"><span style="font-size: 15px; font-weight: 600;">Knoll Grid Fleece</span><span class="mono" style="font-size: 14px;">$118</span></div>
+        <span style="font-size: 14px; color: #4a525b;">Cobalt, M</span>
+        <div style="display: flex; align-items: center; gap: 12px; margin-top: 4px;">
+          <div role="group" aria-label="Quantity of Knoll Grid Fleece" style="display: flex; align-items: center; border: 1.5px solid #cfd5da; border-radius: 999px;">
+            <button type="button" class="step" aria-label="Remove Knoll Grid Fleece"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="#111418" stroke-width="22" stroke-linecap="round"><line x1="40" y1="128" x2="216" y2="128"></line></svg></button>
+            <span class="mono" style="min-width: 24px; text-align: center; font-size: 14px;">1</span>
+            <button type="button" class="step" aria-label="One more Knoll Grid Fleece"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="#111418" stroke-width="22" stroke-linecap="round"><line x1="40" y1="128" x2="216" y2="128"></line><line x1="128" y1="40" x2="128" y2="216"></line></svg></button>
+          </div>
+        </div>
+        <span role="alert" style="font-size: 14px; color: #b3261e;">Couldn't change the quantity. Your cart is unchanged; try again.</span>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="s6" style="grid-column: 1 / span 5; display: flex; flex-direction: column; gap: 16px;">
+    <span id="s6" class="h">Kit slot sold out</span>
+    <div style="display: flex; gap: 16px;">
+      <div style="flex: 1 1 0; display: flex; flex-direction: column; gap: 10px;">
+        <span class="mono" style="font-size: 12px; color: #4a525b;">Insulation</span>
+        <img src="/_blob/36c24bbec39a211f8d6a9ceed5dc81f0" alt="Cornice Down Jacket" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block;">
+        <span style="font-size: 15px; font-weight: 600;">Cornice Down Jacket</span>
+        <span role="status" style="font-size: 13px; line-height: 1.45; color: #4a525b;">Belay Hoody is sold out in M, so the next warmest piece is in its place.</span>
+      </div>
+      <div style="flex: 1 1 0; display: flex; flex-direction: column; gap: 10px;">
+        <span class="mono" style="font-size: 12px; color: #4a525b;">Shell</span>
+        <div style="width: 100%; aspect-ratio: 4 / 5; box-sizing: border-box; border: 1.5px dashed #9aa3ab; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 16px; text-align: center; font-size: 14px; color: #4a525b;">
+          <span class="mono" style="font-size: 13px; color: #111418;">Sold out in XXL</span>
+          <span>Every shell for this day is sold out in your size.</span>
+          <button type="button" class="btn-2" style="height: 36px; font-size: 14px;">Change size</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="s7" style="grid-column: 7 / span 6; display: flex; flex-direction: column; gap: 16px;">
+    <span id="s7" class="h">No thermal view for a product</span>
+    <div style="display: flex; gap: 16px; align-items: flex-start;">
+      <img src="/_blob/70d8c0c62b36970fa70fac2e61411977" alt="Bothy Pile Jacket in Oat" style="width: 240px; height: 300px; object-fit: cover; display: block;">
+      <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 8px;">
+        <span style="font-size: 16px; line-height: 1.55; color: #4a525b; max-width: 36ch;">When a product has no thermal image, the Photo and Thermal switch is left out for that product instead of showing a broken view. Tiles in the thermal grid keep the photo.</span>
+      </div>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2226}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { tiles: [{ w: 140 }, { w: 112 }, { w: 168 }, { w: 124 }], pills: [1, 2, 3, 4, 5, 6] };
+  }
+}
+</script>
+</body>
+</html>

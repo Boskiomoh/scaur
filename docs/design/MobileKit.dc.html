@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Scaur kit builder on a phone</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=Martian+Mono:wdth,wght@75..112.5,100..800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#eef1f3;color:#111418;font-family:'Archivo',system-ui,sans-serif}
+.disp{font-family:'Archivo',sans-serif;font-stretch:112.5%;font-weight:800;text-transform:uppercase;letter-spacing:-0.01em}
+.mono{font-family:'Martian Mono',ui-monospace,monospace;font-stretch:87.5%;font-variant-numeric:tabular-nums}
+a{color:#111418;text-underline-offset:3px}
+button,select{font-family:inherit;cursor:pointer}
+::selection{background:#f79a2e;color:#111418}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #cf3a1c;outline-offset:2px}
+.icon{width:44px;height:44px;border-radius:999px;border:0;background:transparent;display:flex;align-items:center;justify-content:center}
+.btn{height:52px;padding:0 24px;border-radius:999px;border:0;background:#cf3a1c;color:#ffffff;font-size:16px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;white-space:nowrap}
+.btn:active{transform:translateY(1px)}
+.btn-2{height:40px;padding:0 16px;border-radius:999px;border:1.5px solid #111418;background:transparent;color:#111418;font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:8px;text-decoration:none;white-space:nowrap}
+.chip{height:44px;padding:0 16px;border-radius:999px;border:1.5px solid #cfd5da;background:#f8f9fa;color:#111418;font-size:14px;font-weight:500;white-space:nowrap}
+.chip[aria-pressed="true"]{background:#111418;border-color:#111418;color:#f8f9fa}
+.icon-btn{width:40px;height:40px;border-radius:999px;border:1.5px solid #cfd5da;background:#f8f9fa;display:inline-flex;align-items:center;justify-content:center}
+select{height:44px;border-radius:999px;border:1.5px solid #5f6870;background:#f8f9fa;padding:0 12px;font-size:15px;color:#111418}
+input[type=range]{accent-color:#cf3a1c}
+</style>
+</helmet>
+<div style="width: 390px; height: 2370px; box-sizing: border-box; background: #eef1f3; display: flex; flex-direction: column;">
+
+  <header style="height: 56px; flex-shrink: 0; box-sizing: border-box; padding: 0 8px 0 16px; display: flex; align-items: center; gap: 4px; border-bottom: 1px solid #cfd5da;">
+    <a href="Mobile.dc.html" aria-label="Scaur home" style="display: flex; align-items: center; gap: 8px; text-decoration: none; margin-right: auto;">
+      <img src="/_blob/bec27a5512453902854ee74f8b5d138a" alt="" style="width: 26px; height: 26px;">
+      <span class="disp" style="font-size: 20px; letter-spacing: 0.04em;">Scaur</span>
+    </a>
+    <a href="MobileSearch.dc.html" class="icon" aria-label="Search"><svg width="22" height="22" viewBox="0 0 256 256" fill="none" stroke="#111418" stroke-width="16" stroke-linecap="round"><circle cx="112" cy="112" r="80"></circle><line x1="168.6" y1="168.6" x2="224" y2="224"></line></svg></a>
+    <a href="MobileCart.dc.html" class="icon" aria-label="{{cartLabel}}" style="position: relative;">
+      <svg width="22" height="22" viewBox="0 0 256 256" fill="none" stroke="#111418" stroke-width="16" stroke-linejoin="round"><path d="M40 72h176l-16 136H56z"></path><path d="M88 96V64a40 40 0 0 1 80 0v32" stroke-linecap="round"></path></svg>
+      <span class="mono" style="position: absolute; top: 6px; right: 4px; min-width: 16px; height: 16px; border-radius: 999px; background: #cf3a1c; color: #ffffff; font-size: 10px; display: flex; align-items: center; justify-content: center;">{{cartCount}}</span>
+    </a>
+    <a href="MobileMenu.dc.html" class="icon" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 256 256" fill="none" stroke="#111418" stroke-width="16" stroke-linecap="round"><line x1="40" y1="80" x2="216" y2="80"></line><line x1="40" y1="128" x2="216" y2="128"></line><line x1="40" y1="176" x2="216" y2="176"></line></svg></a>
+  </header>
+
+  <form aria-labelledby="mkit-h" style="box-sizing: border-box; padding: 28px 16px 40px; display: flex; flex-direction: column; gap: 28px;">
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <h1 id="mkit-h" class="disp" style="margin: 0; font-size: 42px; line-height: 0.96;">Build your kit</h1>
+      <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #4a525b;">Tell us the day. We pick one piece per layer, skip what you won't need, and you swap anything you like.</p>
+    </div>
+    <fieldset style="border: 0; margin: 0; padding: 0;">
+      <legend style="font-size: 14px; font-weight: 600; padding: 0; margin-bottom: 10px;">Activity</legend>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <sc-for list="{{acts}}" as="a" hint-placeholder-count="3"><button type="button" class="chip" aria-pressed="{{a.pressed}}" onClick="{{a.pick}}">{{a.label}}</button></sc-for>
+      </div>
+    </fieldset>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <label for="mkit-temp" style="font-size: 14px; font-weight: 600;">Temperature at the start</label>
+      <div style="display: flex; align-items: baseline; gap: 12px;">
+        <span class="mono" style="font-size: {{tempSize}}px; font-weight: 600; line-height: 1;">{{tempLabel}}</span>
+        <span style="font-size: 14px; color: #4a525b;">{{tempWord}}</span>
+      </div>
+      <input id="mkit-temp" type="range" min="-10" max="70" step="1" value="{{temp}}" onChange="{{onTemp}}" aria-valuetext="{{tempText}}" style="width: 100%;">
+      <div aria-hidden="true" style="height: 6px; background: linear-gradient(90deg, #140c2e, #4a1a78, #a3206f, #e0452b, #f79a2e, #ffe08a);"></div>
+    </div>
+    <fieldset style="border: 0; margin: 0; padding: 0;">
+      <legend style="font-size: 14px; font-weight: 600; padding: 0; margin-bottom: 10px;">Rain</legend>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <sc-for list="{{rains}}" as="w" hint-placeholder-count="3"><button type="button" class="chip" aria-pressed="{{w.pressed}}" onClick="{{w.pick}}">{{w.label}}</button></sc-for>
+      </div>
+    </fieldset>
+    <fieldset style="border: 0; margin: 0; padding: 0;">
+      <legend style="font-size: 14px; font-weight: 600; padding: 0; margin-bottom: 10px;">Wind</legend>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <sc-for list="{{winds}}" as="w" hint-placeholder-count="3"><button type="button" class="chip" aria-pressed="{{w.pressed}}" onClick="{{w.pick}}">{{w.label}}</button></sc-for>
+      </div>
+    </fieldset>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <label for="mkit-size" style="font-size: 14px; font-weight: 600;">Your size</label>
+      <select id="mkit-size" value="{{size}}" onChange="{{onSize}}" style="align-self: flex-start; min-width: 120px;">
+        <option value="XS">XS</option><option value="S">S</option><option value="M">M</option><option value="L">L</option><option value="XL">XL</option><option value="XXL">XXL</option>
+      </select>
+    </div>
+  </form>
+
+  <section aria-label="Your kit" style="box-sizing: border-box; padding: 32px 16px 0; background: #f8f9fa; display: flex; flex-direction: column; gap: 24px;">
+    <div style="display: flex; flex-direction: column; gap: 6px;">
+      <span style="font-size: 14px; color: #4a525b;">Your kit is comfortable down to</span>
+      <span class="mono" style="font-size: 44px; font-weight: 600; line-height: 1;">{{floorLabel}}</span>
+      <span style="font-size: 15px; color: #4a525b;">{{summary}}</span>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <div style="position: relative; height: 12px; background: #dde2e6;">
+        <div style="position: absolute; top: 0; bottom: 0; left: {{coverLeft}}%; right: 0; background: {{coverGrad}};"></div>
+        <div aria-hidden="true" style="position: absolute; top: -6px; bottom: -6px; left: {{dayLeft}}%; width: 2px; background: #111418;"></div>
+      </div>
+      <div class="mono" style="display: flex; justify-content: space-between; font-size: 11px; color: #4a525b;"><span>-10°F</span><span>35°F</span><span>80°F</span></div>
+      <span style="font-size: 13px; color: #4a525b;">The black line is today's start temperature; the bar is what the kit covers.</span>
+    </div>
+    <figure style="margin: 0; display: flex; flex-direction: column; gap: 8px;">
+      <img src="{{warmthSrc}}" alt="{{warmthAlt}}" style="width: 100%; height: 240px; object-fit: cover; object-position: 75% 50%; display: block; background: #140c2e;">
+      <figcaption style="font-size: 13px; color: #4a525b;">Illustrative thermal view: warmth spreads outward with each layer you add.</figcaption>
+    </figure>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 12px; row-gap: 24px;">
+      <sc-for list="{{slots}}" as="k" hint-placeholder-count="4">
+        <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+          <span class="mono" style="font-size: 11px; color: #4a525b;">{{k.layer}}</span>
+          <sc-if value="{{k.filled}}" hint-placeholder-val="{{ true }}">
+            <img src="{{k.img}}" alt="{{k.name}}" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 25%; display: block;">
+            <span style="font-size: 14px; font-weight: 600; line-height: 1.3; min-height: 36px;">{{k.name}}</span>
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <span class="mono" style="font-size: 13px;">{{k.price}}</span>
+              <div style="display: flex; gap: 6px;">
+                <button type="button" class="icon-btn" aria-label="{{k.swapLabel}}" onClick="{{k.swap}}"><svg width="16" height="16" viewBox="0 0 256 256" fill="none" stroke="#111418" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"><polyline points="176 48 208 80 176 112"></polyline><line x1="48" y1="80" x2="208" y2="80"></line><polyline points="80 208 48 176 80 144"></polyline><line x1="208" y1="176" x2="48" y2="176"></line></svg></button>
+                <button type="button" class="icon-btn" aria-label="{{k.removeLabel}}" onClick="{{k.remove}}"><svg width="16" height="16" viewBox="0 0 256 256" fill="none" stroke="#111418" stroke-width="20" stroke-linecap="round"><line x1="200" y1="56" x2="56" y2="200"></line><line x1="200" y1="200" x2="56" y2="56"></line></svg></button>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{k.empty}}" hint-placeholder-val="{{ false }}">
+            <div style="width: 100%; aspect-ratio: 4 / 5; box-sizing: border-box; border: 1.5px dashed #9aa3ab; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 12px; text-align: center; font-size: 13px; color: #4a525b;">
+              <span>{{k.why}}</span>
+              <button type="button" class="btn-2" onClick="{{k.addBack}}" style="height: 36px; font-size: 13px;">Add one anyway</button>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+    <div style="margin: 0 -16px; box-sizing: border-box; padding: 16px; border-top: 1px solid #cfd5da; background: #f8f9fa; display: flex; align-items: center; gap: 16px;">
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <span style="font-size: 13px; color: #4a525b;">{{countLine}}</span>
+        <span class="mono" style="font-size: 22px; font-weight: 600;">{{total}}</span>
+      </div>
+      <button type="button" class="btn" onClick="{{addKit}}" style="margin-left: auto;">{{addLabel}}</button>
+    </div>
+    <span role="status" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">{{addedLine}}</span>
+  </section>
+
+  <footer style="margin-top: auto; box-sizing: border-box; padding: 32px 16px; border-top: 1px solid #cfd5da; display: flex; flex-direction: column; gap: 20px;">
+    <div style="display: flex; flex-wrap: wrap; column-gap: 20px; row-gap: 12px; font-size: 15px;">
+      <a href="MobileCollection.dc.html">Shop</a><a href="MobileKit.dc.html">Kit builder</a><a href="MobileProduct.dc.html">Size guide</a><a href="Credits.dc.html">Photo credits</a><a href="MobileBuild.dc.html">How this store was built</a>
+    </div>
+    <p style="margin: 0; font-size: 13px; line-height: 1.6; color: #4a525b;">Scaur is a fictional brand made for a portfolio. Products are listed on a Shopify development store; checkout runs in test mode and nothing ships. Specs and thermal views are illustrative. Photography from Unsplash, credited on the <a href="Credits.dc.html" style="color: #4a525b;">credits page</a>.</p>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":2370}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { act: 1, temp: 38, rain: 2, wind: 1, size: 'M', pick: {}, off: {}, on: {}, added: false, cart: 2 }; }
+  heat(t) {
+    const stops = [[0, [20, 12, 46]], [0.22, [74, 26, 120]], [0.45, [163, 32, 111]], [0.66, [224, 69, 43]], [0.84, [247, 154, 46]], [1, [255, 224, 138]]];
+    const x = Math.max(0, Math.min(1, (t + 10) / 90));
+    for (let i = 0; i < stops.length - 1; i++) { const [a, ca] = stops[i]; const [b, cb] = stops[i + 1]; if (x >= a && x <= b) { const f = (x - a) / (b - a); return 'rgb(' + ca.map((v, k) => Math.round(v + (cb[k] - v) * f)).join(',') + ')'; } }
+    return 'rgb(255,224,138)';
+  }
+  renderVals() {
+    const st = this.state;
+    const C = {
+      base: [['Tarn Merino Crew', 78, 1, '/_blob/2a84d495087e6817caeb32eb1d7ee1bc'], ['Tarn Merino Quarter-Zip', 92, 2, '/_blob/1e73beefe0ff39801913f01c0693fd53']],
+      mid: [['Knoll Quarter-Zip', 104, 2, '/_blob/820d381aa536a8b27492db23cb297d3f'], ['Knoll Grid Fleece', 118, 2, '/_blob/dfe7806815453634e614d4ab33a9397d'], ['Bothy Pile Jacket', 148, 3, '/_blob/4b0d5d6ec0647d5724b203b294d7b9b0']],
+      ins: [['Belay Hoody', 224, 4, '/_blob/206fc8c6cfcd6929904e21fe97bf84e6'], ['Cornice Down Jacket', 268, 5, '/_blob/36c24bbec39a211f8d6a9ceed5dc81f0']],
+      shell: [['Squall Jacket', 168, 1, '/_blob/4315f5dfbd8b88c2f4414cc70dddabb0'], ['Ridgeback Softshell', 188, 1, '/_blob/5ab2f0494db496eccc9cb2e54991d538'], ['Downpour Jacket', 198, 1, '/_blob/4ce58b28d8f003534f47cce552c6a420'], ['Scarp Shell', 348, 1, '/_blob/84932b7070b6f9bba86b98c3b35d7617']]
+    };
+    const output = [12, 0, -10][st.act];
+    const feels = st.temp + output - [0, 6, 14][st.wind] - (st.rain === 2 ? 6 : 0);
+    const need = { base: true, mid: feels < 58, ins: feels < 30, shell: st.rain > 0 || st.wind === 2 || feels < 20 };
+    const auto = {
+      base: feels < 45 ? 1 : 0, mid: feels < 22 ? 2 : feels < 42 ? 1 : 0, ins: feels < 8 ? 1 : 0,
+      shell: st.rain === 2 ? (feels < 32 ? 3 : 2) : st.rain === 1 ? 0 : feels < 20 ? 3 : 1
+    };
+    const names = { base: 'Base', mid: 'Mid', ins: 'Insulation', shell: 'Shell' };
+    const t = st.temp + '°F';
+    const whyNot = { mid: 'Warm enough to skip a mid layer at ' + t, ins: 'No insulation needed at ' + t, shell: 'Dry and not too windy: no shell needed' };
+    let warmth = 0; let price = 0; const lines = [];
+    const slots = ['base', 'mid', 'ins', 'shell'].map((key) => {
+      const active = (need[key] && !st.off[key]) || st.on[key];
+      const idx = st.pick[key] !== undefined ? st.pick[key] : auto[key];
+      const item = C[key][idx % C[key].length];
+      if (!active) return { layer: names[key], filled: false, empty: true, why: whyNot[key] || '', addBack: () => this.setState({ on: Object.assign({}, st.on, { [key]: true }), off: Object.assign({}, st.off, { [key]: false }), added: false }) };
+      warmth += item[2] + (key === 'shell' && st.wind > 0 ? 1 : 0); price += item[1]; lines.push(item[0]);
+      return { layer: names[key], filled: true, empty: false, name: item[0], price: '$' + item[1], img: item[3],
+        swapLabel: 'Swap ' + names[key].toLowerCase() + ' layer, currently ' + item[0], removeLabel: 'Remove ' + item[0] + ' from kit',
+        swap: () => this.setState({ pick: Object.assign({}, st.pick, { [key]: (idx + 1) % C[key].length }), added: false }),
+        remove: () => this.setState({ off: Object.assign({}, st.off, { [key]: true }), on: Object.assign({}, st.on, { [key]: false }), added: false }) };
+    });
+    const floor = 70 - warmth * 6 - output;
+    const level = Math.max(0, Math.min(4, lines.length - 1 + (warmth >= 9 ? 1 : 0)));
+    const warmthSrcs = ['/_blob/2aa2751d5186f3a18ae65e76f8937efb', '/_blob/9a21c3a37681655eeda151f49b413837', '/_blob/969779d70623f7a57391d133dcf57de0', '/_blob/d4282d93d772ad1ffe23deb1ad9196c0', '/_blob/fcae06a51e55f833fed9de8bd706edf9'];
+    const temp = st.temp; const severity = temp < 15 ? 3 : temp < 32 ? 2 : temp < 50 ? 1 : 0;
+    const ok = floor <= feels - output;
+    return {
+      cartCount: st.cart, cartLabel: 'Cart, ' + st.cart + ' items',
+      acts: ['Trail run', 'Day hike', 'Alpine climb'].map((label, i) => ({ label, pressed: i === st.act ? 'true' : 'false', pick: () => this.setState({ act: i, added: false }) })),
+      rains: ['Dry', 'Showers', 'Steady rain'].map((label, i) => ({ label, pressed: i === st.rain ? 'true' : 'false', pick: () => this.setState({ rain: i, added: false }) })),
+      winds: ['Calm', 'Breezy', 'Gusty'].map((label, i) => ({ label, pressed: i === st.wind ? 'true' : 'false', pick: () => this.setState({ wind: i, added: false }) })),
+      temp, tempLabel: temp + '°F', tempSize: 22 + severity * 6, tempText: temp + ' degrees Fahrenheit',
+      tempWord: ['Mild', 'Cool', 'Cold', 'Bitter'][severity],
+      onTemp: (e) => this.setState({ temp: Number(e.target.value), added: false }),
+      size: st.size, onSize: (e) => this.setState({ size: e.target.value, added: false }),
+      warmthSrc: warmthSrcs[level], warmthAlt: 'Illustrative thermal view of a hiker, warmer with ' + lines.length + ' layers',
+      floorLabel: floor + '°F',
+      summary: ok ? 'That covers a ' + t + ' start with room to spare.' : 'Colder than your kit is rated for. Add a layer or swap to a warmer one.',
+      coverLeft: Math.max(0, Math.min(100, ((floor + 10) / 90) * 100)), coverGrad: 'linear-gradient(90deg, ' + this.heat(floor) + ', #ffe08a)',
+      dayLeft: Math.max(0, Math.min(100, ((temp + 10) / 90) * 100)),
+      slots,
+      countLine: lines.length + (lines.length === 1 ? ' piece' : ' pieces') + ' in ' + st.size,
+      total: '$' + price,
+      addLabel: st.added ? 'Kit added' : 'Add kit to cart',
+      addedLine: st.added ? lines.length + ' items added. Cart has ' + st.cart + '.' : '',
+      addKit: () => { if (!st.added && lines.length) this.setState({ added: true, cart: st.cart + lines.length }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

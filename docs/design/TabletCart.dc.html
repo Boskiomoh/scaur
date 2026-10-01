@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Scaur cart on a tablet</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=Martian+Mono:wdth,wght@75..112.5,100..800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#eef1f3;color:#111418;font-family:'Archivo',system-ui,sans-serif}
+.disp{font-family:'Archivo',sans-serif;font-stretch:112.5%;font-weight:800;text-transform:uppercase;letter-spacing:-0.01em}
+.mono{font-family:'Martian Mono',ui-monospace,monospace;font-stretch:87.5%;font-variant-numeric:tabular-nums}
+a{color:#111418;text-underline-offset:3px}
+button{font-family:inherit;cursor:pointer}
+a:focus-visible,button:focus-visible{outline:2px solid #cf3a1c;outline-offset:2px}
+.btn{height:52px;padding:0 24px;border-radius:999px;border:0;background:#cf3a1c;color:#ffffff;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;white-space:nowrap}
+.btn-2{height:52px;padding:0 24px;border-radius:999px;border:1.5px solid #111418;background:transparent;color:#111418;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;text-decoration:none;white-space:nowrap}
+.step{width:40px;height:40px;border:0;background:transparent;display:inline-flex;align-items:center;justify-content:center;border-radius:999px}
+.link{border:0;background:transparent;padding:0;height:40px;font-size:14px;color:#111418;text-decoration:underline;text-underline-offset:3px}
+</style>
+</helmet>
+<div role="dialog" aria-modal="true" aria-labelledby="mcart-h" style="width: 768px; height: 1024px; box-sizing: border-box; background: #f8f9fa; display: flex; flex-direction: column;">
+  <div style="height: 72px; flex-shrink: 0; box-sizing: border-box; padding: 0 20px 0 32px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #cfd5da;">
+    <h2 id="mcart-h" class="disp" style="margin: 0; font-size: 22px;">Cart <span class="mono" style="font-size: 15px; font-weight: 500; text-transform: none;">{{countLabel}}</span></h2>
+    <a href="TabletHome.dc.html" aria-label="Close cart" style="width: 44px; height: 44px; border-radius: 999px; display: flex; align-items: center; justify-content: center;">
+      <svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="#111418" stroke-width="18" stroke-linecap="round"><line x1="200" y1="56" x2="56" y2="200"></line><line x1="200" y1="200" x2="56" y2="56"></line></svg>
+    </a>
+  </div>
+
+  <sc-if value="{{review}}" hint-placeholder-val="{{ true }}">
+    <div style="flex-grow: 1; overflow: hidden; box-sizing: border-box; padding: 8px 32px; display: flex; flex-direction: column;">
+      <sc-for list="{{groups}}" as="g" hint-placeholder-count="1">
+        <div style="display: flex; flex-direction: column; padding: 12px 0;">
+          <sc-if value="{{g.isKit}}" hint-placeholder-val="{{ true }}">
+            <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 4px;">
+              <span style="font-size: 14px; font-weight: 600;">{{g.title}}</span>
+              <a href="TabletKit.dc.html" style="font-size: 14px; height: 32px; display: flex; align-items: center;">Edit kit</a>
+            </div>
+          </sc-if>
+          <sc-for list="{{g.lines}}" as="l" hint-placeholder-count="4">
+            <div style="display: flex; gap: 20px; padding: 14px 0; border-top: 1px solid #dde2e6;">
+              <img src="{{l.img}}" alt="" style="width: 80px; height: 100px; object-fit: cover; object-position: center 25%; display: block; flex-shrink: 0;">
+              <div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+                <div style="display: flex; justify-content: space-between; gap: 8px;">
+                  <a href="TabletProduct.dc.html" style="font-size: 16px; font-weight: 600; text-decoration: none;">{{l.name}}</a>
+                  <span class="mono" style="font-size: 14px;">{{l.lineTotal}}</span>
+                </div>
+                <span style="font-size: 13px; color: #4a525b;">{{l.variant}}</span>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <div role="group" aria-label="{{l.qtyLabel}}" style="display: flex; align-items: center; border: 1.5px solid #cfd5da; border-radius: 999px;">
+                    <button type="button" class="step" aria-label="{{l.decLabel}}" onClick="{{l.dec}}"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="#111418" stroke-width="22" stroke-linecap="round"><line x1="40" y1="128" x2="216" y2="128"></line></svg></button>
+                    <span class="mono" style="min-width: 20px; text-align: center; font-size: 14px;">{{l.qty}}</span>
+                    <button type="button" class="step" aria-label="{{l.incLabel}}" aria-disabled="{{l.maxedStr}}" onClick="{{l.inc}}"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="{{l.plusColor}}" stroke-width="22" stroke-linecap="round"><line x1="40" y1="128" x2="216" y2="128"></line><line x1="128" y1="40" x2="128" y2="216"></line></svg></button>
+                  </div>
+                  <button type="button" class="link" onClick="{{l.remove}}">Remove</button>
+                </div>
+                <span class="mono" role="status" style="font-size: 11px; min-height: 14px;">{{l.note}}</span>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-for>
+    </div>
+    <div style="flex-shrink: 0; box-sizing: border-box; padding: 20px 32px 28px; border-top: 1px solid #cfd5da; display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline;">
+        <span style="font-size: 16px; font-weight: 600;">Subtotal</span>
+        <span class="mono" style="font-size: 20px; font-weight: 600;">{{subtotal}}</span>
+      </div>
+      <span style="font-size: 13px; color: #4a525b;">Shipping and taxes are worked out at checkout.</span>
+      <button type="button" class="btn" onClick="{{goCheckout}}">Checkout</button>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{confirm}}" hint-placeholder-val="{{ false }}">
+    <div style="flex-grow: 1; box-sizing: border-box; padding: 40px 32px 32px; display: flex; flex-direction: column; gap: 20px; max-width: 560px;">
+      <h3 class="disp" style="margin: 0; font-size: 26px; line-height: 1;">This is a test checkout</h3>
+      <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4a525b;">Scaur is a demo store. Next is Shopify's real checkout in test mode. You don't need to place the order; no card is ever charged and nothing ships.</p>
+      <span style="font-size: 15px; font-weight: 600;">If you want to try a test order</span>
+      <dl style="margin: 0; display: grid; grid-template-columns: 130px minmax(0, 1fr); row-gap: 10px; font-size: 15px;">
+        <dt style="color: #4a525b;">Card number</dt><dd class="mono" style="margin: 0;">1</dd>
+        <dt style="color: #4a525b;">Expiry</dt><dd style="margin: 0;">Any future date</dd>
+        <dt style="color: #4a525b;">Security code</dt><dd style="margin: 0;">Any 3 digits</dd>
+        <dt style="color: #4a525b;">Store password</dt><dd class="mono" style="margin: 0;">[STORE PASSWORD]</dd>
+      </dl>
+      <p style="margin: 0; font-size: 14px; color: #4a525b;">Shopify may ask for the store password first, because development stores are private.</p>
+      <div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px;">
+        <a class="btn" href="#">Continue to checkout</a>
+        <button type="button" class="btn-2" onClick="{{back}}">Back to cart</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{empty}}" hint-placeholder-val="{{ false }}">
+    <div style="flex-grow: 1; box-sizing: border-box; padding: 48px 32px; display: flex; flex-direction: column; gap: 16px; max-width: 420px;">
+      <h3 class="disp" style="margin: 0; font-size: 26px; line-height: 1;">Your cart is empty</h3>
+      <p style="margin: 0; font-size: 16px; line-height: 1.5; color: #4a525b;">Start with a layer, or let the kit builder put a whole system together.</p>
+      <a class="btn" href="TabletKit.dc.html">Build your kit</a>
+      <a class="btn-2" href="TabletCollection.dc.html">Shop layers</a>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":768,"height":1024}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      step: 'review',
+      lines: [
+        { id: 1, kit: true, name: 'Tarn Merino Quarter-Zip', variant: 'Ember, M', price: 92, qty: 1, max: 8, img: '/_blob/1e73beefe0ff39801913f01c0693fd53' },
+        { id: 2, kit: true, name: 'Knoll Grid Fleece', variant: 'Cobalt, M', price: 118, qty: 1, max: 3, img: '/_blob/dfe7806815453634e614d4ab33a9397d' },
+        { id: 3, kit: true, name: 'Belay Hoody', variant: 'Graphite, M', price: 224, qty: 1, max: 5, img: '/_blob/206fc8c6cfcd6929904e21fe97bf84e6' },
+        { id: 4, kit: true, name: 'Scarp Shell', variant: 'Moss, M', price: 348, qty: 1, max: 3, img: '/_blob/84932b7070b6f9bba86b98c3b35d7617' },
+        { id: 5, kit: false, name: 'Scarp Shell', variant: 'Tide, XL', price: 348, qty: 1, max: 1, img: '/_blob/c2905d41fd17ec43943fd3b653ed47bf' }
+      ]
+    };
+  }
+  renderVals() {
+    const st = this.state;
+    const set = (id, patch) => this.setState({ lines: st.lines.map((l) => (l.id === id ? Object.assign({}, l, patch) : l)) });
+    const drop = (id) => this.setState({ lines: st.lines.filter((l) => l.id !== id) });
+    const view = (l) => {
+      const maxed = l.qty >= l.max;
+      return {
+        name: l.name, variant: l.variant, img: l.img, qty: l.qty, lineTotal: '$' + l.price * l.qty,
+        qtyLabel: 'Quantity of ' + l.name, decLabel: l.qty === 1 ? 'Remove ' + l.name : 'One fewer ' + l.name, incLabel: maxed ? 'No more in stock' : 'One more ' + l.name,
+        maxedStr: maxed ? 'true' : 'false', plusColor: maxed ? '#9aa3ab' : '#111418',
+        note: maxed ? 'Only ' + l.max + ' left in this size' : l.max <= 3 ? l.max + ' left in this size' : '',
+        dec: () => (l.qty === 1 ? drop(l.id) : set(l.id, { qty: l.qty - 1 })),
+        inc: () => { if (!maxed) set(l.id, { qty: l.qty + 1 }); },
+        remove: () => drop(l.id)
+      };
+    };
+    const count = st.lines.reduce((a, l) => a + l.qty, 0);
+    const subtotal = st.lines.reduce((a, l) => a + l.qty * l.price, 0);
+    const empty = st.lines.length === 0;
+    return {
+      countLabel: '(' + count + ')',
+      groups: [{ isKit: true, title: 'Kit: day hike, 38°F, steady rain', lines: st.lines.filter((l) => l.kit).map(view) }, { isKit: false, title: '', lines: st.lines.filter((l) => !l.kit).map(view) }].filter((g) => g.lines.length),
+      subtotal: '$' + subtotal,
+      review: !empty && st.step === 'review', confirm: !empty && st.step === 'confirm', empty,
+      goCheckout: () => this.setState({ step: 'confirm' }), back: () => this.setState({ step: 'review' })
+    };
+  }
+}
+</script>
+</body>
+</html>

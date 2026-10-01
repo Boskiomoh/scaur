@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Scaur brand board</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=Martian+Mono:wdth,wght@75..112.5,100..800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#eef1f3;color:#111418;font-family:'Archivo',system-ui,sans-serif}
+.disp{font-family:'Archivo',sans-serif;font-stretch:112.5%;font-weight:800;text-transform:uppercase;letter-spacing:-0.01em}
+.mono{font-family:'Martian Mono',ui-monospace,monospace;font-stretch:87.5%;font-variant-numeric:tabular-nums}
+.btn{height:48px;padding:0 24px;border-radius:999px;border:0;background:#cf3a1c;color:#ffffff;font-size:16px;font-weight:600;display:inline-flex;align-items:center;font-family:inherit}
+.btn-2{height:48px;padding:0 24px;border-radius:999px;border:1.5px solid #111418;background:transparent;color:#111418;font-size:16px;font-weight:600;display:inline-flex;align-items:center;font-family:inherit}
+.chip{height:40px;padding:0 16px;border-radius:999px;border:1.5px solid #cfd5da;background:#f8f9fa;color:#111418;font-size:14px;font-weight:500;font-family:inherit}
+.chip.on{background:#111418;border-color:#111418;color:#f8f9fa}
+.lbl{font-size:13px;color:#4a525b}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1180px; box-sizing: border-box; padding: 56px; background: #eef1f3; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 48px; align-content: start;">
+
+  <div style="grid-column: 1 / span 6; height: 300px; background: #f8f9fa; display: flex; align-items: center; justify-content: center; gap: 24px;">
+    <img src="/_blob/bec27a5512453902854ee74f8b5d138a" alt="Scaur mark: four parallel bands rising like layers, the lowest in ember" style="width: 112px; height: 112px;">
+    <span class="disp" style="font-size: 88px; letter-spacing: 0.04em;">Scaur</span>
+  </div>
+  <div style="grid-column: 7 / span 3; height: 300px; background: #111418; display: flex; align-items: center; justify-content: center; gap: 14px;">
+    <img src="/_blob/b1977f2612f07fb168b8ba4dab453e1c" alt="Reversed mark" style="width: 56px; height: 56px;">
+    <span class="disp" style="font-size: 40px; letter-spacing: 0.04em; color: #f8f9fa;">Scaur</span>
+  </div>
+  <div style="grid-column: 10 / span 3; height: 300px; background: #f8f9fa; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 20px;">
+    <div style="display: flex; align-items: flex-end; gap: 20px;">
+      <img src="/_blob/8483ae39d7b966a68ef11a2af05da660" alt="Favicon at 16 pixels" style="width: 16px; height: 16px;">
+      <img src="/_blob/321eafff5d869032bc3adf74627f6beb" alt="Favicon at 32 pixels" style="width: 32px; height: 32px;">
+      <img src="/_blob/321eafff5d869032bc3adf74627f6beb" alt="Favicon at 64 pixels" style="width: 64px; height: 64px;">
+      <img src="/_blob/321eafff5d869032bc3adf74627f6beb" alt="App icon at 120 pixels" style="width: 120px; height: 120px;">
+    </div>
+    <span class="lbl">Favicon 16, 32, 64 and touch icon</span>
+  </div>
+
+  <div style="grid-column: 1 / span 7; display: flex; flex-direction: column; gap: 14px;">
+    <span style="font-size: 15px; font-weight: 600;">Interface colour</span>
+    <div style="display: flex; gap: 12px;">
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 6px;"><div style="height: 88px; background: #eef1f3; border: 1px solid #cfd5da;"></div><span style="font-size: 14px; font-weight: 600;">Frost</span><span class="mono lbl">#eef1f3</span></div>
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 6px;"><div style="height: 88px; background: #f8f9fa; border: 1px solid #cfd5da;"></div><span style="font-size: 14px; font-weight: 600;">Snow</span><span class="mono lbl">#f8f9fa</span></div>
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 6px;"><div style="height: 88px; background: #111418;"></div><span style="font-size: 14px; font-weight: 600;">Ink</span><span class="mono lbl">#111418</span></div>
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 6px;"><div style="height: 88px; background: #4a525b;"></div><span style="font-size: 14px; font-weight: 600;">Ink 2</span><span class="mono lbl">#4a525b</span></div>
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 6px;"><div style="height: 88px; background: #cfd5da;"></div><span style="font-size: 14px; font-weight: 600;">Line</span><span class="mono lbl">#cfd5da</span></div>
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 6px;"><div style="height: 88px; background: #cf3a1c;"></div><span style="font-size: 14px; font-weight: 600;">Ember</span><span class="mono lbl">#cf3a1c</span></div>
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 6px;"><div style="height: 88px; background: #b3261e;"></div><span style="font-size: 14px; font-weight: 600;">Error</span><span class="mono lbl">#b3261e</span></div>
+    </div>
+  </div>
+  <div style="grid-column: 8 / span 5; display: flex; flex-direction: column; gap: 14px;">
+    <span style="font-size: 15px; font-weight: 600;">Thermal scale (data only: ratings, thermal views, the kit)</span>
+    <div style="height: 88px; background: linear-gradient(90deg, #140c2e, #4a1a78, #a3206f, #e0452b, #f79a2e, #ffe08a);"></div>
+    <div class="mono lbl" style="display: flex; justify-content: space-between;"><span>#140c2e</span><span>#4a1a78</span><span>#a3206f</span><span>#e0452b</span><span>#f79a2e</span><span>#ffe08a</span></div>
+    <div class="mono lbl" style="display: flex; justify-content: space-between;"><span>-10°F</span><span>35°F</span><span>80°F</span></div>
+  </div>
+
+  <div style="grid-column: 1 / span 7; display: flex; flex-direction: column; gap: 18px;">
+    <span style="font-size: 15px; font-weight: 600;">Type</span>
+    <span class="disp" style="font-size: 64px; line-height: 0.95;">Scarp Shell</span>
+    <span class="lbl">Archivo, width 112.5, weight 800, uppercase. Headlines and the wordmark.</span>
+    <p style="margin: 0; font-size: 19px; line-height: 1.5; max-width: 52ch;">The stormproof one. Taped seams, a hood that fits over a helmet, and pit zips for when the climb heats up.</p>
+    <span class="lbl">Archivo, width 100, weights 400 to 600. Everything people read.</span>
+    <span class="mono" style="font-size: 22px;">38°F   $348   Only 3 left in M</span>
+    <span class="lbl">Martian Mono. Temperatures, prices, sizes and stock only.</span>
+  </div>
+  <div style="grid-column: 8 / span 5; display: flex; flex-direction: column; gap: 20px;">
+    <span style="font-size: 15px; font-weight: 600;">Controls</span>
+    <div style="display: flex; gap: 12px;"><button type="button" class="btn">Add to cart</button><button type="button" class="btn-2">Shop layers</button></div>
+    <div style="display: flex; gap: 8px;"><button type="button" class="chip on" aria-pressed="true">Day hike</button><button type="button" class="chip" aria-pressed="false">Trail run</button><button type="button" class="chip" aria-pressed="false">Alpine climb</button></div>
+    <div class="mono" style="display: flex; gap: 8px; font-size: 13px;">
+      <span style="min-width: 52px; height: 44px; border-radius: 999px; border: 1.5px dashed #b7bec5; color: #8a929a; text-decoration: line-through; display: inline-flex; align-items: center; justify-content: center;">XS</span>
+      <span style="min-width: 52px; height: 44px; border-radius: 999px; border: 1.5px solid #cfd5da; background: #f8f9fa; display: inline-flex; align-items: center; justify-content: center;">S</span>
+      <span style="min-width: 52px; height: 44px; border-radius: 999px; background: #111418; color: #f8f9fa; display: inline-flex; align-items: center; justify-content: center;">M</span>
+      <span style="min-width: 52px; height: 44px; border-radius: 999px; border: 1.5px solid #cfd5da; background: #f8f9fa; display: inline-flex; align-items: center; justify-content: center;">L</span>
+    </div>
+    <div style="display: flex; padding: 3px; border-radius: 999px; background: #dde2e6; align-self: flex-start;">
+      <span style="height: 34px; padding: 0 16px; border-radius: 999px; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center;">Photo</span>
+      <span style="height: 34px; padding: 0 16px; border-radius: 999px; font-size: 14px; font-weight: 600; background: #111418; color: #f8f9fa; display: inline-flex; align-items: center;">Thermal</span>
+    </div>
+    <span class="lbl">Pills for anything you press; square corners for photos and panels. No shadows, blur or glass: depth comes from flat layers overlapping.</span>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1180}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
