@@ -50,6 +50,8 @@
   --text-collection-phone--line-height: 1;
   --text-hero-tablet: 60px;
   --text-hero-tablet--line-height: 0.95;
+  --text-section: 36px;
+  --text-section--line-height: 1;
   --text-teaser: 44px;
   --text-teaser--line-height: 1;
   --text-h2: 48px;
@@ -71,6 +73,7 @@
   --container-copy: 60ch;
   --container-notice: 110ch;
   --container-hero: 40ch;
+  --container-lost: 44ch;
   --container-axis: 58ch;
 
   --ease-warmth: cubic-bezier(0.16, 1, 0.3, 1);
@@ -137,6 +140,18 @@
 
 @utility grid-cols-search-option-wide {
   grid-template-columns: 64px minmax(0, 1fr) 200px 80px;
+}
+
+@utility grid-cols-works {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+@utility grid-cols-stack {
+  grid-template-columns: 180px minmax(0, 1fr);
+}
+
+@utility grid-cols-credits-phone {
+  grid-template-columns: 56px minmax(0, 1fr);
 }
 
 @utility border-control {
