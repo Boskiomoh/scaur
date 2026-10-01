@@ -5,8 +5,8 @@ import Hero from "@/components/home/hero";
 import KitTeaser from "@/components/home/kit-teaser";
 import LayerAxis from "@/components/home/layer-axis";
 import FeaturedProduct from "@/components/product/featured-product";
+import { layerSummaries } from "@/lib/shopify/products";
 import { thermalSrc } from "@/lib/thermal";
-import type { Layer } from "@/lib/layers";
 import type { Product } from "@/types/product";
 
 interface HomeProps {
@@ -14,13 +14,6 @@ interface HomeProps {
 }
 
 const featuredHandle = "scarp-shell";
-// The product photographed for each layer row, as the home artboard shows them.
-const axisHandles: Record<Layer, string> = {
-  base: "tarn-merino-crew",
-  mid: "knoll-grid-fleece",
-  insulation: "cornice-down-jacket",
-  shell: "scarp-shell",
-};
 
 const Home: FC<HomeProps> = ({ products }) => {
   // Derived
@@ -43,9 +36,9 @@ const Home: FC<HomeProps> = ({ products }) => {
       .replace(/<[^>]+>/g, "")
       .trim() ?? "";
   const images = Object.fromEntries(
-    Object.entries(axisHandles).map(([layer, handle]) => [
+    Object.entries(layerSummaries(products)).map(([layer, summary]) => [
       layer,
-      byHandle(handle)?.colours[0]?.image ?? null,
+      summary.image,
     ]),
   );
 

@@ -64,11 +64,13 @@ src/
     cart/                           index (CartDrawer), cart-line, checkout-notice, with-quantity,
                                     actions.ts ("use server": addLine, addKit, updateLine,
                                     removeLine, getCart; each checks its own input)
-    search/                         index (SearchOverlay), search-results
+    search/                         index (SearchOverlay), search-panel, search-option, search-results,
+                                    actions.ts ("use server": search)
     about/                          index (About)
     credits/                        index (Credits)
     not-found/                      index (NotFound)
   store/cart-store.ts               drawer open state and the optimistic cart (section 6)
+  store/search-store.ts             search overlay open state (header, menu and overlay share it)
   lib/
     shopify/client.ts               storefrontFetch<T>(query, variables, { tags, revalidate })
     shopify/queries.ts              fragments and queries (products, product, cart, predictiveSearch)
@@ -143,6 +145,8 @@ type Variant = { id: string; colour: string; size: Size; availableForSale: boole
 ```
 
 A product with missing or malformed tags is logged and excluded from the axis, kit and range bars rather than crashing a page. Unit tests cover the parser.
+
+**Search:** `searchProducts(q)` in `src/lib/shopify/products.ts`. A temperature ("20°F", "20") filters the catalog by range; anything else goes to Storefront `predictiveSearch` limited to title, product type, tags and variant titles, and keeps only products whose name or layer contains the term (predictive search is typo-tolerant, so "parka" would otherwise match jackets), whole-word matches first.
 
 **Queries:** `products(first: 50)` (the whole catalog is 11 products; fetch once, filter on the server), `product(handle)`, `predictiveSearch(query, types: PRODUCT)`, `cart(id)`, and mutations `cartCreate`, `cartLinesAdd`, `cartLinesUpdate`, `cartLinesRemove`. Request `quantityAvailable` on variants (the Headless channel must have "Read product inventory" access; see WORKFLOW step B).
 

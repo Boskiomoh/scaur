@@ -131,6 +131,14 @@
   object-position: center 30%;
 }
 
+@utility grid-cols-search-option {
+  grid-template-columns: 56px minmax(0, 1fr) auto;
+}
+
+@utility grid-cols-search-option-wide {
+  grid-template-columns: 64px minmax(0, 1fr) 200px 80px;
+}
+
 @utility border-control {
   border-width: 1.5px;
 }
@@ -174,6 +182,10 @@
 
   html:has(dialog[open]) {
     overflow: hidden;
+  }
+
+  input[type="search"]::-webkit-search-cancel-button {
+    appearance: none;
   }
 
   summary::-webkit-details-marker {

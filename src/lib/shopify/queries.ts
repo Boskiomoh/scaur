@@ -196,3 +196,18 @@ export const variantStockQuery = /* GraphQL */ `
     }
   }
 `;
+
+export const predictiveSearchQuery = /* GraphQL */ `
+  query PredictiveSearch($query: String!) {
+    predictiveSearch(
+      query: $query
+      limit: 10
+      types: [PRODUCT]
+      searchableFields: [TITLE, PRODUCT_TYPE, TAG, VARIANTS_TITLE]
+    ) {
+      products {
+        handle
+      }
+    }
+  }
+`;

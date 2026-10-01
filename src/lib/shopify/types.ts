@@ -68,3 +68,7 @@ export interface VariantStockResponse {
     quantityAvailable: number | null;
   } | null)[];
 }
+
+export interface PredictiveSearchResponse {
+  predictiveSearch: { products: { handle: string }[] } | null;
+}

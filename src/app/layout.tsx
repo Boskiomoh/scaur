@@ -4,6 +4,8 @@ import { Archivo, Martian_Mono } from "next/font/google";
 import CartDrawer from "@/components/cart";
 import SiteFooter from "@/components/layout/site-footer";
 import SiteHeader from "@/components/layout/site-header";
+import SearchOverlay from "@/components/search";
+import { getLayerSummaries } from "@/lib/shopify/products";
 
 import "./globals.css";
 
@@ -32,7 +34,8 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  const summaries = await getLayerSummaries();
   return (
     <html
       lang="en"
@@ -45,12 +48,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to content
         </a>
-        <SiteHeader />
+        <SiteHeader summaries={summaries} />
         <main id="main" className="grow">
           {children}
         </main>
         <SiteFooter />
         <CartDrawer />
+        <SearchOverlay summaries={summaries} />
       </body>
     </html>
   );

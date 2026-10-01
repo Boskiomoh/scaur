@@ -1,11 +1,15 @@
 "use client";
 
 import { CaretRightIcon, ListIcon, XIcon } from "@phosphor-icons/react";
+import Image from "next/image";
 import Link from "next/link";
-import { useRef, type FC } from "react";
+import { useRef, type FC, type MouseEvent } from "react";
 
 import Logo from "@/components/ui/logo";
-import { layers } from "@/lib/layers";
+import { formatRange } from "@/lib/format";
+import { layers, type Layer } from "@/lib/layers";
+import type { LayerSummary } from "@/lib/shopify/products";
+import { useSearchStore } from "@/store/search-store";
 import { useCartStore } from "@/store/cart-store";
 
 const moreLinks = [
@@ -15,10 +19,15 @@ const moreLinks = [
   { href: "/about", label: "How this store was built" },
 ];
 
-const MobileMenu: FC = () => {
+interface MobileMenuProps {
+  summaries: Record<Layer, LayerSummary>;
+}
+
+const MobileMenu: FC<MobileMenuProps> = ({ summaries }) => {
   // Stores
   const totalQuantity = useCartStore((state) => state.cart?.totalQuantity ?? 0);
   const openCart = useCartStore((state) => state.open);
+  const openSearch = useSearchStore((state) => state.open);
 
   // State
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -26,6 +35,11 @@ const MobileMenu: FC = () => {
   // Handlers
   const handleOpen = () => dialogRef.current?.showModal();
   const handleClose = () => dialogRef.current?.close();
+  const handleOpenSearch = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    handleClose();
+    openSearch();
+  };
   const handleOpenCart = () => {
     handleClose();
     openCart();
@@ -74,8 +88,26 @@ const MobileMenu: FC = () => {
               onClick={handleClose}
               className="flex items-center gap-3.5 border-t border-line py-3 no-underline"
             >
-              <span className="grow font-display text-wordmark">
-                {layer.label}
+              <div className="relative size-12 shrink-0 bg-mist">
+                {summaries[layer.id].image && (
+                  <Image
+                    src={summaries[layer.id].image!.url}
+                    alt=""
+                    fill
+                    sizes="48px"
+                    className="object-cover"
+                  />
+                )}
+              </div>
+              <span className="flex grow flex-col gap-0.5">
+                <span className="font-display text-wordmark">
+                  {layer.label}
+                </span>
+                {summaries[layer.id].range && (
+                  <span className="font-data text-2xs text-ink-2">
+                    {formatRange(summaries[layer.id].range!)}
+                  </span>
+                )}
               </span>
               <CaretRightIcon
                 aria-hidden="true"
@@ -104,7 +136,9 @@ const MobileMenu: FC = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={handleClose}
+                onClick={
+                  link.href === "/search" ? handleOpenSearch : handleClose
+                }
                 className="py-2.5 text-base no-underline"
               >
                 {link.label}
