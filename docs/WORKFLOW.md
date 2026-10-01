@@ -168,6 +168,10 @@ NEXT_PUBLIC_STORE_PASSWORD=<password from 0.4>
 ### U. Deploy and a test order
 > Walk me through deploying to Vercel: environment variables from ARCHITECTURE section 12 (NEXT_PUBLIC_SITE_URL set to the alias), turning off Deployment Protection for Production, and adding a stable alias.
 
+Before the test order, close the password detour. A new visitor's first checkout goes to Shopify's `/password` page, and after the password Shopify lands them on the Online Store theme's home (the default placeholder store), not on checkout. The cart survives, so pressing Continue to checkout again works, but nobody knows that. Fix, once the alias exists:
+- **Theme (Claude via the Admin connector, or you in Online Store > Themes > Edit code):** in `layout/theme.liquid`, redirect every theme page to Scaur: `/products/<handle>` to the same path, everything else to `/?checkout=resume`. `layout/password.liquid` stays as it is.
+- **App (Claude):** on `?checkout=resume` with a non-empty cart, open the drawer at "Continue to checkout" and drop the parameter from the URL; update the notice copy to say Shopify brings you back after the password.
+
 Do the dashboard steps yourself. Then, from the production URL in a logged-out private window: add a kit, go to checkout, enter the store password if asked, and place **one** test order with card `1`. Check it appears under Orders in the Shopify admin. Don't place more; dev stores cap test orders.
 
 **Done when:** the production site loads logged out and your one test order went through.
