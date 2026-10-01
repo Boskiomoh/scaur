@@ -18,7 +18,7 @@ export const axisPosition = (temp: number) =>
 export const heat = (temp: number) => {
   const x = axisPosition(temp);
   const end = heatStops.findIndex((stop) => stop.at >= x);
-  if (end <= 0) return heatStops[0].hex;
+  if (end <= 0) return `rgb(${toRgb(heatStops[0].hex).join(" ")})`;
   const start = heatStops[end - 1];
   const t = (x - start.at) / (heatStops[end].at - start.at);
   const from = toRgb(start.hex);

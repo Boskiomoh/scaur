@@ -6,3 +6,9 @@ design/frames
 docs/design
 public/thermal
 content/shopify-products.csv
+# Hand-written prose and seed data keep their own wrapping.
+*.md
+content/catalog.json
+.impeccable
+playwright-report
+test-results

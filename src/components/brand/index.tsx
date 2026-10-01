@@ -74,6 +74,7 @@ const Brand: FC = () => (
         </Accordion>
       </div>
       <div
+        role="status"
         aria-busy="true"
         aria-label="Loading example"
         className="flex flex-col gap-3"
