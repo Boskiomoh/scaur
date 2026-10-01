@@ -5,6 +5,15 @@ const productFields = /* GraphQL */ `
     descriptionHtml
     productType
     tags
+    fabricFit: metafield(namespace: "custom", key: "fabric_fit") {
+      value
+    }
+    features: metafield(namespace: "custom", key: "features") {
+      value
+    }
+    care: metafield(namespace: "custom", key: "care") {
+      value
+    }
     priceRange {
       minVariantPrice {
         amount

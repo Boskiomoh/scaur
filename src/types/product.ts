@@ -45,4 +45,5 @@ export interface Product {
   price: Money;
   colours: Colour[];
   images: Image[];
+  details: { title: string; body: string }[];
 }

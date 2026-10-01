@@ -1,0 +1,60 @@
+{
+  "note": "Product page accordions, stored in Shopify as product metafields custom.fabric_fit, custom.features and custom.care. Illustrative copy for a fictional brand. Scarp Shell's text is from the design.",
+  "products": {
+    "tarn-merino-crew": {
+      "fabric_fit": "150 gsm merino wool jersey around a fine nylon core for durability. Slim fit that sits flat under a mid layer, with a longer back hem.",
+      "features": "Flatlock seams that don't rub under pack straps. Raglan sleeves for free arm movement. Crew neck with soft tape at the back.",
+      "care": "Machine wash cold on a wool cycle and dry flat. No tumble dryer and no fabric softener."
+    },
+    "tarn-merino-quarter-zip": {
+      "fabric_fit": "200 gsm merino wool jersey, warmer than the crew for cold starts. Slim fit with longer sleeves and a dropped back hem.",
+      "features": "Quarter-length front zip with a zip garage at the chin, to dump heat on the climb. Thumb loops keep the cuffs in place under gloves. Flatlock seams.",
+      "care": "Machine wash cold on a wool cycle and dry flat. No tumble dryer and no fabric softener."
+    },
+    "knoll-quarter-zip": {
+      "fabric_fit": "Smooth-faced fleece with a soft brushed inside. Regular fit that layers over a base and under any shell.",
+      "features": "Quarter zip with a high collar. One zipped chest pocket. Stretch binding at the cuffs and hem.",
+      "care": "Machine wash warm, inside out, and tumble dry low."
+    },
+    "knoll-grid-fleece": {
+      "fabric_fit": "Grid-back fleece: raised squares trap warm air and the channels between them let moisture out. Athletic fit for hard-working days.",
+      "features": "Full-length front zip. Two zipped hand pockets set high to clear a hip belt. Stretch side panels.",
+      "care": "Close the zips, machine wash warm and tumble dry low."
+    },
+    "bothy-pile-jacket": {
+      "fabric_fit": "High-loft pile fleece that stays warm when damp and dries quickly. Relaxed fit with room to wear it over a base and a light fleece.",
+      "features": "Full-length zip with a stand-up collar. Two zipped hand pockets and an inside drop pocket for gloves. Woven trim at the cuffs and hem.",
+      "care": "Machine wash cold and tumble dry low. Brush the pile gently if it flattens."
+    },
+    "belay-hoody": {
+      "fabric_fit": "Synthetic fill quilted into a ripstop nylon face that sheds snow and drizzle. Cut long, with room to wear it over a harness and a fleece.",
+      "features": "Helmet-compatible hood with a one-pull adjuster. Two-way front zip for belay access. Two hand pockets and an inside mesh pocket. Packs into its own pocket.",
+      "care": "Machine wash cold with a technical wash. Tumble dry low with two clean tennis balls to bring back the loft."
+    },
+    "cornice-down-jacket": {
+      "fabric_fit": "Down fill in baffled chambers under a wind-resistant nylon face. Boxy, relaxed fit made to go over everything at camp.",
+      "features": "Insulated hood and a high collar with a soft chin guard. Two fleece-lined hand pockets and two inside drop pockets. Elastic cuffs and an adjustable hem.",
+      "care": "Wash with a down cleaner on a gentle cycle, then tumble dry low with dryer balls until the down is fully dry."
+    },
+    "squall-jacket": {
+      "fabric_fit": "Lightweight two-layer waterproof nylon with a mesh liner. Trim fit for running and fast hiking.",
+      "features": "Packs into its own chest pocket. Hood with an elastic face opening. Reflective details front and back. Elastic cuffs and a drawcord hem.",
+      "care": "Machine wash cold and line dry. Tumble dry low now and then to refresh the water-repellent finish."
+    },
+    "ridgeback-softshell": {
+      "fabric_fit": "Double-weave stretch softshell that blocks wind and sheds light rain while it breathes. Athletic fit that moves with you on scrambles.",
+      "features": "Low-profile hood that fits under a helmet. Two hand pockets set high to clear a harness. Adjustable cuffs and a drawcord hem.",
+      "care": "Machine wash cold and tumble dry low to refresh the water-repellent finish. No fabric softener."
+    },
+    "downpour-jacket": {
+      "fabric_fit": "2.5-layer waterproof, breathable fabric with fully taped seams. Regular fit with room for a fleece underneath.",
+      "features": "Stowable hood that rolls into the collar. Two zipped hand pockets. Storm flap over the front zip. Adjustable cuffs and hem.",
+      "care": "Machine wash warm with a technical wash and tumble dry low to refresh the water-repellent finish."
+    },
+    "scarp-shell": {
+      "fabric_fit": "Three-layer waterproof fabric with a brushed backer, so it does not feel clammy against a base layer. Relaxed fit through the body to leave room for a mid and an insulation layer.",
+      "features": "Helmet-compatible hood with a laminated brim. Two chest pockets that clear a hip belt. 12-inch pit zips. Adjustable cuffs and hem.",
+      "care": "Machine wash warm with a technical wash, tumble dry low to refresh the water-repellent finish. No fabric softener."
+    }
+  }
+}

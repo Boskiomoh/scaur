@@ -109,6 +109,13 @@ export const toProduct = (raw: RawProduct): Product | null => {
     price: raw.priceRange.minVariantPrice,
     colours: [...colours.values()],
     images: raw.images.nodes,
+    details: [
+      { title: "Fabric and fit", body: raw.fabricFit?.value },
+      { title: "Features", body: raw.features?.value },
+      { title: "Care", body: raw.care?.value },
+    ].filter(
+      (detail): detail is { title: string; body: string } => !!detail.body,
+    ),
   };
 };
 

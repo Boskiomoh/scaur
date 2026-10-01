@@ -35,6 +35,9 @@ const raw = (overrides: Partial<RawProduct> = {}): RawProduct => ({
     "demo",
     "shell-role:storm",
   ],
+  fabricFit: { value: "Three-layer waterproof fabric." },
+  features: null,
+  care: { value: "Machine wash warm." },
   priceRange: { minVariantPrice: money("348.0") },
   images: { nodes: [] },
   variants: {
@@ -92,6 +95,13 @@ describe("toProduct", () => {
     )!.colours;
     expect(colours[0].hex).toBe("#3f5a45");
     expect(colours[1].hex).toBe(fallbackHex);
+  });
+
+  it("keeps the accordion details Shopify has, in order", () => {
+    expect(toProduct(raw())!.details).toEqual([
+      { title: "Fabric and fit", body: "Three-layer waterproof fabric." },
+      { title: "Care", body: "Machine wash warm." },
+    ]);
   });
 
   it("leaves shellRole off non-shell layers", () => {

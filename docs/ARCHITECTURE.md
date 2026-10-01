@@ -55,7 +55,8 @@ src/
     brand/                          index (Brand), brand-controls: the /brand scratch page
     home/                           index (Home), hero, layer-axis, kit-teaser, fabric-band
     shop/                           index (Shop), filter-bar, made-for-slider, empty-results
-    product/                        index (Product), gallery, variant-picker, size-pill, size-guide,
+    product/                        index (Product), product-view, product-from-url, selection,
+                                    gallery, variant-picker, size-pill, size-guide,
                                     add-to-cart, finish-the-kit, featured-product (also
                                     rendered by Home: one product feature, two places)
     kit/                            index (Kit), kit-form, kit-figure, kit-slot, kit-footer
@@ -120,10 +121,11 @@ export async function storefrontFetch<T>(
 // Throws ShopifyError { kind: 'network' | 'graphql' | 'userErrors', messages }.
 ```
 
-**How the layering system is stored in Shopify** (no metafield setup needed):
+**How the layering system is stored in Shopify:**
 - **Layer** = product type: `Base`, `Mid`, `Insulation`, `Shell`.
 - **Range, warmth and role** = tags: `temp-lo:25`, `temp-hi:60`, `warmth:2`, `shell-role:storm|rain|showers|wind`, plus `demo`.
 - **Colour and Size** = product options, in that order. Variant images carry the colourway photo.
+- **Accordion copy** = product metafields `custom.fabric_fit`, `custom.features` and `custom.care` (multi-line text, Storefront read access), seeded from `content/product-details.json`. Product images that aren't a colour's variant image are the detail shots in the gallery.
 
 `lib/catalog.ts` maps a raw product to:
 

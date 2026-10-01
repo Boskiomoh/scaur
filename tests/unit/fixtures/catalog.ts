@@ -15,6 +15,7 @@ export const catalogProducts = (): Product[] =>
     shellRole: "role" in item ? (item.role as ShellRole) : undefined,
     price: { amount: `${item.price}.0`, currencyCode: "USD" },
     images: [],
+    details: [],
     colours: item.colours.map((colour) => ({
       name: colour.name,
       hex: colour.hex,

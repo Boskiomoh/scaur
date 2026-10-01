@@ -15,6 +15,9 @@ export interface RawProduct {
   descriptionHtml: string;
   productType: string;
   tags: string[];
+  fabricFit: { value: string } | null;
+  features: { value: string } | null;
+  care: { value: string } | null;
   priceRange: { minVariantPrice: Money };
   images: { nodes: Image[] };
   variants: { nodes: RawVariant[] };
