@@ -106,6 +106,11 @@ const CartDrawer: FC = () => {
             ({cart?.totalQuantity ?? 0})
           </span>
         </h2>
+        <span role="status" className="sr-only">
+          {cart
+            ? `${cart.totalQuantity} ${cart.totalQuantity === 1 ? "item" : "items"} in your cart, subtotal ${formatMoney(cart.subtotal)}`
+            : ""}
+        </span>
         <button
           type="button"
           aria-label="Close cart"
