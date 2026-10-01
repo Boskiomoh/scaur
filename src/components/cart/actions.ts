@@ -90,8 +90,10 @@ const mutationResult = async (
   previous: Cart | null,
   error: string,
 ): Promise<CartResult> => {
-  if (!result.cart || result.userErrors.length > 0)
+  if (!result.cart || result.userErrors.length > 0) {
+    console.error("Shopify refused the cart change:", result.userErrors);
     return { ok: false, error, cart: previous };
+  }
   await saveCartId(result.cart.id);
   return { ok: true, cart: toCart(result.cart) };
 };
@@ -123,7 +125,8 @@ const addLines = async (
           { cache: "no-store" },
         ).then((response) => response.cartCreate);
     return mutationResult(data, cart, addFailed);
-  } catch {
+  } catch (error) {
+    console.error("Cart add failed:", error);
     return { ok: false, error: addFailed, cart };
   }
 };
@@ -131,7 +134,8 @@ const addLines = async (
 export const getCart = async (): Promise<CartResult> => {
   try {
     return { ok: true, cart: await loadCart() };
-  } catch {
+  } catch (error) {
+    console.error("Cart load failed:", error);
     return {
       ok: false,
       error: "The store isn't responding right now.",
@@ -220,7 +224,8 @@ export const updateLine = async (
       { cache: "no-store" },
     );
     return mutationResult(cartLinesUpdate, cart, updateFailed);
-  } catch {
+  } catch (error) {
+    console.error("Cart update failed:", error);
     return { ok: false, error: updateFailed, cart };
   }
 };
@@ -240,7 +245,8 @@ export const removeLine = async (lineId: unknown): Promise<CartResult> => {
       { cache: "no-store" },
     );
     return mutationResult(cartLinesRemove, cart, updateFailed);
-  } catch {
+  } catch (error) {
+    console.error("Cart remove failed:", error);
     return { ok: false, error: updateFailed, cart };
   }
 };

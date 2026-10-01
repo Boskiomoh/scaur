@@ -75,7 +75,7 @@ const CartDrawer: FC = () => {
     if (result.ok) {
       setCart(result.cart);
     } else {
-      setCart(previous);
+      setCart(result.cart ?? previous);
       setLineError(line.id, result.error);
     }
   };
@@ -143,7 +143,7 @@ const CartDrawer: FC = () => {
               return (
                 <div
                   key={kit?.id ?? "loose"}
-                  className="border-b border-line py-4"
+                  className="border-b border-line py-4 md:max-lg:py-3"
                 >
                   {kit && (
                     <div className="flex items-center justify-between pb-2">
