@@ -1,7 +1,3 @@
 export default function Page() {
-  return (
-    <main>
-      <h1>Scaur</h1>
-    </main>
-  );
+  return <h1 className="sr-only">Scaur</h1>;
 }
