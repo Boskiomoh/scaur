@@ -2,6 +2,7 @@
   "name": "scaur",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "prebuild": "node scripts/thermal.mjs && node scripts/brand.mjs",
