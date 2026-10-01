@@ -31,7 +31,7 @@ const ProductTile: FC<ProductTileProps> = ({ product, view, isPriority }) => {
   return (
     <Link
       href={`/products/${product.handle}`}
-      className="group flex min-w-0 flex-col gap-2 no-underline md:gap-3"
+      className="group flex min-w-0 flex-col gap-2 no-underline md:gap-2.5 lg:gap-3"
     >
       <div className="relative aspect-4/5 overflow-hidden bg-mist">
         {isThermal ? (
@@ -56,25 +56,25 @@ const ProductTile: FC<ProductTileProps> = ({ product, view, isPriority }) => {
         )}
       </div>
       <div className="flex justify-between gap-3">
-        <span className="text-sm leading-snug font-semibold group-hover:underline md:text-base">
+        <span className="text-sm leading-snug font-semibold group-hover:underline md:text-nav lg:text-base">
           {product.title}
         </span>
-        <span className="hidden font-data text-sm md:inline">{price}</span>
+        <span className="hidden font-data text-sm lg:inline">{price}</span>
       </div>
-      <span className="flex items-baseline justify-between gap-2 text-caption text-ink-2 md:text-sm">
-        <span className="md:hidden">{layerLabel}</span>
-        <span className="hidden md:inline">{meta}</span>
-        <span className="font-data text-caption text-ink md:hidden">
+      <span className="flex items-baseline justify-between gap-2 text-caption text-ink-2 lg:text-sm">
+        <span className="lg:hidden">{layerLabel}</span>
+        <span className="hidden lg:inline">{meta}</span>
+        <span className="font-data text-caption text-ink lg:hidden">
           {price}
         </span>
       </span>
       <RangeBar
         lo={product.range.lo}
         hi={product.range.hi}
-        className="h-1 md:h-1.5"
+        className="h-1 lg:h-1.5"
       />
-      <span className="font-data text-2xs text-ink-2 md:text-xs">
-        <span className="hidden md:inline">Made for </span>
+      <span className="font-data text-2xs text-ink-2 lg:text-xs">
+        <span className="hidden lg:inline">Made for </span>
         {formatRange(product.range)}
       </span>
     </Link>

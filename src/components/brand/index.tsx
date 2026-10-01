@@ -17,21 +17,24 @@ const swatches = [
 ];
 
 const Brand: FC = () => (
-  <div className="mx-auto grid max-w-page grid-cols-12 content-start gap-x-6 gap-y-12 p-14">
+  <div className="mx-auto flex max-w-page flex-col gap-12 px-4 py-10 md:px-8 lg:grid lg:grid-cols-12 lg:content-start lg:gap-x-6 lg:p-14">
     <h1 className="sr-only">Brand and controls</h1>
 
-    <div className="col-span-7 flex flex-col gap-3.5">
+    <div className="lg:col-span-7 flex flex-col gap-3.5">
       <span className="text-nav font-semibold">Interface colour</span>
-      <div className="flex gap-3">
+      <div className="flex gap-2 md:gap-3">
         {swatches.map((swatch) => (
-          <div key={swatch.name} className="flex flex-1 flex-col gap-1.5">
+          <div
+            key={swatch.name}
+            className="flex min-w-0 flex-1 flex-col gap-1.5"
+          >
             <div className={`h-22 ${swatch.className}`} />
             <span className="text-sm font-semibold">{swatch.name}</span>
           </div>
         ))}
       </div>
     </div>
-    <div className="col-span-5 flex flex-col gap-3.5">
+    <div className="lg:col-span-5 flex flex-col gap-3.5">
       <span className="text-nav font-semibold">
         Thermal scale (data only: ratings, thermal views, the kit)
       </span>
@@ -48,7 +51,7 @@ const Brand: FC = () => (
       </div>
     </div>
 
-    <div className="col-span-7 flex flex-col gap-4.5">
+    <div className="lg:col-span-7 flex flex-col gap-4.5">
       <span className="text-nav font-semibold">Type</span>
       <span className="font-display text-h1">Scarp Shell</span>
       <p className="max-w-copy text-lead leading-normal">
@@ -62,7 +65,7 @@ const Brand: FC = () => (
         <Logo size="md" isLink={false} />
       </div>
     </div>
-    <div className="col-span-5 flex flex-col gap-5">
+    <div className="lg:col-span-5 flex flex-col gap-5">
       <span className="text-nav font-semibold">Controls</span>
       <BrandControls />
       <div>

@@ -57,64 +57,68 @@ const ProductView: FC<ProductViewProps> = ({
         />
       </div>
 
-      <div className="flex flex-col gap-6 px-4 md:px-8 lg:col-span-4 lg:col-start-9 lg:gap-7 lg:px-0 lg:pt-2">
-        <div className="flex flex-col gap-2.5 lg:gap-3">
-          <Link
-            href={`/shop?layer=${product.layer}`}
-            className="text-sm text-ink-2 lg:text-nav"
-          >
-            {layer.label === "Insulation"
-              ? "Insulation layer"
-              : `${layer.label} layer`}
-          </Link>
-          <h1 className="font-display text-collection-phone leading-product md:text-product">
-            {product.title}
-          </h1>
-          <span className="font-data text-wordmark-sm lg:text-wordmark">
-            {formatMoney(price)}
-          </span>
-        </div>
-        <p className="text-base leading-lead text-ink-2 lg:text-blurb">
-          {lead}
-        </p>
+      <div className="flex flex-col gap-6 px-4 md:grid md:grid-cols-2 md:gap-x-6 md:px-8 lg:col-span-4 lg:col-start-9 lg:flex lg:gap-7 lg:px-0 lg:pt-2">
+        <div className="flex flex-col gap-6 lg:contents">
+          <div className="flex flex-col gap-2.5 lg:gap-3">
+            <Link
+              href={`/shop?layer=${product.layer}`}
+              className="text-sm text-ink-2 lg:text-nav"
+            >
+              {layer.label === "Insulation"
+                ? "Insulation layer"
+                : `${layer.label} layer`}
+            </Link>
+            <h1 className="font-display text-collection-phone leading-product md:text-product">
+              {product.title}
+            </h1>
+            <span className="font-data text-wordmark-sm lg:text-wordmark">
+              {formatMoney(price)}
+            </span>
+          </div>
+          <p className="text-base leading-lead text-ink-2 lg:text-blurb">
+            {lead}
+          </p>
 
-        <div className="flex flex-col gap-2 lg:gap-2.5">
-          <span className="text-sm font-semibold">
-            Made for{" "}
-            <span className="font-data">{formatRange(product.range)}</span>
-          </span>
-          <RangeBar
-            lo={product.range.lo}
-            hi={product.range.hi}
-            className="h-2.5"
-          />
-          <div className="flex justify-between font-data text-2xs text-ink-2">
-            <span>-10°F</span>
-            <span>35°F</span>
-            <span>80°F</span>
+          <div className="flex flex-col gap-2 lg:gap-2.5">
+            <span className="text-sm font-semibold">
+              Made for{" "}
+              <span className="font-data">{formatRange(product.range)}</span>
+            </span>
+            <RangeBar
+              lo={product.range.lo}
+              hi={product.range.hi}
+              className="h-2.5"
+            />
+            <div className="flex justify-between font-data text-2xs text-ink-2">
+              <span>-10°F</span>
+              <span>35°F</span>
+              <span>80°F</span>
+            </div>
           </div>
         </div>
 
-        <VariantPicker
-          colours={product.colours}
-          colour={colour}
-          size={size}
-          onSelect={handleSelect}
-        />
+        <div className="flex flex-col gap-6 lg:contents">
+          <VariantPicker
+            colours={product.colours}
+            colour={colour}
+            size={size}
+            onSelect={handleSelect}
+          />
 
-        <div className="flex flex-col gap-2.5">
-          <AddToCart variant={variant} />
-          <Button href="/kit" variant="secondary" size="lg">
-            Build a kit around it
-          </Button>
-          <span id="demo-note" className="text-caption text-ink-2">
-            Test checkout only. Nothing ships from this demo store. Specs and
-            ratings are illustrative.
-          </span>
+          <div className="flex flex-col gap-2.5">
+            <AddToCart variant={variant} />
+            <Button href="/kit" variant="secondary" size="lg">
+              Build a kit around it
+            </Button>
+            <span id="demo-note" className="text-caption text-ink-2">
+              Test checkout only. Nothing ships from this demo store. Specs and
+              ratings are illustrative.
+            </span>
+          </div>
         </div>
 
         {product.details.length > 0 && (
-          <div className="border-b border-line lg:border-b-0">
+          <div className="border-b border-line md:col-span-2 lg:border-b-0">
             {product.details.map((detail, index) => (
               <Accordion
                 key={detail.title}

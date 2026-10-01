@@ -40,15 +40,15 @@ const FinishTheKit: FC<FinishTheKitProps> = ({ slots, size }) => (
           return (
             <li
               key={layer}
-              className="flex min-w-0 items-center gap-4 border-t border-line pt-5"
+              className="flex min-w-0 items-center gap-4 border-t border-line pt-5 md:flex-col md:items-start md:gap-3 lg:flex-row lg:items-center lg:gap-4"
             >
-              <div className="relative h-20 w-16 shrink-0 bg-mist md:h-32 md:w-26">
+              <div className="relative h-20 w-16 shrink-0 bg-mist md:aspect-4/5 md:h-auto md:w-full lg:h-32 lg:w-26">
                 {image && (
                   <Image
                     src={image.url}
                     alt={image.altText ?? product.title}
                     fill
-                    sizes="104px"
+                    sizes="(min-width: 1024px) 104px, (min-width: 768px) 33vw, 64px"
                     className="object-cover"
                   />
                 )}

@@ -33,14 +33,17 @@ const CartLine: FC<CartLineProps> = ({
       : "";
 
   return (
-    <li aria-busy={isPending} className="flex gap-4 py-2.5">
-      <div className="relative h-24 w-19 shrink-0 bg-mist">
+    <li
+      aria-busy={isPending}
+      className="flex gap-4 py-2.5 md:max-lg:gap-5 md:max-lg:border-t md:max-lg:border-line md:max-lg:py-3.5"
+    >
+      <div className="relative h-24 w-19 shrink-0 bg-mist md:max-lg:h-25 md:max-lg:w-20">
         {line.image && (
           <Image
             src={line.image.url}
             alt=""
             fill
-            sizes="76px"
+            sizes="80px"
             className="object-cover"
           />
         )}
@@ -50,7 +53,7 @@ const CartLine: FC<CartLineProps> = ({
           <Link
             href={`/products/${line.handle}`}
             onClick={onNavigate}
-            className="text-nav font-semibold no-underline hover:underline"
+            className="text-nav font-semibold no-underline hover:underline md:max-lg:text-base"
           >
             {line.title}
           </Link>

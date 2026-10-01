@@ -72,11 +72,11 @@ const Kit: FC<KitProps> = ({ initialInput, products }) => {
         aria-label="Your kit"
         className="flex flex-col gap-6 bg-snow px-4 pt-8 md:px-8 lg:col-span-7 lg:col-start-6 lg:bg-transparent lg:p-0"
       >
-        <div className="flex flex-col-reverse gap-6 lg:grid lg:grid-cols-7 lg:gap-6">
+        <div className="flex flex-col-reverse gap-6 md:grid md:grid-cols-2 lg:grid-cols-7">
           <div className="lg:col-span-3">
             <KitFigure level={kit.level} pieces={kit.pieces} />
           </div>
-          <div className="lg:col-span-4">
+          <div className="md:order-first lg:order-none lg:col-span-4">
             <KitReadout kit={kit} temp={input.temp} />
           </div>
         </div>

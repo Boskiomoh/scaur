@@ -14,7 +14,7 @@ const levels = [0, 1, 2, 3, 4];
 // All five levels stay mounted so warmth cross-fades between them (the one eased moment).
 const KitFigure: FC<KitFigureProps> = ({ level, pieces }) => (
   <figure className="flex flex-col gap-2 lg:gap-2.5">
-    <div className="relative h-60 bg-heat-0 lg:h-110">
+    <div className="relative h-60 bg-heat-0 md:h-75 lg:h-110">
       {levels.map((item) => (
         <Image
           key={item}

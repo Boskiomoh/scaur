@@ -56,7 +56,7 @@ const MadeForSlider: FC<MadeForSliderProps> = ({ temp, onCommit }) => {
           isAny ? "Any temperature" : `${value} degrees Fahrenheit`
         }
         onChange={(event) => handleChange(Number(event.target.value))}
-        className="min-w-0 grow accent-ember lg:w-50 lg:grow-0"
+        className="-my-3.5 h-11 min-w-0 grow accent-ember lg:w-50 lg:grow-0"
       />
       <span className="min-w-11 text-end font-data text-caption lg:min-w-16 lg:text-start">
         {label}

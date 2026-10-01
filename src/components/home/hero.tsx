@@ -116,16 +116,16 @@ const Hero: FC<HeroProps> = ({
             </div>
           ) : (
             <div className="flex grow items-center gap-4">
-              <span className="text-caption text-ink-2 lg:text-nav lg:font-semibold lg:text-ink">
+              <span className="text-caption text-ink-2 md:text-nav md:font-semibold md:text-ink">
                 {title} in {colour}
-                <span className="lg:hidden">, {formatMoney(price)}</span>
+                <span className="md:hidden">, {formatMoney(price)}</span>
               </span>
-              <span className="font-data text-sm max-lg:hidden">
+              <span className="font-data text-sm max-md:hidden">
                 {formatMoney(price)}
               </span>
               <Link
                 href={href}
-                className="ms-auto text-nav font-semibold max-lg:hidden"
+                className="ms-auto text-nav font-semibold max-md:hidden"
               >
                 View the shell
               </Link>

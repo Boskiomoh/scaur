@@ -34,9 +34,9 @@ const KitForm: FC<KitFormProps> = ({ input, onChange }) => (
     method="get"
     aria-labelledby="kit-heading"
     onSubmit={(event) => event.preventDefault()}
-    className="flex flex-col gap-7 lg:gap-8"
+    className="flex flex-col gap-7 md:grid md:grid-cols-2 md:gap-x-6 lg:flex lg:gap-8"
   >
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 md:col-span-2">
       <h1
         id="kit-heading"
         className="font-display text-collection-phone leading-product md:text-product"
@@ -52,13 +52,14 @@ const KitForm: FC<KitFormProps> = ({ input, onChange }) => (
     <ChoiceGroup
       legend="Activity"
       name="a"
+      className="md:col-start-1 md:row-start-2"
       options={activities}
       labels={activityLabels}
       value={input.activity}
       onPick={(activity) => onChange({ activity })}
     />
 
-    <div className="flex flex-col gap-2.5">
+    <div className="flex flex-col gap-2.5 md:col-span-2 md:row-start-3">
       <label htmlFor="kit-temp" className="text-sm font-semibold">
         Temperature at the start
       </label>
@@ -85,7 +86,7 @@ const KitForm: FC<KitFormProps> = ({ input, onChange }) => (
         value={input.temp}
         aria-valuetext={`${input.temp} degrees Fahrenheit`}
         onChange={(event) => onChange({ temp: Number(event.target.value) })}
-        className="w-full accent-ember"
+        className="-my-3.5 h-11 w-full accent-ember"
       />
       <div
         aria-hidden="true"
@@ -99,6 +100,7 @@ const KitForm: FC<KitFormProps> = ({ input, onChange }) => (
     <ChoiceGroup
       legend="Rain"
       name="r"
+      className="md:col-start-1 md:row-start-4"
       options={rains}
       labels={rainLabels}
       value={input.rain}
@@ -107,13 +109,14 @@ const KitForm: FC<KitFormProps> = ({ input, onChange }) => (
     <ChoiceGroup
       legend="Wind"
       name="w"
+      className="md:col-start-2 md:row-start-4"
       options={winds}
       labels={windLabels}
       value={input.wind}
       onPick={(wind) => onChange({ wind })}
     />
 
-    <div className="flex flex-col gap-2.5">
+    <div className="flex flex-col gap-2.5 md:col-start-2 md:row-start-2">
       <label htmlFor="kit-size" className="text-sm font-semibold">
         Your size
       </label>

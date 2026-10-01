@@ -29,7 +29,7 @@ const Shop: FC<ShopProps> = ({ state, products }) => {
 
       <FilterBar state={state} count={products.length}>
         {products.length > 0 ? (
-          <ul className="grid grid-cols-2 gap-x-3 gap-y-8 px-4 pt-6 pb-14 md:grid-cols-3 md:gap-x-6 md:gap-y-12 md:px-8 md:pt-8 md:pb-24 lg:grid-cols-4 lg:px-12">
+          <ul className="grid grid-cols-2 gap-x-3 gap-y-8 px-4 pt-6 pb-14 md:grid-cols-3 md:gap-x-5 md:gap-y-10 md:px-8 md:pt-8 md:pb-20 lg:grid-cols-4 lg:gap-x-6 lg:gap-y-12 lg:px-12 lg:pb-24">
             {products.map((product, index) => (
               <li key={product.handle} className="min-w-0">
                 <ProductTile

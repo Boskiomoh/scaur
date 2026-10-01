@@ -5,6 +5,7 @@ interface ChoiceGroupProps<T extends string> {
   labels: Record<T, string>;
   value: T;
   onPick: (value: T) => void;
+  className?: string;
 }
 
 // Radios styled as chips, so the form also works as a plain GET form without JavaScript.
@@ -15,8 +16,9 @@ const ChoiceGroup = <T extends string>({
   labels,
   value,
   onPick,
+  className,
 }: ChoiceGroupProps<T>) => (
-  <fieldset className="flex flex-col gap-2.5">
+  <fieldset className={`flex flex-col gap-2.5 ${className ?? ""}`}>
     <legend className="mb-2.5 text-sm font-semibold">{legend}</legend>
     <div className="flex flex-wrap gap-2">
       {options.map((option) => (

@@ -27,13 +27,13 @@ const BrandControls: FC = () => {
 
   return (
     <div className="flex flex-col gap-5">
-      <div className="flex gap-3">
+      <div className="flex flex-wrap gap-3">
         <Button>Add to cart</Button>
         <Button variant="secondary" href="/shop">
           Shop layers
         </Button>
       </div>
-      <div className="flex gap-2">
+      <div className="flex flex-wrap gap-2">
         {activities.map((label) => (
           <Chip
             key={label}
@@ -44,7 +44,7 @@ const BrandControls: FC = () => {
           </Chip>
         ))}
       </div>
-      <div className="flex gap-2">
+      <div className="flex flex-wrap gap-2">
         {sizes.map((item) => (
           <SizePill
             key={item.size}

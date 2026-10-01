@@ -50,10 +50,10 @@ const KitTeaser: FC<KitTeaserProps> = ({ products }) => {
   return (
     <section aria-labelledby="teaser-heading" className="bg-snow">
       <div className="mx-auto flex max-w-page flex-col gap-5 px-4 py-14 md:px-8 lg:grid lg:grid-cols-12 lg:gap-x-6 lg:px-12 lg:py-24">
-        <div className="flex flex-col gap-5 lg:col-span-4 lg:gap-7">
+        <div className="flex flex-col gap-5 md:grid md:grid-cols-2 md:gap-x-6 lg:col-span-4 lg:flex lg:gap-7">
           <h2
             id="teaser-heading"
-            className="font-display text-h2-phone lg:text-teaser"
+            className="font-display text-h2-phone md:col-span-2 lg:text-teaser"
           >
             Tell us the day. We&apos;ll layer it.
           </h2>
@@ -61,7 +61,7 @@ const KitTeaser: FC<KitTeaserProps> = ({ products }) => {
             A day hike at 38°F in steady rain gets this kit. Change the day in
             the kit builder.
           </p>
-          <p className="text-blurb leading-lead text-ink-2 max-md:hidden">
+          <p className="text-blurb leading-lead text-ink-2 max-md:hidden md:col-span-2">
             Pick the activity and the weather. The kit builder picks one piece
             per layer and skips what you won&apos;t need.
           </p>
@@ -84,7 +84,7 @@ const KitTeaser: FC<KitTeaserProps> = ({ products }) => {
               ))}
             </div>
           </div>
-          <div className="flex flex-col gap-2.5 max-md:hidden">
+          <div className="flex flex-col gap-2.5 max-md:hidden md:col-span-2 md:row-start-4 lg:row-auto">
             <label
               htmlFor="teaser-temp"
               className="flex justify-between text-sm font-semibold"
@@ -107,7 +107,7 @@ const KitTeaser: FC<KitTeaserProps> = ({ products }) => {
               value={input.temp}
               aria-valuetext={`${input.temp} degrees Fahrenheit`}
               onChange={(event) => update({ temp: Number(event.target.value) })}
-              className="w-full accent-ember"
+              className="-my-3.5 h-11 w-full accent-ember"
             />
           </div>
           <div
@@ -131,7 +131,7 @@ const KitTeaser: FC<KitTeaserProps> = ({ products }) => {
           <Button
             href={kitHref(input)}
             size="lg"
-            className="self-start max-md:hidden lg:h-12"
+            className="self-start max-lg:hidden lg:h-12"
           >
             See my kit
           </Button>
@@ -188,6 +188,13 @@ const KitTeaser: FC<KitTeaserProps> = ({ products }) => {
 
         <Button href="/kit" size="lg" className="md:hidden">
           Open the kit builder
+        </Button>
+        <Button
+          href={kitHref(input)}
+          size="lg"
+          className="self-start max-md:hidden lg:hidden"
+        >
+          See my kit
         </Button>
       </div>
     </section>

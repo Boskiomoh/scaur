@@ -83,7 +83,7 @@ const Gallery: FC<GalleryProps> = ({ title, colour, details, thermal }) => {
               }
               aria-pressed={i === index}
               onClick={() => setIndex(i)}
-              className="relative h-15 w-12 bg-mist outline-2 outline-offset-2 outline-transparent aria-pressed:outline-ink lg:h-22 lg:w-18"
+              className="relative h-15 w-12 bg-mist outline-2 md:h-17 md:w-14 outline-offset-2 outline-transparent aria-pressed:outline-ink lg:h-22 lg:w-18"
             >
               <Image
                 src={item.url}

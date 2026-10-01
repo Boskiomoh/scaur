@@ -31,7 +31,7 @@ const FeaturedProduct: FC<FeaturedProductProps> = ({ product, lead }) => {
       className="mx-auto max-w-page px-8 pt-8 pb-16 max-md:hidden lg:grid lg:grid-cols-12 lg:gap-x-6 lg:px-12 lg:pt-16 lg:pb-28"
     >
       <div
-        className="h-140 p-12 lg:col-span-7 lg:h-175"
+        className="h-155 p-8 lg:col-span-7 lg:h-175 lg:p-12"
         style={{ backgroundColor: colour.hex }}
       >
         <div className="relative size-full">
@@ -47,33 +47,37 @@ const FeaturedProduct: FC<FeaturedProductProps> = ({ product, lead }) => {
         </div>
       </div>
 
-      <div className="flex flex-col justify-center gap-6 pt-8 lg:col-span-4 lg:col-start-9 lg:pt-0">
-        <div className="flex flex-col gap-2.5">
-          <span className="text-nav text-ink-2">Shell layer</span>
-          <h2 id="featured-heading" className="font-display text-h2">
-            {product.title}
-          </h2>
-          <span className="font-data text-wordmark-sm">
-            {formatMoney(variant?.price ?? product.price)}
-          </span>
-        </div>
-        <p className="text-blurb leading-lead text-ink-2">{lead}</p>
-        <VariantPicker
-          colours={product.colours}
-          colour={colour}
-          size={size}
-          onSelect={(nextColour, nextSize) => {
-            setColour(nextColour);
-            setSize(nextSize);
-          }}
-        />
-        <div className="flex gap-3">
-          <div className="flex grow flex-col gap-2">
-            <AddToCart variant={variant} />
+      <div className="grid grid-cols-2 gap-x-6 gap-y-6 pt-8 lg:col-span-4 lg:col-start-9 lg:flex lg:flex-col lg:justify-center lg:pt-0">
+        <div className="flex flex-col gap-6 lg:contents">
+          <div className="flex flex-col gap-2.5">
+            <span className="text-nav text-ink-2">Shell layer</span>
+            <h2 id="featured-heading" className="font-display text-h2">
+              {product.title}
+            </h2>
+            <span className="font-data text-wordmark-sm">
+              {formatMoney(variant?.price ?? product.price)}
+            </span>
           </div>
-          <Button href="/kit" variant="secondary" size="lg">
-            Add to a kit
-          </Button>
+          <p className="text-blurb leading-lead text-ink-2">{lead}</p>
+        </div>
+        <div className="flex flex-col gap-6 lg:contents">
+          <VariantPicker
+            colours={product.colours}
+            colour={colour}
+            size={size}
+            onSelect={(nextColour, nextSize) => {
+              setColour(nextColour);
+              setSize(nextSize);
+            }}
+          />
+          <div className="flex gap-3">
+            <div className="flex grow flex-col gap-2">
+              <AddToCart variant={variant} />
+            </div>
+            <Button href="/kit" variant="secondary" size="lg">
+              Add to a kit
+            </Button>
+          </div>
         </div>
         <span id="demo-note" className="sr-only">
           Test checkout only. Nothing ships from this demo store.

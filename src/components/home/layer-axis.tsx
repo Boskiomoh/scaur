@@ -20,26 +20,41 @@ const gradient = `linear-gradient(90deg, ${heatStops.map((stop) => stop.hex).joi
 const LayerAxis: FC<LayerAxisProps> = ({ products, images }) => (
   <section
     aria-labelledby="axis-heading"
-    className="mx-auto flex max-w-page flex-col gap-6 px-4 py-14 md:px-8 lg:gap-12 lg:px-12 lg:pt-28 lg:pb-24"
+    className="mx-auto flex max-w-page flex-col gap-6 px-4 py-14 md:gap-9 md:px-8 md:pt-18 md:pb-16 lg:gap-12 lg:px-12 lg:pt-28 lg:pb-24"
   >
     <div className="flex flex-col gap-4">
-      <h2 id="axis-heading" className="font-display text-h2-phone lg:text-h2">
+      <h2
+        id="axis-heading"
+        className="font-display text-h2-phone md:text-collection-phone lg:text-h2"
+      >
         One scale for every layer.
       </h2>
       <p className="max-w-axis text-base leading-lead text-ink-2 md:hidden">
         Each piece shows the temperatures it is made for. Ratings assume you are
         moving.
       </p>
-      <p className="max-w-axis text-base leading-lead text-ink-2 max-md:hidden lg:text-lg">
+      <p className="max-w-axis text-blurb leading-lead text-ink-2 max-md:hidden lg:text-lg">
         Each piece shows the temperatures it is made for, so you can see how a
         kit covers the day. Ratings assume you are moving.
       </p>
     </div>
 
     <div>
-      <div className="flex flex-col gap-1.5 md:grid md:grid-cols-axis-tablet md:gap-x-6 lg:grid-cols-axis">
+      <div className="flex flex-col gap-1.5 md:grid md:grid-cols-axis-tablet md:gap-x-5 lg:grid-cols-axis lg:gap-x-6">
         <div className="max-md:hidden" />
-        <div className="relative h-11 max-md:hidden">
+        <div className="hidden flex-col gap-1.5 pb-3 md:flex lg:hidden">
+          <div className="flex justify-between font-data text-xs text-ink-2">
+            {[-10, 20, 50, 80].map((tick) => (
+              <span key={tick}>{tick}°F</span>
+            ))}
+          </div>
+          <div
+            aria-hidden="true"
+            className="h-1.5"
+            style={{ background: gradient }}
+          />
+        </div>
+        <div className="relative h-11 max-lg:hidden">
           {ticks.map((tick) => (
             <span
               key={tick}
@@ -76,13 +91,13 @@ const LayerAxis: FC<LayerAxisProps> = ({ products, images }) => (
           return (
             <li
               key={layer.id}
-              className="flex flex-col gap-3 border-t border-line py-4 md:grid md:grid-cols-axis-tablet md:gap-x-6 lg:grid-cols-axis md:py-0"
+              className="flex flex-col gap-3 border-t border-line py-4 md:grid md:grid-cols-axis-tablet md:gap-x-5 md:py-0 lg:grid-cols-axis lg:gap-x-6"
             >
               <Link
                 href={`/shop?layer=${layer.id}`}
-                className="flex items-center gap-3 no-underline md:gap-4 md:py-5"
+                className="flex items-center gap-3 no-underline md:self-start md:py-4.5 lg:gap-4 lg:py-5"
               >
-                <div className="relative size-12 shrink-0 bg-mist md:size-18">
+                <div className="relative size-12 shrink-0 bg-mist lg:size-18">
                   {image && (
                     <Image
                       src={image.url}
@@ -93,25 +108,25 @@ const LayerAxis: FC<LayerAxisProps> = ({ products, images }) => (
                     />
                   )}
                 </div>
-                <span className="flex grow items-center justify-between gap-1 md:flex-col md:items-start">
-                  <span className="font-display text-lg md:text-wordmark-sm">
+                <span className="flex grow items-center justify-between gap-1 md:flex-col md:items-start md:gap-0.5">
+                  <span className="font-display text-lg md:text-nav lg:text-wordmark-sm">
                     {layer.label}
                   </span>
-                  <span className="text-sm text-ink-2">
+                  <span className="text-sm text-ink-2 md:text-caption lg:text-sm">
                     {items.length} pieces
                   </span>
                 </span>
               </Link>
 
-              <ul className="flex flex-col gap-3 md:relative md:block md:min-h-28 md:pt-6 md:pb-4">
+              <ul className="flex flex-col gap-3 md:py-4.5 lg:relative lg:block lg:min-h-28 lg:pt-6 lg:pb-4">
                 {items.map((product) => {
                   const isLate = product.range.hi > 50;
                   return (
                     <li
                       key={product.handle}
-                      className="flex flex-col gap-1 md:relative md:block md:h-7.5"
+                      className="flex flex-col gap-1 lg:relative lg:block lg:h-7.5"
                     >
-                      <span className="flex justify-between text-caption md:hidden">
+                      <span className="flex justify-between text-caption lg:hidden">
                         <span>{product.title}</span>
                         <span className="font-data text-2xs text-ink-2">
                           {formatRange(product.range)}
@@ -120,11 +135,11 @@ const LayerAxis: FC<LayerAxisProps> = ({ products, images }) => (
                       <RangeBar
                         lo={product.range.lo}
                         hi={product.range.hi}
-                        className="h-2 md:hidden"
+                        className="h-2 md:bg-transparent lg:hidden"
                       />
                       <div
                         aria-hidden="true"
-                        className="absolute top-0 h-3 max-md:hidden"
+                        className="absolute top-0 h-3 max-lg:hidden"
                         style={{
                           insetInlineStart: `${axisPosition(product.range.lo) * 100}%`,
                           width: `${(axisPosition(product.range.hi) - axisPosition(product.range.lo)) * 100}%`,
@@ -132,7 +147,7 @@ const LayerAxis: FC<LayerAxisProps> = ({ products, images }) => (
                         }}
                       />
                       <span
-                        className="absolute -top-1 text-caption whitespace-nowrap max-md:hidden"
+                        className="absolute -top-1 text-caption whitespace-nowrap max-lg:hidden"
                         style={
                           isLate
                             ? {
