@@ -1,0 +1,8 @@
+node_modules
+.next
+package-lock.json
+design/canvas-render
+design/frames
+docs/design
+public/thermal
+content/shopify-products.csv

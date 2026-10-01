@@ -92,7 +92,7 @@ No entrance animations on scroll, no parallax, no marquee, no custom cursor.
 
 ## 7. Artboards
 
-Frozen at canvas version 19 (1 Oct 2026); see `design/INTAKE.md`. Reference PNGs of every artboard are in `design/frames/`. Rows on the canvas: Desktop, Tablet, Phone, System. Each artboard's height is its content height in the default state, so it can be used as a fidelity baseline as is.
+Frozen at canvas version 19 (1 Oct 2026), with the copy change notes in `design/INTAKE.md`. Reference PNGs of every artboard are in `design/frames/`. Rows on the canvas: Desktop, Tablet, Phone, System. Each artboard's height is its content height in the default state, so it can be used as a fidelity baseline as is.
 
 | Artboard | File | Size | Defines |
 |---|---|---|---|

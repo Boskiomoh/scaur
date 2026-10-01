@@ -15,12 +15,11 @@ How the Scaur storefront is built. Read with [`PRD.md`](PRD.md) (behaviour) and 
 - Next.js 16 (App Router, Server Components, Server Actions), React 19, TypeScript strict.
 - Tailwind CSS v4 (`@theme` tokens in `src/app/globals.css`).
 - React Compiler (`reactCompiler: true`, `babel-plugin-react-compiler`), per the house style.
-- Zod for parsing Storefront responses and URL params.
 - `@phosphor-icons/react` (regular weight) for icons.
 - Dev only: `sharp` (thermal images, favicons), `vitest`, `@playwright/test`, `@axe-core/playwright`, `prettier`.
-- Proposed, needs approval: `zustand` for the cart store (house style section 4: state shared by distant components: the header badge, add buttons and the drawer).
+- `zustand` for the cart store (house style section 4: state shared by distant components: the header badge, add buttons and the drawer).
 
-No Shopify SDK is required: the Storefront API is one GraphQL endpoint and a typed `fetch` wrapper is smaller than any client library. No state library: the cart lives on Shopify, and UI state is local or in the URL.
+No Shopify SDK is required: the Storefront API is one GraphQL endpoint and a typed `fetch` wrapper is smaller than any client library. No validation library either (the `dashboard` skill's rule): GraphQL already returns exactly the fields a query asks for, so responses are typed with interfaces, not parsed at runtime; the only untrusted input is three URL parameters and the cart actions' arguments, which `src/lib/url.ts` and `src/components/cart/actions.ts` check by hand.
 
 This Next.js version has breaking changes from older training data. Before writing framework code, read the relevant guide in `node_modules/next/dist/docs/` (caching, `searchParams`, Server Actions, `proxy.ts`).
 
@@ -59,7 +58,7 @@ src/
     kit/                            index (Kit), kit-form, kit-figure, kit-slot, kit-footer
     cart/                           index (CartDrawer), cart-line, checkout-notice,
                                     actions.ts ("use server": addLine, addKit, updateLine,
-                                    removeLine, getCart), schema.ts (Zod for action input)
+                                    removeLine, getCart; each checks its own input)
     search/                         index (SearchOverlay), search-results
     about/                          index (About)
     credits/                        index (Credits)
@@ -68,11 +67,11 @@ src/
   lib/
     shopify/client.ts               storefrontFetch<T>(query, variables, { tags, revalidate })
     shopify/queries.ts              fragments and queries (products, product, cart, predictiveSearch)
-    shopify/schemas.ts              Zod schemas for raw responses
+    shopify/types.ts                interfaces for the raw query responses
     catalog.ts                      raw product -> Product (layer, range, warmth from tags)
     kit.ts                          the kit rules (section 5), pure
     thermal.ts                      thermal image lookup (section 7)
-    url.ts                          parse and build URL state for shop, product and kit (Zod)
+    url.ts                          parse and build URL state for shop, product and kit
     format.ts                       money, temperature, stock lines
     heat.ts                         temperature -> thermal colour (the ironbow stops)
     cn.ts                           three-line class join
@@ -99,7 +98,7 @@ the smallest leaf. React Compiler on, so no `useMemo`, `useCallback` or `React.m
 no arbitrary values), logical spacing utilities, Phosphor icons imported per icon with
 `aria-hidden` when decorative. Prettier defaults (double quotes, semicolons, trailing commas).
 Only the section labels (`// State`, `// Derived`, `// Handlers`...) and one-line *why*
-comments. No `any`, no enums, types derived from Zod schemas.
+comments. No `any`, no enums; derive types (`(typeof layers)[number]`, `Pick<>`) instead of repeating them.
 
 ## 4. Shopify data layer
 
@@ -201,7 +200,7 @@ Worked example (the default state): hike, 38°F, steady rain, breezy, M. `feels 
 
 ## 8. Filters and URL state
 
-- `/shop` reads `searchParams` (`layer`, `t`, `view`), validates with Zod, fetches the catalog once (cached, section 9) and filters on the server: layer by product type; `t` keeps products whose range contains it. Results render as Server Components; the filter bar is a small client component that updates the URL with `router.replace` (no scroll jump) and uses `useTransition` to show a pending state on the grid.
+- `/shop` reads `searchParams` (`layer`, `t`, `view`), checks them against the allowed values in `src/lib/url.ts`, fetches the catalog once (cached, section 9) and filters on the server: layer by product type; `t` keeps products whose range contains it. Results render as Server Components; the filter bar is a small client component that updates the URL with `router.replace` (no scroll jump) and uses `useTransition` to show a pending state on the grid.
 - `/products/[handle]` reads `colour` and `size`; the picker updates the URL with `replace`, so the back button leaves the page rather than stepping through choices.
 
 ## 9. Caching and freshness

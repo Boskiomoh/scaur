@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-Next.js 16 (App Router, Server Components, server actions for cart mutations), React 19, TypeScript, Tailwind CSS v4, Zod. Product data from the Shopify Storefront API (GraphQL) on a free Shopify Partners development store owned by the user. Checkout is Shopify-hosted (handoff via `cart.checkoutUrl`). Hosted on Vercel's free tier. Chosen by the user from a recommendation.
+Next.js 16 (App Router, Server Components, server actions for cart mutations), React 19, TypeScript, Tailwind CSS v4, Zustand. Product data from the Shopify Storefront API (GraphQL) on a free Shopify Partners development store owned by the user. Checkout is Shopify-hosted (handoff via `cart.checkoutUrl`). Hosted on Vercel's free tier. Chosen by the user from a recommendation.
 
 ## Users
 

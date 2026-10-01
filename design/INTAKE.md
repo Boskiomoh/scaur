@@ -7,6 +7,10 @@
   "Design: original".
 - **Frozen at canvas version 19 on 1 Oct 2026.** Any change after this is a change note in
   this file, and its artboard and frame are re-exported.
+- **Change notes:**
+  - Version 21 (1 Oct 2026): Build and MobileBuild, the "Data checks" line now reads "Every
+    URL parameter and cart request is checked on the server." (Zod dropped from the stack.)
+    Frames re-rendered.
 - **Markup:** `docs/design/*.dc.html`, one file per artboard, plus `docs/design/canvas.json`
   (artboard sizes). The artboards are interactive, so their scripts show intended behaviour.
 - **Reference frames:** `design/frames/<Artboard>.png`, rendered locally at each artboard's

@@ -83,7 +83,7 @@ NEXT_PUBLIC_STORE_PASSWORD=<password from 0.4>
 ## Phase 2: Data and pages (F to J)
 
 ### F. Shopify client and catalog
-> Implement src/lib/shopify/client.ts, queries.ts and schemas.ts, and src/lib/catalog.ts per ARCHITECTURE section 4, with unit tests for tag parsing and variant grouping. Add a script `npm run shopify:check` that lists every product with layer, range, warmth, colours and stock per size.
+> Implement src/lib/shopify/client.ts, queries.ts and types.ts, and src/lib/catalog.ts per ARCHITECTURE section 4, with unit tests for tag parsing and variant grouping. Add a script `npm run shopify:check` that lists every product with layer, range, warmth, colours and stock per size.
 
 **Done when:** the check prints all 11 products with the values in PRD Appendix A, and the tests pass.
 
