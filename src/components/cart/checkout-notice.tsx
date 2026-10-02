@@ -29,8 +29,8 @@ const CheckoutNotice: FC<CheckoutNoticeProps> = ({ checkoutUrl, onBack }) => (
       <dd className="font-data">{process.env.NEXT_PUBLIC_STORE_PASSWORD}</dd>
     </dl>
     <p className="text-sm text-ink-2">
-      Shopify may ask for the store password first, because development stores
-      are private.
+      Development stores are private, so Shopify may ask for the store password
+      first. It then brings you back here; press Continue to checkout again.
     </p>
     <div className="mt-auto flex flex-col gap-2.5">
       <Button href={checkoutUrl} size="lg">

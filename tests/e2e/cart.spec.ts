@@ -84,6 +84,46 @@ test("quantity changes update the line and the subtotal", async ({ page }) => {
   ).toBeAttached();
 });
 
+test("fast quantity clicks never flash an older quantity", async ({ page }) => {
+  await page.goto("/products/tarn-merino-crew?colour=Slate+Blue&size=M", {
+    waitUntil: "networkidle",
+  });
+  await page.getByRole("button", { name: "Add to cart" }).click();
+  const drawer = cart(page);
+  const quantity = drawer.getByRole("group", {
+    name: "Quantity of Tarn Merino Crew",
+  });
+  await expect(quantity).toContainText("1");
+  await expect(drawer.locator('li[aria-busy="true"]')).toHaveCount(0);
+
+  // Record every quantity the line shows while the clicks are confirmed.
+  await quantity.evaluate((group) => {
+    const seen: string[] = [];
+    (window as unknown as { seen: string[] }).seen = seen;
+    new MutationObserver(() => seen.push(group.textContent ?? "")).observe(
+      group,
+      { subtree: true, characterData: true, childList: true },
+    );
+  });
+  const more = drawer.getByRole("button", {
+    name: "One more Tarn Merino Crew",
+  });
+  for (let i = 0; i < 3; i++) await more.click();
+
+  await expect(drawer.locator('li[aria-busy="true"]')).toHaveCount(0);
+  await expect(quantity).toContainText("4");
+  const seen = await page.evaluate(
+    () => (window as unknown as { seen: string[] }).seen,
+  );
+  const shown = seen.map(Number);
+  expect(shown).toEqual([...shown].sort((a, b) => a - b));
+
+  await page.reload();
+  await expect(
+    page.getByRole("button", { name: "Cart, 4 items" }).first(),
+  ).toBeAttached();
+});
+
 test("checkout shows the test notice, then points at Shopify's checkout", async ({
   page,
 }) => {

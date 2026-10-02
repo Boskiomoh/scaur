@@ -29,6 +29,7 @@ const CartDrawer: FC = () => {
   const [step, setStep] = useState<"review" | "confirm">("review");
   const [pendingIds, setPendingIds] = useState<string[]>([]);
   const [hasLoadFailed, setHasLoadFailed] = useState(false);
+  const latestChange = useRef(0);
 
   // Derived
   const lines = cart?.lines ?? [];
@@ -85,14 +86,18 @@ const CartDrawer: FC = () => {
   const handleQuantity = async (line: CartLineData, quantity: number) => {
     if (!cart) return;
     const previous = cart;
+    const change = ++latestChange.current;
     setLineError(line.id);
     setCart(withQuantity(cart, line.id, quantity));
-    setPendingIds((ids) => [...ids, line.id]);
+    setPendingIds((ids) => (ids.includes(line.id) ? ids : [...ids, line.id]));
     const result =
       quantity === 0
         ? await removeLine(line.id)
         : await updateLine(line.id, quantity);
-    setPendingIds((ids) => ids.filter((id) => id !== line.id));
+    // Server Actions run one at a time, so a reply that a newer click has overtaken
+    // shows an old cart; only the newest reply is the cart as it ends up.
+    if (change !== latestChange.current) return;
+    setPendingIds([]);
     if (result.ok) {
       setCart(result.cart);
     } else {
