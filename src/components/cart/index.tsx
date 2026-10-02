@@ -19,7 +19,6 @@ const CartDrawer: FC = () => {
   const isOpen = useCartStore((state) => state.isOpen);
   const cart = useCartStore((state) => state.cart);
   const lineErrors = useCartStore((state) => state.lineErrors);
-  const open = useCartStore((state) => state.open);
   const close = useCartStore((state) => state.close);
   const setCart = useCartStore((state) => state.setCart);
   const setLineError = useCartStore((state) => state.setLineError);
@@ -45,21 +44,12 @@ const CartDrawer: FC = () => {
 
   // Effects
   // Pages stay static, so the cart (kept on Shopify, keyed by a cookie) loads after hydration.
-  // Shopify's storefront sends visitors back with ?checkout=resume after the dev-store password.
   useEffect(() => {
     getCart().then((result) => {
       setCart(result.cart);
       setHasLoadFailed(!result.ok);
-      const url = new URL(window.location.href);
-      if (url.searchParams.get("checkout") !== "resume") return;
-      url.searchParams.delete("checkout");
-      window.history.replaceState(null, "", url);
-      if (result.cart?.lines.length) {
-        setStep("confirm");
-        open();
-      }
     });
-  }, [setCart, open]);
+  }, [setCart]);
 
   // Handlers
   const handleRetry = async () => {

@@ -142,6 +142,22 @@ test("checkout shows the test notice, then points at Shopify's checkout", async 
   await expect(drawer.getByRole("button", { name: "Checkout" })).toBeVisible();
 });
 
+test("coming back from the store password goes straight on to checkout", async ({
+  page,
+}) => {
+  const resume = () =>
+    page.request.get("/?checkout=resume", { maxRedirects: 0 });
+  const checkout = () => page.request.get("/checkout", { maxRedirects: 0 });
+
+  expect((await resume()).headers().location).toMatch(/^\/checkout(\?|$)/);
+  expect((await checkout()).headers().location).toBe("/");
+
+  await addTideXl(page);
+  expect((await checkout()).headers().location).toMatch(
+    /^https:\/\/scaur-demo\.myshopify\.com\/.*cart/,
+  );
+});
+
 test("the drawer is keyboard operable, returns focus and has no axe violations", async ({
   page,
 }) => {

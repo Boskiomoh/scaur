@@ -34,6 +34,14 @@ const nextConfig: NextConfig = {
     loaderFile: "./src/lib/image-loader.ts",
   },
   headers: async () => [{ source: "/(.*)", headers: securityHeaders }],
+  redirects: async () => [
+    {
+      source: "/",
+      has: [{ type: "query", key: "checkout", value: "resume" }],
+      destination: "/checkout",
+      permanent: false,
+    },
+  ],
 };
 
 export default nextConfig;

@@ -30,7 +30,7 @@ const CheckoutNotice: FC<CheckoutNoticeProps> = ({ checkoutUrl, onBack }) => (
     </dl>
     <p className="text-sm text-ink-2">
       Development stores are private, so Shopify may ask for the store password
-      first. It then brings you back here; press Continue to checkout again.
+      first. After it, you go straight on to checkout.
     </p>
     <div className="mt-auto flex flex-col gap-2.5">
       <Button href={checkoutUrl} size="lg">
