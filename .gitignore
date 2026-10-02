@@ -42,3 +42,6 @@ AGENTS.md
 docs/WORKFLOW.md
 docs/LOGO-PROMPT.md
 design/INTAKE.md
+
+.vercel
+.env*
