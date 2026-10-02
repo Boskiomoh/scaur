@@ -4,7 +4,7 @@ A headless Shopify store for a fictional outdoor brand. Every product is a base,
 
 Built with Next.js 16 on Shopify's Storefront API and a real development store: live stock, real carts and Shopify's own checkout in test mode.
 
-**Live:** LIVE_URL &nbsp;·&nbsp; **Design match report:** LIVE_URL/fidelity/report.html &nbsp;·&nbsp; **How it was built:** LIVE_URL/about
+**Live:** [scaur.vercel.app](https://scaur.vercel.app) &nbsp;·&nbsp; **Design match report:** [/fidelity/report.html](https://scaur.vercel.app/fidelity/report.html) &nbsp;·&nbsp; **How it was built:** [/about](https://scaur.vercel.app/about)
 
 > Scaur is fictional and made for a portfolio. Nothing is for sale, checkout runs in test mode, and the site is kept out of search engines.
 
