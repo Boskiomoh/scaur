@@ -1,6 +1,6 @@
 "use server";
 
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 
 import { kitAttributes, toCart } from "@/lib/shopify/cart";
 import { storefrontFetch } from "@/lib/shopify/client";
@@ -44,14 +44,31 @@ const isQuantity = (value: unknown, min: number): value is number =>
   (value as number) >= min &&
   (value as number) <= maxQuantity;
 
+const isPrivateIp = (ip: string) =>
+  /^(::1$|::ffff:127\.|127\.|10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.|f[cd]|fe80)/i.test(
+    ip,
+  );
+
+// Cart calls are made for a visitor, so Shopify is sent their IP (Vercel sets x-real-ip).
+// Local runs have a loopback address, which Shopify throttles, so it is left off.
+const cartFetch = async <T>(
+  query: string,
+  variables: Record<string, unknown>,
+): Promise<T> => {
+  const requestHeaders = await headers();
+  const ip =
+    requestHeaders.get("x-real-ip") ??
+    requestHeaders.get("x-forwarded-for")?.split(",")[0]?.trim();
+  return storefrontFetch<T>(query, variables, {
+    cache: "no-store",
+    buyerIp: ip && !isPrivateIp(ip) ? ip : undefined,
+  });
+};
+
 const loadCart = async (): Promise<Cart | null> => {
   const id = (await cookies()).get(cookieName)?.value;
   if (!id) return null;
-  const data = await storefrontFetch<{ cart: RawCart | null }>(
-    cartQuery,
-    { id },
-    { cache: "no-store" },
-  );
+  const data = await cartFetch<{ cart: RawCart | null }>(cartQuery, { id });
   return data.cart ? toCart(data.cart) : null;
 };
 
@@ -66,11 +83,9 @@ const saveCartId = async (id: string) =>
 
 // Shopify caps quantities at stock silently, so the server checks first and says so.
 const checkStock = async (cart: Cart | null, lines: LineInput[]) => {
-  const { nodes } = await storefrontFetch<VariantStockResponse>(
-    variantStockQuery,
-    { ids: lines.map((line) => line.variantId) },
-    { cache: "no-store" },
-  );
+  const { nodes } = await cartFetch<VariantStockResponse>(variantStockQuery, {
+    ids: lines.map((line) => line.variantId),
+  });
   for (const line of lines) {
     const variant = nodes.find((node) => node?.id === line.variantId);
     if (!variant?.availableForSale) return "That size just sold out.";
@@ -115,15 +130,13 @@ const addLines = async (
       attributes,
     }));
     const data = cart
-      ? await storefrontFetch<{ cartLinesAdd: CartMutationResult }>(
+      ? await cartFetch<{ cartLinesAdd: CartMutationResult }>(
           cartLinesAddMutation,
           { cartId: cart.id, lines: input },
-          { cache: "no-store" },
         ).then((response) => response.cartLinesAdd)
-      : await storefrontFetch<{ cartCreate: CartMutationResult }>(
+      : await cartFetch<{ cartCreate: CartMutationResult }>(
           cartCreateMutation,
           { lines: input },
-          { cache: "no-store" },
         ).then((response) => response.cartCreate);
     return mutationResult(data, cart, addFailed);
   } catch (error) {
@@ -217,13 +230,12 @@ export const updateLine = async (
         cart,
       };
     }
-    const { cartLinesUpdate } = await storefrontFetch<{
+    const { cartLinesUpdate } = await cartFetch<{
       cartLinesUpdate: CartMutationResult;
-    }>(
-      cartLinesUpdateMutation,
-      { cartId: cart.id, lines: [{ id: lineId, quantity }] },
-      { cache: "no-store" },
-    );
+    }>(cartLinesUpdateMutation, {
+      cartId: cart.id,
+      lines: [{ id: lineId, quantity }],
+    });
     return mutationResult(cartLinesUpdate, cart, updateFailed);
   } catch (error) {
     console.error("Cart update failed:", error);
@@ -238,13 +250,9 @@ export const removeLine = async (lineId: unknown): Promise<CartResult> => {
   try {
     cart = await loadCart();
     if (!cart) return { ok: false, error: updateFailed, cart };
-    const { cartLinesRemove } = await storefrontFetch<{
+    const { cartLinesRemove } = await cartFetch<{
       cartLinesRemove: CartMutationResult;
-    }>(
-      cartLinesRemoveMutation,
-      { cartId: cart.id, lineIds: [lineId] },
-      { cache: "no-store" },
-    );
+    }>(cartLinesRemoveMutation, { cartId: cart.id, lineIds: [lineId] });
     return mutationResult(cartLinesRemove, cart, updateFailed);
   } catch (error) {
     console.error("Cart remove failed:", error);

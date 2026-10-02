@@ -13,6 +13,8 @@ interface FetchOptions {
   tags?: string[];
   revalidate?: number | false;
   cache?: RequestCache;
+  // Set on requests made for a visitor, so Shopify's bot protection sees them, not our server.
+  buyerIp?: string;
 }
 
 interface GraphQLResponse<T> {
@@ -23,7 +25,7 @@ interface GraphQLResponse<T> {
 export const storefrontFetch = async <T>(
   query: string,
   variables: Record<string, unknown> = {},
-  { tags, revalidate, cache }: FetchOptions = {},
+  { tags, revalidate, cache, buyerIp }: FetchOptions = {},
 ): Promise<T> => {
   const domain = process.env.SHOPIFY_STORE_DOMAIN;
   const token = process.env.SHOPIFY_STOREFRONT_PRIVATE_TOKEN;
@@ -41,6 +43,7 @@ export const storefrontFetch = async <T>(
       headers: {
         "Content-Type": "application/json",
         "Shopify-Storefront-Private-Token": token,
+        ...(buyerIp ? { "Shopify-Storefront-Buyer-IP": buyerIp } : {}),
       },
       body: JSON.stringify({ query, variables }),
       ...(cache ? { cache } : { next: { tags, revalidate } }),
