@@ -1,4 +1,4 @@
-// Builds the favicons and touch icons from brand/ (WORKFLOW step G).
+// Builds the favicons and touch icons from brand/.
 import { copyFile, mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 

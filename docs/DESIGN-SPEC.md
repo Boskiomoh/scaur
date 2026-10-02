@@ -1,8 +1,8 @@
 # Scaur design spec
 
-The build handoff for the Claude Design canvas at https://claude.ai/artifact/R5AhczuNRCuA7FeF1R5V4L (private until shared). Reference markup for every artboard is in [`design/`](design/); the artboards are interactive, so their `renderVals()` code also shows the intended behaviour.
+The build handoff for the original design canvas. Reference markup for every artboard is in [`design/`](design/); the artboards are interactive, so their `renderVals()` code also shows the intended behaviour.
 
-> A handoff spec. The final DESIGN.md is written from the finished build (WORKFLOW step W).
+> A handoff spec. The final DESIGN.md is written from the finished build.
 
 ## 1. Direction: "Heat Map"
 
@@ -92,7 +92,7 @@ No entrance animations on scroll, no parallax, no marquee, no custom cursor.
 
 ## 7. Artboards
 
-Frozen at canvas version 19 (1 Oct 2026), with the copy change notes in `design/INTAKE.md`. Reference PNGs of every artboard are in `design/frames/`. Rows on the canvas: Desktop, Tablet, Phone, System. Each artboard's height is its content height in the default state, so it can be used as a fidelity baseline as is.
+Frozen at canvas version 19 (1 Oct 2026). Reference PNGs of every artboard are in `design/frames/`. Rows on the canvas: Desktop, Tablet, Phone, System. Each artboard's height is its content height in the default state, so it can be used as a fidelity baseline as is.
 
 | Artboard | File | Size | Defines |
 |---|---|---|---|

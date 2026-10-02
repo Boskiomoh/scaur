@@ -239,7 +239,10 @@ const About: FC = () => (
         <tbody>
           {fidelity.map((page) => (
             <tr key={page.name} className="border-t border-mist">
-              <th scope="row" className="px-3 py-2.5 text-start font-normal md:px-4">
+              <th
+                scope="row"
+                className="px-3 py-2.5 text-start font-normal md:px-4"
+              >
                 {page.name}
               </th>
               {[page.desktop, page.tablet, page.phone].map((value, index) => (

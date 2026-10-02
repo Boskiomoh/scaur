@@ -18,8 +18,7 @@ A full-size check of every photo found six with real logos or brand text:
 | `shell-fog-ridge.jpg` | Arc'teryx and deuter logos | Never shown as a photo; only its blurred thermal versions are used, where nothing is readable |
 
 Thermal versions of the changed photos were regenerated with the same mapping the canvas uses
-(inverted brightness on the thermal scale). Originals are backed up in
-`Personal Projects/_backups/scaur-photos-2026-10-01/`. ATTRIBUTION.md and the credits page say
+(inverted brightness on the thermal scale). Originals are backed up offline. ATTRIBUTION.md and the credits page say
 which photos were edited.
 
 ## 2. Consistency (fixed)

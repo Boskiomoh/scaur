@@ -90,23 +90,8 @@
     }
   ],
   "sweep": {
-    "paths": [
-      "/",
-      "/shop",
-      "/products/scarp-shell",
-      "/kit",
-      "/about"
-    ],
-    "widths": [
-      320,
-      375,
-      390,
-      768,
-      1024,
-      1280,
-      1440,
-      1920
-    ]
+    "paths": ["/", "/shop", "/products/scarp-shell", "/kit", "/about"],
+    "widths": [320, 375, 390, 768, 1024, 1280, 1440, 1920]
   },
   "axe": true,
   "minMatch": null

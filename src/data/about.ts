@@ -75,7 +75,7 @@ export const stack = [
   },
 ];
 
-// Results stay null until they are measured (WORKFLOW step T); nothing here is estimated.
+// Results stay null until they are measured; nothing here is estimated.
 export const targets: {
   name: string;
   target: string;

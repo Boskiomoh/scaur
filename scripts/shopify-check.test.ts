@@ -1,4 +1,4 @@
-// npm run shopify:check: lists the live catalog as the app parses it (WORKFLOW step F).
+// npm run shopify:check: lists the live catalog as the app parses it.
 import { expect, test } from "vitest";
 
 import { buildKit, defaultKitInput } from "@/lib/kit";

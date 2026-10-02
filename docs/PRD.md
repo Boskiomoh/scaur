@@ -2,10 +2,9 @@
 
 Product requirements for **Scaur**, a headless Shopify storefront for a fictional brand of technical mountain apparel sold as a layering system. Portfolio project for Daniel Omoyibo.
 
-- Design (Claude Design canvas): https://claude.ai/artifact/R5AhczuNRCuA7FeF1R5V4L (private until shared from its Share menu). Reference copies: [`design/`](design/).
+- Design: original, made for this project. Reference copies: [`design/`](design/).
 - Product truth: [`../PRODUCT.md`](../PRODUCT.md)
-- Direction contract: [`../.impeccable/surfaces/app-page-tsx.md`](../.impeccable/surfaces/app-page-tsx.md)
-- Build docs: [`ARCHITECTURE.md`](ARCHITECTURE.md), [`DESIGN-SPEC.md`](DESIGN-SPEC.md), [`WORKFLOW.md`](WORKFLOW.md)
+- Build docs: [`ARCHITECTURE.md`](ARCHITECTURE.md), [`DESIGN-SPEC.md`](DESIGN-SPEC.md)
 - Seed data: [`../content/catalog.json`](../content/catalog.json), [`../content/shopify-products.csv`](../content/shopify-products.csv)
 
 ---
@@ -108,7 +107,7 @@ All product data, prices, stock and images come from a real Shopify development 
 ### F9. Test-checkout notice
 - "Checkout" first shows, inside the drawer: "This is a test checkout", that there is no need to place the order, the test card for anyone who wants to (Bogus Gateway: card number `1`, any future date, any 3-digit code), and the store password with a note that Shopify may ask for it because development stores are private. "Continue to checkout" goes to `cart.checkoutUrl`; "Back to cart" returns.
 - Development stores reportedly cap test orders (around 10), so the notice steers visitors away from placing orders; reaching Shopify's checkout page is the demonstration.
-- **Done when:** Continue lands on Shopify's checkout with the right lines, and one test order placed by you from production succeeds (WORKFLOW step U).
+- **Done when:** Continue lands on Shopify's checkout with the right lines, and one test order placed by you from production succeeds.
 
 ### F10. Kit builder
 - Inputs: Activity (Trail run, Day hike, Alpine climb), Temperature at the start (-10°F to 70°F slider; the number grows with severity; word: Mild, Cool, Cold, Bitter), Rain (Dry, Showers, Steady rain), Wind (Calm, Breezy, Gusty), Your size.

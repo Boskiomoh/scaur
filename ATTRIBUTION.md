@@ -1,6 +1,6 @@
 # Photo credits
 
-All photography is from [Unsplash](https://unsplash.com) under the [Unsplash License](https://unsplash.com/license) (free to use, no permission needed; credit given here as a courtesy). None are Unsplash+ images. Scaur is fictional and must not appear to sell another company's products, so no real brand's logo may be visible. A full-size check on 2026-10-01 found logos on six photos: four were retouched (the Unsplash License allows edits), one was replaced, and one is used only as the source of a thermal view. Originals are in `Personal Projects/_backups/scaur-photos-2026-10-01/`.
+All photography is from [Unsplash](https://unsplash.com) under the [Unsplash License](https://unsplash.com/license) (free to use, no permission needed; credit given here as a courtesy). None are Unsplash+ images. Scaur is fictional and must not appear to sell another company's products, so no real brand's logo may be visible. A full-size check on 2026-10-01 found logos on six photos: four were retouched (the Unsplash License allows edits), one was replaced, and one is used only as the source of a thermal view. The unedited originals are kept offline.
 
 Downloaded at 1600px wide on 2026-09-23. Files live in `assets/photos/` and are uploaded to the Shopify development store as product media.
 
